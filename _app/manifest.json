@@ -38,7 +38,7 @@
       "_vendor-11be466b.js"
     ],
     "css": [
-      "assets/pages/about.md-277712a6.css"
+      "assets/vendor-3b261309.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -62,7 +62,7 @@
       "_vendor-11be466b.js"
     ],
     "css": [
-      "assets/pages/about.md-277712a6.css"
+      "assets/vendor-3b261309.css"
     ]
   },
   "src/routes/posts/[slug].svelte": {
@@ -80,7 +80,7 @@
   "_vendor-11be466b.js": {
     "file": "chunks/vendor-11be466b.js",
     "css": [
-      "assets/pages/about.md-277712a6.css"
+      "assets/vendor-3b261309.css"
     ]
   }
 }

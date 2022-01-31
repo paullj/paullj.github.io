@@ -5,7 +5,8 @@
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
-    "deploy": "rimraf build && svelte-kit build && touch build/.nojekyll && gh-pages -b deploy -d build -t true"
+    "predeploy": "rimraf build && svelte-kit build && touch build/.nojekyll",
+    "deploy": "gh-pages -b deploy -d build -t true"
   },
   "devDependencies": {
     "@iconify-json/teenyicons": "^1.0.1",

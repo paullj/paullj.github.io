@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Deploy to GitHub Pages
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -11,11 +11,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+
     steps:
-      - name: Deploy with gh-pages
+      - uses: actions/checkout@v2
+      - name: Use node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Deploy to GitHub Pages
         run: |
-          echo ${GITHUB_TOKEN}
-          echo ${GITHUB_REPOSITORY}
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           GITHUB_TOKEN=${GITHUB_TOKEN} npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:

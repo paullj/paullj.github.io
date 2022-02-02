@@ -37,7 +37,7 @@
   import Meta from 'svelte-meta';
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
   
-  import { browser } from '$app/env';
+  import { browser, dev } from '$app/env';
   import { onMount } from 'svelte';
   
   import User from '$lib/components/User.svelte';
@@ -98,11 +98,12 @@
   {#if browser}  
     <svelte:component this={GiscusComponent}
       repo="{GITHUB_USER}/{GITHUB_REPO}"
+      repo-id="R_kgDOGwKM4w"
       mapping="number"
       term={number}
       reactionsEnabled=1
       emitMetadata=0
-      theme="http://localhost:3000/comments.css"
+      theme="{dev ? "http://localhost:3000" : SITE_URL}/comments.css"
     />
   {/if}
   <span id="comments" />

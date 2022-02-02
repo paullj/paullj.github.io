@@ -1,134 +1,139 @@
 import { GITHUB_USER, GITHUB_REPO } from "./siteConfig";
 import { dev } from "$app/env";
 
-import { request as requestWithoutAuth } from "@octokit/request";
+import {
+  graphql as graphqlWithoutAuth,
+  GraphqlResponseError,
+} from "@octokit/graphql";
 
 import slugify from "slugify";
 import { compile } from "mdsvex";
 import oembed from "remark-oembed";
+import { getReadingTime } from "./utils/getReadingTime";
 
-const publishedLabels = ["published"];
 let posts = [];
 
 const githubToken = process.env.GITHUB_TOKEN;
 
-const request = process.env.GITHUB_TOKEN
-  ? requestWithoutAuth.defaults({
+const graphql = process.env.GITHUB_TOKEN
+  ? graphqlWithoutAuth.defaults({
       headers: {
         authorization: `token ${githubToken}`,
       },
     })
-  : requestWithoutAuth;
+  : graphqlWithoutAuth;
 
-const getComments = async (issueNumber) => {
-  const results = await request(
-    "GET /repos/{owner}/{repo}/issues/{issue_number}/comments",
-    {
-      owner: GITHUB_USER,
-      repo: GITHUB_REPO,
-      issue_number: issueNumber,
+const getDiscussions = async () => {
+  try {
+    const results = await graphql(
+      `
+        query getDiscussions($owner: String!, $repo: String!, $num: Int = 10) {
+          repository(owner: $owner, name: $repo) {
+            discussions(first: $num, categoryId: null) {
+              edges {
+                node {
+                  number
+                  title
+                  publishedAt
+                  category {
+                    name
+                  }
+                  comments {
+                    totalCount
+                  }
+                  reactions {
+                    totalCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      {
+        owner: GITHUB_USER,
+        repo: GITHUB_REPO,
+      }
+    );
+    const discussions = (results as any).repository.discussions.edges
+      .map(({ node }) => ({
+        ...node,
+        slug: slugify(node.title).toLowerCase(),
+        category: node.category.name,
+        comments: node.comments.totalCount,
+        reactions: node.reactions.totalCount,
+      }))
+      .filter(({ category }) => dev || !category.includes("Draft"));
+
+    posts = discussions;
+    return discussions;
+  } catch (error) {
+    if (error instanceof GraphqlResponseError) {
+      console.log("Request failed:", error.request);
+      console.log(error.message);
+    } else {
+      console.log(error);
     }
-  );
-
-  if (results.status === 200) {
-    return results.data.map((comment) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { url, total_count, ...reactions } = comment.reactions;
-
-      return {
-        user: {
-          name: comment.user.name,
-          login: comment.user.login,
-          author: comment.user.login === GITHUB_USER,
-          avatar: comment.user.avatar_url,
-          url: comment.user.url,
-        },
-        createdAt: new Date(comment.created_at),
-        updatedAt: new Date(comment.updated_at),
-        content: comment.body,
-        totalReactions: total_count,
-        reactions,
-        url: comment.html_url,
-      };
-    });
   }
-  throw new Error(results.status);
 };
 
-const getPosts = async () => {
-  const results = await request(`GET /repos/{owner}/{repo}/issues`, {
-    owner: GITHUB_USER,
-    repo: GITHUB_REPO,
-    state: "closed",
-    creator: GITHUB_USER,
-    labels: publishedLabels.join(","),
-    per_page: 100,
-  });
-
-  if (results.status === 200) {
-    const issues = results.data
-      .map((issue) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { url, total_count, ...reactions } = issue.reactions;
-
-        return {
-          title: issue.title,
-          slug: slugify(issue.title).toLowerCase(),
-          url: issue.html_url,
-          issueNumber: issue.number,
-          publishedAt: new Date(issue.closed_at),
-          createdAt: new Date(issue.created_at),
-          updatedAt: new Date(issue.updated_at),
-          totalReactions: total_count,
-          totalComments: issue.comments,
-          reactions,
-          content: issue.body,
-        };
-      })
-      .sort((a, b) => +b.publishedAt - +a.publishedAt);
-
-    posts = issues;
-  }
-
-  return posts;
-};
-
-const getPost = async (slug: string) => {
+const getDiscussion = async (slug: string) => {
   if (dev || !posts || posts.length === 0) {
-    posts = await getPosts();
+    posts = await getDiscussions();
   }
 
   if (!posts.length) throw new Error("No posts!");
 
   const post = posts.find((post) => post.slug === slug);
   if (post) {
-    const content = (
-      await compile(post.content, {
-        remarkPlugins: [[oembed, { syncWidget: true }]],
-      })
-    ).code;
+    try {
+      const results = (await graphql(
+        `
+          query getDiscussion($owner: String!, $repo: String!, $number: Int!) {
+            repository(owner: $owner, name: $repo) {
+              discussion(number: $number) {
+                body
+                url
+                author {
+                  avatarUrl(size: 100)
+                  login
+                  url
+                }
+              }
+            }
+          }
+        `,
+        {
+          owner: GITHUB_USER,
+          repo: GITHUB_REPO,
+          number: post.number,
+        }
+      )) as any;
 
-    const comments = await getComments(post.issueNumber);
-    const commentsPromises = comments.map((comment) =>
-      compile(comment.content, {
-        remarkPlugins: [
-          // sanitize FIXME: this is taking out all html
-        ],
-      })
-    );
-    const commentsContent = await Promise.all(commentsPromises);
+      const content = (
+        await compile(results.repository.discussion.body, {
+          remarkPlugins: [[oembed, { syncWidget: true }]],
+        })
+      ).code;
 
-    return {
-      ...post,
-      content,
-      comments: comments.map((comment, i) => ({
-        ...comment,
-        content: commentsContent[i].code,
-      })),
-    };
+      return {
+        ...post,
+        content,
+        url: results.repository.discussion.url,
+        author: results.repository.discussion.author,
+        readingTime: getReadingTime(results.repository.discussion.body),
+      };
+    } catch (error) {
+      if (error instanceof GraphqlResponseError) {
+        console.log(error.response);
+        throw new Error(error.message);
+      } else {
+        throw new Error(error);
+      }
+    }
   }
 
   throw new Error(`Can't find post, '${slug}'`);
 };
 
-export { getPosts, getPost };
+export { getDiscussions, getDiscussion };

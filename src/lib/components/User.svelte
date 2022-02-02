@@ -1,19 +1,14 @@
 <script>
-  export let name;
+  export let url;
   export let login;
-  export let avatar;
+  export let avatarUrl;
 </script>
 
-<div class="flex">
-  <img class="rounded-full overflow-hidden w-12" src={avatar} alt="">
-  <div class="ml-4">
-    {#if name}
-      <span>
-        {name}
-      </span>
-    {/if}
-    <span>
-      @{login}
-    </span>
-  </div>
+<div class="flex flex-row items-center">
+  <a href={url} target="_blank">
+    <img class="rounded-full overflow-hidden w-8" src={avatarUrl} alt="">
+  </a>
+  <a href={url} target="_blank" class="ml-2 font-medium hover:underline">
+    {login}
+  </a>
 </div>

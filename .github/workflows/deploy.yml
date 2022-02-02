@@ -1,11 +1,12 @@
 # This is a basic workflow that is manually triggered
 
-name: Deploy to GitHub
+name: build and push to deploy branch
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
-  workflow_dispatch:
+  discussion:
+    types: [created, edited, category_changed]
 
 jobs:
   deploy:
@@ -13,13 +14,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use node 16
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: 16.x
           cache: "npm"
       - run: npm install
-      - name: Deploy to GitHub Pages
+      - name: build and push to deploy branch
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           GITHUB_TOKEN=${GITHUB_TOKEN} npm run deploy -- -u "github-actions-bot <support+actions@github.com>"

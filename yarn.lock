@@ -17,6 +17,11 @@
   dependencies:
     "@types/throttle-debounce" "^2.1.0"
 
+"@giscus/svelte@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@giscus/svelte/-/svelte-1.0.1.tgz#1e4ae4f016c5a06779ff55826bc2ea98c56d5a33"
+  integrity sha512-41sOqgX5cap88Fu6+JU7x3Mg/VOrXMtqPrU5oEVABypcrvho7nKSk2pxnqDHcv4gdOm8xKLbAyGrv1622/wMjA==
+
 "@iconify-json/teenyicons@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@iconify-json/teenyicons/-/teenyicons-1.0.1.tgz#8df54707cf9e345a4bf5e71f2dc9789b9147a6e0"
@@ -71,6 +76,15 @@
     is-plain-object "^5.0.0"
     universal-user-agent "^6.0.0"
 
+"@octokit/graphql@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-4.8.0.tgz#664d9b11c0e12112cbf78e10f49a05959aa22cc3"
+  integrity sha512-0gv+qLSBLKF0z8TKaSKTsS39scVKF9dbMxJpj3U0vC7wjNWFuIpL/z76Qe2fiuCbDRcJSavkXsVtMS6/dtQQsg==
+  dependencies:
+    "@octokit/request" "^5.6.0"
+    "@octokit/types" "^6.0.3"
+    universal-user-agent "^6.0.0"
+
 "@octokit/openapi-types@^11.2.0":
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-11.2.0.tgz#b38d7fc3736d52a1e96b230c1ccd4a58a2f400a6"
@@ -85,7 +99,7 @@
     deprecation "^2.0.0"
     once "^1.4.0"
 
-"@octokit/request@^5.6.3":
+"@octokit/request@^5.6.0", "@octokit/request@^5.6.3":
   version "5.6.3"
   resolved "https://registry.yarnpkg.com/@octokit/request/-/request-5.6.3.tgz#19a022515a5bba965ac06c9d1334514eb50c48b0"
   integrity sha512-bFJl0I1KVc9jYTe9tdGGpAMPy32dLBXXo1dS/YwSCTL/2nd9XeHsY616RE3HPXDVk+a+dBuzyz5YdlXwcDTr2A==
@@ -1743,6 +1757,11 @@ svelte@^3.44.0:
   version "3.46.3"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.46.3.tgz#31202b0c795f276726d95b648b6dd413116257ac"
   integrity sha512-mTOXvv74CVQqJHqoIZDprVfRKVVmYNadXP0VKnOEA54223kLGCr1nMrifS4Zx29qMt/xRB38Eq1D7dDH/fM8fQ==
+
+timeago.js@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/timeago.js/-/timeago.js-4.0.2.tgz#724e8c8833e3490676c7bb0a75f5daf20e558028"
+  integrity sha512-a7wPxPdVlQL7lqvitHGGRsofhdwtkoSXPGATFuSOA2i1ZNQEPLrGnj68vOp2sOJTCFAQVXPeNMX/GctBaO9L2w==
 
 tiny-glob@^0.2.9:
   version "0.2.9"

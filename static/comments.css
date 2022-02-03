@@ -59,10 +59,10 @@ main {
   --color-fg-default: #24292f;
   --color-fg-muted: #57606a;
   --color-fg-subtle: #6e7781;
-  --color-canvas-default: #fff;
+  --color-canvas-default: transparent;
   --color-canvas-overlay: rgb(241, 243, 245);
-  --color-canvas-inset: #fff;
-  --color-canvas-subtle: #fff;
+  --color-canvas-inset: transparent;
+  --color-canvas-subtle: transparent;
   --color-border-default: transparent; /* #d0d7de; */
   /* --color-border-muted: hsl(210deg 18% 87% / 100%); */
   --color-neutral-muted: rgb(175 184 193 / 20%);
@@ -90,10 +90,9 @@ main .pagination-loader-container {
 }
 
 .gsc-reply {
-  padding-left: 25px;
+  padding-left: 35px;
 }
 
 .gsc-reactions {
-  align-items: start;
-  justify-items: center;
+  align-i.jstems: start;
 }

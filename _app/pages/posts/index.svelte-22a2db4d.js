@@ -1,0 +1,1 @@
+import{S as t,i as e,s as n}from"../../chunks/vendor-1dc40c8a.js";const r=async()=>({status:303,redirect:"/"});class c extends t{constructor(s){super();e(this,s,null,null,n,{})}}export{c as default,r as load};

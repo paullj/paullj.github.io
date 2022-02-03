@@ -2,7 +2,8 @@
   import { onMount } from "svelte";
   import { page } from '$app/stores';
   import { theme } from "$lib/stores/theme";
-  import { browser } from "$app/env";
+  import { browser, dev } from "$app/env";
+  import { SITE_URL } from "$lib/siteConfig";
 
   export let user;
   export let repo;
@@ -16,7 +17,7 @@
     iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
   }
 
-  $: themeCss = `${$page.url.origin}/comments-${$theme}.css`;
+  $: themeCss = `${dev ? $page.url.origin : SITE_URL}/comments-${$theme}.css`;
   $: {
     if(browser)
       sendMessage({ setConfig: { theme: themeCss }});

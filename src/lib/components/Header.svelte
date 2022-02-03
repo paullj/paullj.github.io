@@ -4,7 +4,7 @@
   $: currentPath = $page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')) || $page.url.pathname;
 </script>
 
-<header class="flex flex-row w-full py-4 items-center">
+<header class="flex flex-row w-full py-8 items-center">
   <nav class="flex-1 text-lg sm:text-base">
     {#if currentPath !== '/'}
       <span class="i-teenyicons-arrow-left-solid my-1 mr-1"/>

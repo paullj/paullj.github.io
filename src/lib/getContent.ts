@@ -14,12 +14,10 @@ import { parseFrontmatter } from "./utils/parseFrontmatter";
 
 let posts = [];
 
-const githubToken = process.env.GITHUB_TOKEN;
-
 const graphql = process.env.GITHUB_TOKEN
   ? graphqlWithoutAuth.defaults({
       headers: {
-        authorization: `token ${githubToken}`,
+        authorization: `token ${process.env.GITHUB_TOKEN}`,
       },
     })
   : graphqlWithoutAuth;

@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { page } from '$app/stores';
   import { theme } from "$lib/stores/theme";
-import { browser } from "$app/env";
+  import { browser } from "$app/env";
 
   export let user;
   export let repo;
@@ -22,7 +22,6 @@ import { browser } from "$app/env";
       sendMessage({ setConfig: { theme: themeCss }});
   }
 
-
   onMount(() => {
     const giscus = document.createElement('script');
     giscus.async = true;
@@ -41,5 +40,13 @@ import { browser } from "$app/env";
     body.appendChild(giscus);
   });
 </script>
+
+
+<noscript>
+  <div class="font-mono text-center text-red text-sm">
+    Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/{user}/{repo}/discussions/{number}">here</a>
+    here
+  </div>
+</noscript>
 
 <span id="comments" />

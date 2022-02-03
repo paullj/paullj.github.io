@@ -1,4 +1,4 @@
-import { storable } from "$lib/storable";
+import { storable } from "./storable";
 
 const theme = storable("theme");
 

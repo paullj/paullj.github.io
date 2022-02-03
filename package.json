@@ -20,6 +20,7 @@
     "rehype-sanitize": "^5.0.1",
     "remark-oembed": "^1.2.2",
     "rimraf": "^3.0.2",
+    "rss": "^1.2.2",
     "slugify": "^1.6.5",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",

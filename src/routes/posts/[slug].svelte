@@ -34,14 +34,12 @@
 </script>
 
 <script lang="ts">
-  import Meta from 'svelte-meta';
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
-  import { page } from '$app/stores';
-  
+  import Meta from 'svelte-meta';
   import User from '$lib/components/User.svelte';
   import Comments from '$lib/components/Comments.svelte';
-  import ShareIcon from '$lib/components/ShareIcon.svelte';
+  import ShareIcons from '$lib/components/ShareIcons.svelte';
 
   export let number;
   export let publishedAt;
@@ -57,7 +55,7 @@
 </script>
 
 <Meta
-  title="{SITE_TITLE} - {title}"
+  title="{title} - {SITE_TITLE}"
   description={description ?? SITE_DESCRIPTION}
   image={DEFAULT_IMAGE}
   url={SITE_URL}/>
@@ -71,7 +69,11 @@
     <span class="ml-2 inline-block align-middle text-xs uppercase font-mono font-bold border-2 px-1 rounded-md text-yellow-500">Draft</span>
   {/if}
 </h1>
-
+{#if !description.endsWith("...")}
+<p class="mt-2 font-extralight text-lg">
+  {description}
+</p>
+{/if}
 <div class="flex justify-between items-center mt-4 mb-2">
   <User {...author}></User>
   {#if lastEditedAt !== publishedAt}
@@ -87,21 +89,7 @@
   </div>
 </div>
   
-<div class="text-right">
-  <span class="font-mono text-xs">Share via</span>
-  <ShareIcon class="mx-2" uri={`mailto:?subject=From paullj.github.io: ${title}&body=Here is a post from Paul Lavender-Jones's blog that might interest you: \n${title}\n${description}\n${url}`} ariaLabel="Share by Email">
-    <span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red" />
-  </ShareIcon>
-  <ShareIcon class="mx-2" uri={`https://twitter.com/intent/tweet/?text=${title}\n${description}&url=${$page.url}`} ariaLabel="Share on Twitter">
-    <span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400" />
-  </ShareIcon>
-  <ShareIcon class="mx-2" uri={`https://facebook.com/sharer/sharer.php?u=${$page.url}`} ariaLabel="Share on Facebook">
-    <span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600" />
-  </ShareIcon>
-  <ShareIcon class="mx-2" uri={`https://www.linkedin.com/sharing/share-offsite/?url=${$page.url}`} ariaLabel="Share on LinkedIn">
-    <span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500" />
-  </ShareIcon>
-</div>
+<ShareIcons {title} {description}/>
 
 <hr class="mb-6 mt-8 border-t-2 border-gray-200">
 

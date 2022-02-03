@@ -1,9 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { storable } from '$lib/storable';
+  import { theme } from '$lib/stores/theme';
 
-  const preferredTheme = storable('theme');
   let darkMode = false;
   $: if (typeof window != 'undefined') {
     if (darkMode) document.documentElement.classList.add('dark');
@@ -11,7 +10,7 @@
   }
   onMount(() => {
     const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    darkMode = $preferredTheme ? $preferredTheme === 'dark' : darkMediaQuery.matches;
+    darkMode = $theme ? $theme === 'dark' : darkMediaQuery.matches;
     try {
       // Chrome & Firefox
       darkMediaQuery.addEventListener('change', e => {
@@ -30,7 +29,7 @@
   });
   const toggleMode = () => {
     darkMode = !darkMode;
-    $preferredTheme = darkMode ? 'dark' : 'light';
+    $theme = darkMode ? 'dark' : 'light';
   };
   const fadeSettings = { delay: 100, duration: 100};
 </script>

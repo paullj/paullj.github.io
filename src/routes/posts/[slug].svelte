@@ -37,18 +37,11 @@
   import Meta from 'svelte-meta';
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
-  import { browser, dev } from '$app/env';
   import { page } from '$app/stores';
-  import { onMount } from 'svelte';
   
   import User from '$lib/components/User.svelte';
+  import Comments from '$lib/components/Comments.svelte';
   import ShareIcon from '$lib/components/ShareIcon.svelte';
-  
-  let GiscusComponent;
-  onMount(async () => {
-    const { Giscus } = await import('@giscus/svelte');
-    GiscusComponent = Giscus;
-  });
 
   export let number;
   export let publishedAt;
@@ -120,22 +113,5 @@
 
 <div class="mt-4">
   <span id="reactions" />
-  {#if browser}  
-    <svelte:component this={GiscusComponent}
-      repo="{GITHUB_USER}/{GITHUB_REPO}"
-      repoId={GITHUB_REPO_ID}
-      mapping="number"
-      term={number}
-      reactionsEnabled=1
-      emitMetadata=0
-      theme="{$page.url.origin}/comments.css"
-      />
-  {/if}
-  <span id="comments" />
+  <Comments user={GITHUB_USER} repo={GITHUB_REPO} repoId={GITHUB_REPO_ID} {number}></Comments>
 </div>
-
-<style global>
-  .giscus-frame {
-    outline: none
-  }
-</style>

@@ -9,7 +9,6 @@
     "deploy": "gh-pages -b deploy -d build -t true"
   },
   "devDependencies": {
-    "@giscus/svelte": "^1.0.1",
     "@iconify-json/teenyicons": "^1.0.1",
     "@octokit/graphql": "^4.8.0",
     "@sveltejs/adapter-static": "next",

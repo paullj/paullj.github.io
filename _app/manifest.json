@@ -1,10 +1,10 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-9ebb2fff.js",
+    "file": "start-24a17d7c.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js",
+      "_vendor-6ad10e66.js",
       "_preload-helper-ec9aa979.js"
     ],
     "dynamicImports": [
@@ -20,85 +20,87 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-14adc3fb.js",
+    "file": "pages/__layout.svelte-77cc2c27.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js"
+      "_vendor-6ad10e66.js",
+      "_stores-9a4d7a61.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-d4e7d72a.css"
+      "assets/pages/__layout.svelte-50fdac4f.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-5531e073.js",
+    "file": "error.svelte-f7d83841.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js"
+      "_vendor-6ad10e66.js"
     ],
     "css": [
       "assets/pages/about.md-277712a6.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-8aca796f.js",
+    "file": "pages/index.svelte-06125c6d.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js",
-      "_siteConfig-5e3680e5.js"
+      "_vendor-6ad10e66.js",
+      "_siteConfig-3fa27199.js"
     ],
     "css": [
-      "assets/pages/index.svelte-d392bfb0.css"
+      "assets/pages/index.svelte-b4ac0857.css"
     ]
   },
   "src/routes/about.md": {
-    "file": "pages/about.md-c2ee24fd.js",
+    "file": "pages/about.md-7693559b.js",
     "src": "src/routes/about.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js"
+      "_vendor-6ad10e66.js"
     ],
     "css": [
       "assets/pages/about.md-277712a6.css"
     ]
   },
   "src/routes/posts/index.svelte": {
-    "file": "pages/posts/index.svelte-fc69c2cb.js",
+    "file": "pages/posts/index.svelte-aff9c779.js",
     "src": "src/routes/posts/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js"
+      "_vendor-6ad10e66.js"
     ],
     "css": [
       "assets/pages/about.md-277712a6.css"
     ]
   },
   "src/routes/posts/[slug].svelte": {
-    "file": "pages/posts/_slug_.svelte-8f5dc21e.js",
+    "file": "pages/posts/_slug_.svelte-031c7cfb.js",
     "src": "src/routes/posts/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_preload-helper-ec9aa979.js",
-      "_vendor-ef2c2dc6.js",
-      "_siteConfig-5e3680e5.js"
+      "_vendor-6ad10e66.js",
+      "_siteConfig-3fa27199.js",
+      "_stores-9a4d7a61.js"
     ],
     "dynamicImports": [
       "node_modules/@giscus/svelte/dist/index.es.js"
     ],
     "css": [
-      "assets/pages/posts/_slug_.svelte-8e887277.css"
+      "assets/pages/posts/_slug_.svelte-13a8cf3f.css"
     ]
   },
-  "_vendor-ef2c2dc6.js": {
-    "file": "chunks/vendor-ef2c2dc6.js",
+  "_vendor-6ad10e66.js": {
+    "file": "chunks/vendor-6ad10e66.js",
     "css": [
       "assets/pages/about.md-277712a6.css"
     ]
@@ -106,15 +108,21 @@
   "_preload-helper-ec9aa979.js": {
     "file": "chunks/preload-helper-ec9aa979.js"
   },
-  "_siteConfig-5e3680e5.js": {
-    "file": "chunks/siteConfig-5e3680e5.js"
+  "_stores-9a4d7a61.js": {
+    "file": "chunks/stores-9a4d7a61.js",
+    "imports": [
+      "_vendor-6ad10e66.js"
+    ]
+  },
+  "_siteConfig-3fa27199.js": {
+    "file": "chunks/siteConfig-3fa27199.js"
   },
   "node_modules/@giscus/svelte/dist/index.es.js": {
-    "file": "chunks/index.es-2507c179.js",
+    "file": "chunks/index.es-42165d35.js",
     "src": "node_modules/@giscus/svelte/dist/index.es.js",
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-ef2c2dc6.js"
+      "_vendor-6ad10e66.js"
     ]
   }
 }

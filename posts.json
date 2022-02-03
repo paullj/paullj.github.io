@@ -1,1 +1,1 @@
-{"posts":[{"number":4,"title":"This is a published post","publishedAt":"2022-02-01T13:23:44Z","category":"Published Posts","comments":0,"reactions":8,"slug":"this-is-a-published-post"}]}
+{"posts":[{"title":"This is a published post","slug":"this-is-a-published-post","publishedAt":"2022-02-01T13:23:44Z","reactions":8,"comments":0,"category":"Published Posts"}]}

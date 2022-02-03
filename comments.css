@@ -94,7 +94,5 @@ main .pagination-loader-container {
 }
 
 .gsc-reactions {
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
+  align-i.jstems: start;
 }

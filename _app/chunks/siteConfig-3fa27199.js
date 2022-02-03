@@ -1,0 +1,1 @@
+const s="https://paullj.github.io",t="paullj",a="paullj.github.io",o="Paul Lavender-Jones",e="My personal website where I can show off interesting projects and write down my thoughts.",n="https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png";export{n as D,t as G,o as S,e as a,s as b,a as c};

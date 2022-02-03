@@ -35,7 +35,7 @@
 
 <script lang="ts">
   import Meta from 'svelte-meta';
-  import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
+  import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
   import { browser, dev } from '$app/env';
   import { page } from '$app/stores';
@@ -83,7 +83,7 @@
   <User {...author}></User>
   {#if lastEditedAt !== publishedAt}
     <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle inline-block">
-      (Last edited {lastEditedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })})
+      (Last edited {lastEditedAt.toLocaleDateString('en-GB', { hour: "numeric", minute: "numeric", year: '2-digit', month: 'short', day: 'numeric' })})
     </span>
   {/if}
   <div class="align-middle text-right">
@@ -97,16 +97,16 @@
 <div class="text-right">
   <span class="font-mono text-xs">Share via</span>
   <ShareIcon class="mx-2" uri={`mailto:?subject=From paullj.github.io: ${title}&body=Here is a post from Paul Lavender-Jones's blog that might interest you: \n${title}\n${description}\n${url}`} ariaLabel="Share by Email">
-    <span class="i-teenyicons-envelope-outline w-5 h-5 hover:text-red" />
+    <span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red" />
   </ShareIcon>
   <ShareIcon class="mx-2" uri={`https://twitter.com/intent/tweet/?text=${title}\n${description}&url=${$page.url}`} ariaLabel="Share on Twitter">
-    <span class="i-teenyicons-twitter-outline w-5 h-5 hover:text-blue-400" />
+    <span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400" />
   </ShareIcon>
   <ShareIcon class="mx-2" uri={`https://facebook.com/sharer/sharer.php?u=${$page.url}`} ariaLabel="Share on Facebook">
-    <span class="i-teenyicons-facebook-outline w-5 h-5 hover:text-blue-600" />
+    <span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600" />
   </ShareIcon>
   <ShareIcon class="mx-2" uri={`https://www.linkedin.com/sharing/share-offsite/?url=${$page.url}`} ariaLabel="Share on LinkedIn">
-    <span class="i-teenyicons-linkedin-outline w-5 h-5 hover:text-blue-500" />
+    <span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500" />
   </ShareIcon>
 </div>
 
@@ -123,7 +123,7 @@
   {#if browser}  
     <svelte:component this={GiscusComponent}
       repo="{GITHUB_USER}/{GITHUB_REPO}"
-      repoId="R_kgDOGwKM4w"
+      repoId={GITHUB_REPO_ID}
       mapping="number"
       term={number}
       reactionsEnabled=1

@@ -2,6 +2,7 @@ export const SITE_URL = "https://paullj.github.io";
 export const GITHUB_USER = "paullj";
 export const GITHUB_REPO = "paullj.github.io";
 export const GITHUB_REPO_URL = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}`;
+export const GITHUB_REPO_ID = "R_kgDOGwKM4w";
 export const SITE_TITLE = "Paul Lavender-Jones";
 export const SITE_DESCRIPTION =
   "My personal website where I can show off interesting projects and write down my thoughts.";

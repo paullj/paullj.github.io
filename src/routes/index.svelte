@@ -60,7 +60,7 @@
   image={DEFAULT_IMAGE}
   url={SITE_URL}/>
 
-<h1 class="py-12 font-bold text-4xl whitespace-pre-line leading-none">{ SITE_TITLE.replace(' ',"\n") }</h1>
+<h1 class="py-12 font-bold font-serif text-4xl whitespace-pre-line leading-none">{ SITE_TITLE.replace(' ',"\n") }</h1>
 
 <form class="text-xl mb-2 inline-block border-b-2 border-dotted hover:border-solid" on:submit|preventDefault>
   <div class="relative inline-block mr-2">

@@ -15,13 +15,13 @@
 
 <style global>
   html {
-    background-color: white;
-    color: black;
+    background-color: rgb(249, 250, 251);
+    color: rgb(17, 24, 39);
   }
   
   html.dark {
-    background-color: black;
-    color: white;
+    background-color: rgb(17, 24, 39);
+    color: rgb(249, 250, 251);
   }
 </style>
 

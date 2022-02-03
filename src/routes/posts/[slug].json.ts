@@ -8,10 +8,23 @@ const get: RequestHandler = async ({ params }) => {
     const post = await getDiscussion(slug);
     return {
       body: {
-        post,
+        number: post.number,
+        slug: post.slug,
+        url: post.url,
+        title: post.title,
+        description: post.description,
+        publishedAt: post.publishedAt,
+        lastEditedAt: post.lastEditedAt,
+        createdAt: post.createdAt,
+        author: post.author,
+        category: post.category,
+        content: post.content,
+        reactions: post.reactions,
+        comments: post.comments,
+        readingTime: post.readingTime,
       },
       headers: {
-        "Cache-Control": `max-age=0, s-max-age=${60}`,
+        "Cache-Control": `max-age=0, s-max-age=${60 * 10}`,
       },
     };
   } catch (err) {

@@ -10,6 +10,7 @@ import slugify from "slugify";
 import { compile } from "mdsvex";
 import oembed from "remark-oembed";
 import { getReadingTime } from "./utils/getReadingTime";
+import { parseFrontmatter } from "./utils/parseFrontmatter";
 
 let posts = [];
 
@@ -34,10 +35,19 @@ const getDiscussions = async () => {
                 node {
                   number
                   title
+                  url
                   publishedAt
+                  createdAt
+                  lastEditedAt
+                  author {
+                    avatarUrl(size: 100)
+                    login
+                    url
+                  }
                   category {
                     name
                   }
+                  body
                   comments {
                     totalCount
                   }
@@ -56,13 +66,19 @@ const getDiscussions = async () => {
       }
     );
     const discussions = (results as any).repository.discussions.edges
-      .map(({ node }) => ({
-        ...node,
-        slug: slugify(node.title).toLowerCase(),
-        category: node.category.name,
-        comments: node.comments.totalCount,
-        reactions: node.reactions.totalCount,
-      }))
+      .map(({ node }) => {
+        const { metadata, body } = parseFrontmatter(node.body);
+
+        return {
+          ...node,
+          ...metadata,
+          body,
+          slug: slugify(node.title).toLowerCase(),
+          category: node.category.name,
+          comments: node.comments.totalCount,
+          reactions: node.reactions.totalCount,
+        };
+      })
       .filter(({ category }) => dev || !category.includes("Draft"));
 
     posts = discussions;
@@ -87,41 +103,19 @@ const getDiscussion = async (slug: string) => {
   const post = posts.find((post) => post.slug === slug);
   if (post) {
     try {
-      const results = (await graphql(
-        `
-          query getDiscussion($owner: String!, $repo: String!, $number: Int!) {
-            repository(owner: $owner, name: $repo) {
-              discussion(number: $number) {
-                body
-                url
-                author {
-                  avatarUrl(size: 100)
-                  login
-                  url
-                }
-              }
-            }
-          }
-        `,
-        {
-          owner: GITHUB_USER,
-          repo: GITHUB_REPO,
-          number: post.number,
-        }
-      )) as any;
-
-      const content = (
-        await compile(results.repository.discussion.body, {
-          remarkPlugins: [[oembed, { syncWidget: true }]],
-        })
-      ).code;
+      const compiled = await compile(post.body, {
+        remarkPlugins: [[oembed, { syncWidget: true }]],
+      });
+      const contentText = compiled.code.replace(/(<[^>]+>|\n|\r|\r\n)/g, "");
 
       return {
+        description:
+          contentText.length < 150
+            ? contentText
+            : contentText.slice(0, 150) + "...",
         ...post,
-        content,
-        url: results.repository.discussion.url,
-        author: results.repository.discussion.author,
-        readingTime: getReadingTime(results.repository.discussion.body),
+        content: compiled.code,
+        readingTime: getReadingTime(post.body),
       };
     } catch (error) {
       if (error instanceof GraphqlResponseError) {

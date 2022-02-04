@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from '$app/stores';
-  import { theme } from "$lib/stores/theme";
+  import { dark } from "$lib/stores/theme";
   import { browser, dev } from "$app/env";
   import { SITE_URL } from "$lib/siteConfig";
 
@@ -17,11 +17,11 @@
     iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
   }
 
-  $: themeCss = `${dev ? $page.url.origin : SITE_URL}/comments-${$theme}.css`;
-  $: {
-    if(browser)
-      sendMessage({ setConfig: { theme: themeCss }});
+  $: themeCss = `${dev ? $page.url.origin : SITE_URL}/comments-${$dark ? 'dark' : 'light'}.css`;
+  $: if(browser) {
+    sendMessage({ setConfig: { theme: themeCss }});
   }
+
 
   onMount(() => {
     const giscus = document.createElement('script');

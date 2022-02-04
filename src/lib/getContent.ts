@@ -5,12 +5,18 @@ import {
   graphql as graphqlWithoutAuth,
   GraphqlResponseError,
 } from "@octokit/graphql";
-
-import slugify from "slugify";
 import { compile } from "mdsvex";
+import slugify from "slugify";
 import oembed from "remark-oembed";
-import { getReadingTime } from "./utils/getReadingTime";
-import { parseFrontmatter } from "./utils/parseFrontmatter";
+import autolink from "rehype-autolink-headings";
+import figure from "rehype-figure";
+
+import {
+  getReadingTime,
+  parseFrontmatter,
+  removeTags,
+  truncateDescription,
+} from "./utils";
 
 let posts = [];
 
@@ -102,15 +108,12 @@ const getDiscussion = async (slug: string) => {
   if (post) {
     try {
       const compiled = await compile(post.body, {
+        rehypePlugins: [[figure, { className: "figure-caption" }], autolink],
         remarkPlugins: [[oembed, { syncWidget: true }]],
       });
-      const contentText = compiled.code.replace(/(<[^>]+>|\n|\r|\r\n)/g, "");
 
       return {
-        description:
-          contentText.length < 150
-            ? contentText
-            : contentText.slice(0, 150) + "...",
+        description: truncateDescription(removeTags(compiled.code)),
         ...post,
         content: compiled.code,
         readingTime: getReadingTime(post.body),

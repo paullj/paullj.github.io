@@ -5,6 +5,10 @@ import presetIcons from "@unocss/preset-icons";
 
 export default defineConfig({
   extractors: [extractorSvelte],
+  shortcuts: {
+    "figure-caption": "font-mono text-center my-4 leading-loose text-gray-400",
+  },
+  safelist: ["figure-caption"],
   presets: [
     presetUno(),
     presetIcons({

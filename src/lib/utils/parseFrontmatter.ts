@@ -1,4 +1,4 @@
-export const parseFrontmatter = (markdown) => {
+const parseFrontmatter = (markdown) => {
   const metadata = {};
   let body = markdown;
   const match = /---([\s\S]+?)---/.exec(markdown);
@@ -16,3 +16,5 @@ export const parseFrontmatter = (markdown) => {
 
   return { metadata, body };
 };
+
+export default parseFrontmatter;

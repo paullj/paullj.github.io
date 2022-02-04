@@ -1,9 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { theme } from '$lib/stores/theme';
+  import { theme, dark } from '$lib/stores/theme';
 
-  let dark = false;
   let prefersDarkQuery;
 
   let index = 0;
@@ -14,11 +13,11 @@
   ]
   $: {
     $theme = themes[index].toLowerCase();
-    dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
+    $dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
   }
 
   $: if (typeof window != 'undefined') {
-    if (dark)
+    if ($dark)
       document.documentElement.classList.add('dark');
     else
       document.documentElement.classList.remove('dark');
@@ -26,13 +25,13 @@
 
   onMount(() => {
     prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    dark = $theme ? $theme === 'dark' : prefersDarkQuery.matches;
+    $dark = $theme ? $theme === 'dark' : prefersDarkQuery.matches;
     
     try {
       // Chrome & Firefox
       prefersDarkQuery.addEventListener('change', e => {
         if($theme === 'system') {
-          dark = e.matches;
+          $dark = e.matches;
         }
       });
     } catch (e1) {
@@ -40,7 +39,7 @@
         // Safari
         prefersDarkQuery.addListener(e => {
           if($theme === 'system') {
-            dark = e.matches;
+            $dark = e.matches;
           }       
         });
       } catch (e2) {
@@ -71,4 +70,3 @@
     {/if}
   </button>
 </form>
-

@@ -17,6 +17,8 @@
     "@unocss/reset": "^0.22.6",
     "gh-pages": "^3.2.3",
     "mdsvex": "^0.9.8",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-figure": "^1.0.1",
     "rehype-sanitize": "^5.0.1",
     "remark-oembed": "^1.2.2",
     "rimraf": "^3.0.2",

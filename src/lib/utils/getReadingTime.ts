@@ -8,4 +8,4 @@ const getReadingTime = (stringToCheck) => {
   return minsToRead;
 };
 
-export { getReadingTime };
+export default getReadingTime;

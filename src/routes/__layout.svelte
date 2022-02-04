@@ -1,16 +1,17 @@
 <script>
-  import Header from '$lib/components/Header.svelte';
-
   import '@unocss/reset/tailwind.css';
   import 'uno.css';
+  
+  import Header from '$lib/components/Header.svelte';
+  import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <div class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto">
   <Header></Header>
-  <main class="pt-4 sm:pt-6">
+  <main class="pt-4 sm:pt-6 flex-grow">
     <slot />
   </main>
-  <footer></footer>
+  <Footer></Footer>
 </div>
 
 <style global>

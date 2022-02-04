@@ -10,13 +10,16 @@
   <body>
     <script>
       (function () {
-        const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const prefersDarkQuery = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        );
         let prefersDarkMode;
         try {
-          prefersDarkMode = JSON.parse(localStorage.getItem("theme"));
+          theme = JSON.parse(localStorage.getItem("theme"));
         } catch (error) {}
         if (
-          prefersDarkMode ? prefersDarkMode === "dark" : darkModeQuery.matches
+          theme === "dark" ||
+          (theme === "system" && prefersDarkQuery?.matches)
         )
           document.documentElement.classList.add("dark");
       })();

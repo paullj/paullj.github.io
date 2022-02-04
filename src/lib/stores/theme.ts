@@ -1,7 +1,11 @@
 import { writable } from "svelte/store";
 import { storable } from "./storable";
 
-const theme = storable("theme");
-const dark = writable(true);
+const ALL_THEMES = ["system", "light", "dark"] as const;
+type ThemesTuple = typeof ALL_THEMES;
+type Themes = ThemesTuple[number];
 
-export { theme, dark };
+const theme = storable<Themes>("theme");
+const dark = writable<boolean>(false);
+
+export { theme, dark, ALL_THEMES };

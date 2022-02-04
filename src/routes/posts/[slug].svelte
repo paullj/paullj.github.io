@@ -46,6 +46,7 @@
   export let lastEditedAt;
 
   export let title;
+  export let slug;
   export let content;
   export let description;
   export let author;
@@ -58,15 +59,15 @@
   title="{title} - {SITE_TITLE}"
   description={description ?? SITE_DESCRIPTION}
   image={DEFAULT_IMAGE}
-  url={SITE_URL}/>
-
+  url="{SITE_URL}/posts/{slug}"/>
+  
 <a href={url} target="_blank" class="hover:underline leading-none dark:text-gray-400 text-gray-500 uppercase tracking-wide text-sm font-extrabold">
   {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
 </a>
 <h1 class="text-4xl font-extrabold">
   {title}
   {#if category.toLowerCase().includes("draft")}
-    <span class="ml-2 inline-block align-middle text-xs uppercase font-mono font-bold border-2 px-1 rounded-md text-yellow-500">Draft</span>
+    <span class="ml-2 inline-block align-middle text-xs font-mono font-bold border-2 px-1 rounded-md text-yellow-500">Draft</span>
   {/if}
 </h1>
 {#if !description.endsWith("...")}

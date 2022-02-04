@@ -1,18 +1,13 @@
 <script>
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { theme, dark } from '$lib/stores/theme';
+  import { theme, dark, ALL_THEMES } from '$lib/stores/theme';
 
   let prefersDarkQuery;
 
-  let index = 0;
-  let themes = [
-    'System',
-    'Light',
-    'Dark' 
-  ]
+  let index = 0; 
   $: {
-    $theme = themes[index].toLowerCase();
+    $theme = ALL_THEMES[index];
     $dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
   }
 
@@ -53,13 +48,13 @@
 
 <form on:submit|preventDefault>
   <div class="hidden">
-    {#each themes as name, i}
+    {#each ALL_THEMES as name, i}
     <label for={name.toLowerCase()} class="ml-2 cursor-default sr-only">{name}</label>
-    <input bind:group={index} type="radio" name="nightModeCheckbox" id={name.toLowerCase()} value={i}>
+    <input bind:group={index} type="radio" name="nightModeCheckbox" id={name} value={i}>
     {/each}
   </div>
 
-  <button class="relative inline-block group w-8 h-8" on:click={() => index = (index + 1) % themes.length}>
+  <button class="relative inline-block group w-8 h-8" on:click={() => index = (index + 1) % ALL_THEMES.length}>
     {#if $theme === 'light'}
       <span in:fade={fadeSettings} class="inset-0 group-hover:text-orange-400 m-auto w-3/5 h-3/5 absolute i-teenyicons-sun-outline"/>
     {:else if $theme === 'dark'}

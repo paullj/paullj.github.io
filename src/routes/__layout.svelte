@@ -18,7 +18,7 @@
     count.async = true;
     count.src = "//gc.zgo.at/count.js"
     count.setAttribute('data-goatcounter',`https://${GOATCOUNT_SUBDOMAIN}.goatcounter.com/count`);
-    count.setAttribute('data-goatcounter-settings',JSON.stringify({ no_onload: true }));
+    count.setAttribute('data-goatcounter-settings',JSON.stringify({ no_onload: false }));
     const body = document.getElementById('content');
     body.appendChild(count);
   });

@@ -29,7 +29,7 @@
     if(window.goatcounter) {
       // @ts-ignore
       window.goatcounter.count({
-        path: to.href,
+        path: to.pathname,
       })
     }
     $navigation = 'loaded';

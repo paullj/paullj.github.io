@@ -24,7 +24,7 @@ const get: RequestHandler = async ({ params }) => {
         readingTime: post.readingTime,
       },
       headers: {
-        "Cache-Control": `max-age=0, s-max-age=${60 * 10}`,
+        "Cache-Control": `max-age=0, s-max-age=${60 * 60 * 24 * 7}`,
       },
     };
   } catch (err) {

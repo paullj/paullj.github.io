@@ -89,13 +89,13 @@
 
 <ul class="text-lg">
   {#each posts as {title, slug, publishedAt, reactions, comments, category}}
-    <li class="flex flex-row space-x-2 items-center">
+    <li class="flex flex-col sm:flex-row sm:space-x-2 sm:items-center">
       <div class="mr-2 min-w-24">
         <date class="block leading-none text-gray-400 uppercase tracking-wide text-xs font-extrabold">
           {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
         </date>
       </div>
-      <div class="flex-1 align-middle truncate">
+      <div class="flex-1 mb-2 sm:mb-0 align-middle truncate">
         <a class="group decoration-2px" href="/posts/{slug}" sveltekit:prefetch>
           {#if category.toLowerCase().includes("draft")}
             <span class="font-mono font-bold text-yellow-500 mr-1">*</span>
@@ -105,7 +105,7 @@
           </span>
         </a>
       </div>
-      <div class="flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
+      <div class="hidden sm:flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         {#if reactions > 0}
           <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 
             {reactions}

@@ -8,19 +8,19 @@
     <meta http-equiv="content-security-policy" content="">
 <meta http-equiv="cache-control" content="max-age=60"><title>Paul Lavender-Jones</title><meta charset="utf-8" data-svelte="svelte-5r3x8t"><meta http-equiv="x-ua-compatible" content="ie=edge" data-svelte="svelte-5r3x8t"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-svelte="svelte-5r3x8t"><meta name="robots" content="index,follow" data-svelte="svelte-5r3x8t">
     <meta name="title" content="Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="My personal website where I can show off interesting projects and write down my thoughts." data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="My personal website where I can show off interesting projects and write down my thoughts." data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io" data-svelte="svelte-5r3x8t">
-	<link rel="stylesheet" href="/_app/assets/start-b121cee6.css">
-	<link rel="stylesheet" href="/_app/assets/pages/posts/index.svelte-6a751ed3.css">
-	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-6ea44ae0.css">
-	<link rel="stylesheet" href="/_app/assets/pages/index.svelte-3af4ec54.css">
-	<link rel="modulepreload" href="/_app/start-13888a58.js">
-	<link rel="modulepreload" href="/_app/chunks/vendor-0edfcedb.js">
+	<link rel="stylesheet" href="/_app/assets/start-d15cd5b3.css">
+	<link rel="stylesheet" href="/_app/assets/ExternalLink-d2f66a10.css">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-425671fd.css">
+	<link rel="stylesheet" href="/_app/assets/pages/index.svelte-8200dd16.css">
+	<link rel="modulepreload" href="/_app/start-fe077802.js">
+	<link rel="modulepreload" href="/_app/chunks/vendor-df338b46.js">
 	<link rel="modulepreload" href="/_app/chunks/singletons-a6a7384f.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-a9dd4421.js">
-	<link rel="modulepreload" href="/_app/chunks/siteConfig-2c02497e.js">
-	<link rel="modulepreload" href="/_app/chunks/stores-d6f5a68e.js">
-	<link rel="modulepreload" href="/_app/pages/index.svelte-555dadd3.js">
-	<link rel="modulepreload" href="/_app/chunks/ExternalLink-83b2f731.js"><script type="module">
-		import { start } from "/_app/start-13888a58.js";
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-1ededaee.js">
+	<link rel="modulepreload" href="/_app/chunks/siteConfig-20bade9d.js">
+	<link rel="modulepreload" href="/_app/chunks/stores-f5ed660c.js">
+	<link rel="modulepreload" href="/_app/pages/index.svelte-369722fc.js">
+	<link rel="modulepreload" href="/_app/chunks/ExternalLink-4230c020.js"><script type="module">
+		import { start } from "/_app/start-fe077802.js";
 		start({
 			target: document.querySelector("#svelte"),
 			paths: {"base":"","assets":""},
@@ -32,8 +32,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-a9dd4421.js"),
-						import("/_app/pages/index.svelte-555dadd3.js")
+					import("/_app/pages/__layout.svelte-1ededaee.js"),
+						import("/_app/pages/index.svelte-369722fc.js")
 				],
 				url: new URL("http://sveltekit-prerender/"),
 				params: {}
@@ -44,18 +44,15 @@
   <body>
     <script>
       (function () {
-        const prefersDarkQuery = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        );
-        let prefersDarkMode;
         try {
           theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
         } catch (error) {}
-        if (
-          theme === "dark" ||
-          (theme === "system" && prefersDarkQuery?.matches)
-        )
-          document.documentElement.classList.add("dark");
       })();
     </script>
     <div id="svelte">
@@ -63,9 +60,11 @@
 
 
 
+
+
 <div id="content" class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto"><header class="flex flex-row w-full py-8 items-center"><nav class="flex-1 text-lg sm:text-base"></nav>
   <div class="no-js-hidden"><form><div class="hidden"><label for="system" class="ml-2 cursor-default sr-only">system</label>
-    <input type="radio" name="nightModeCheckbox" id="system" value="0" checked><label for="light" class="ml-2 cursor-default sr-only">light</label>
+    <input type="radio" name="nightModeCheckbox" id="system" value="0"><label for="light" class="ml-2 cursor-default sr-only">light</label>
     <input type="radio" name="nightModeCheckbox" id="light" value="1"><label for="dark" class="ml-2 cursor-default sr-only">dark</label>
     <input type="radio" name="nightModeCheckbox" id="dark" value="2"></div>
 
@@ -91,20 +90,22 @@ Lavender-Jones</h1>
   <form class="font-mono text-sm"><label for="posts-filter">Sort by</label>
     <select name="posts-filter" id="posts-filter" class="py-2 cursor-pointer underline underline-offset-1.5 bg-transparent decoration-dotted decoration-2 leading-none"><option value="newest" class="bg-white pr-2" selected>Newest</option><option value="oldest" class="bg-white pr-2">Oldest</option><option value="reactions" class="bg-white pr-2">Reactions</option><option value="comments" class="bg-white pr-2">Comments</option></select></form></div>
 
-<ul class="text-lg leading-none"><li class="flex flex-row w-full items-center justify-start mb-2 pb-1"><span class="leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">Tue, 1 Feb 22</span>
-      
-      <span class="flex-1 ml-4 align-middle"><a class="hover:underline decoration-2px" href="/posts/this-is-a-test-post" sveltekit:prefetch>This is a Test Post        
-        </a></span>
+<ul class="text-lg"><li class="flex flex-row space-x-2 items-center"><div class="mr-4"><date class="block leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">Tue, 1 Feb 22
+        </date></div>
+      <div class="flex-1 align-middle truncate"><a class="group decoration-2px" href="/posts/this-is-a-test-post" sveltekit:prefetch>
+          <span class="group-hover:underline">This is a Test Post</span>
+        </a></div>
       <div class="flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2"><a class="flex flex-row items-center hover:underline" href="/posts/this-is-a-test-post#reactions" sveltekit:prefetch>5
             <span class="i-teenyicons-heart-solid h-3 ml-1"></span>
           </a>
         <a class="flex flex-row items-center hover:underline" href="/posts/this-is-a-test-post#comments" sveltekit:prefetch>1
             <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
           </a></div>
-    </li><li class="flex flex-row w-full items-center justify-start mb-2 pb-1"><span class="leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">Mon, 1 Aug 16</span>
-      
-      <span class="flex-1 ml-4 align-middle"><a class="hover:underline decoration-2px" href="/posts/reupcycled-drone" sveltekit:prefetch>Re/upcycled Drone        
-        </a></span>
+    </li><li class="flex flex-row space-x-2 items-center"><div class="mr-4"><date class="block leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">Mon, 1 Aug 16
+        </date></div>
+      <div class="flex-1 align-middle truncate"><a class="group decoration-2px" href="/posts/reupcycling-a-drone" sveltekit:prefetch>
+          <span class="group-hover:underline">Re/upcycling a Drone</span>
+        </a></div>
       <div class="flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         </div>
     </li></ul></main>
@@ -114,13 +115,11 @@ Lavender-Jones</h1>
       <span class="i-teenyicons-heart-small-solid"></span></p></footer></div>
 
 
-
-
 <noscript><style global>:global(.no-js-hidden) {
       @apply hidden;
     }
   </style></noscript>
 
-<script type="application/json" data-type="svelte-data" data-url="/posts.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=600","content-type":"application/json; charset=utf-8"},"body":"{\"posts\":[{\"title\":\"This is a Test Post\",\"slug\":\"this-is-a-test-post\",\"publishedAt\":\"2022-02-01T13:23:44Z\",\"reactions\":5,\"comments\":1,\"category\":\"Published Posts\"},{\"title\":\"Re\u002Fupcycled Drone\",\"slug\":\"reupcycled-drone\",\"publishedAt\":\"2016-08-01T00:00Z\",\"reactions\":0,\"comments\":0,\"category\":\"Published Posts\"}]}"}</script></div>
+<script type="application/json" data-type="svelte-data" data-url="/posts.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=600","content-type":"application/json; charset=utf-8"},"body":"{\"posts\":[{\"title\":\"This is a Test Post\",\"slug\":\"this-is-a-test-post\",\"publishedAt\":\"2022-02-01T13:23:44Z\",\"reactions\":5,\"comments\":1,\"category\":\"Published Posts\"},{\"title\":\"Re\u002Fupcycling a Drone\",\"slug\":\"reupcycling-a-drone\",\"publishedAt\":\"2016-08-01T00:00Z\",\"reactions\":0,\"comments\":0,\"category\":\"Published Posts\"}]}"}</script></div>
   </body>
 </html>

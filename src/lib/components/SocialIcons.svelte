@@ -13,9 +13,9 @@
   <ExternalLink class="mx-4" uri="https://www.github.com/{GITHUB_USER}" ariaLabel="See my public repos on GitHub">
     <span class="i-teenyicons-github-outline w-6 h-6 hover:text-purple" />
   </ExternalLink>
-  <ExternalLink class="ml-4" uri="#" ariaLabel="Share by Email">
+  <!-- <ExternalLink class="ml-4" uri="#" ariaLabel="Share by Email">
     <span class="font-mono inline-block text-sm align-middle decoration-wavy decoration-1 hover:underline">
       Curriculum Vitae
     </span>
-  </ExternalLink>
+  </ExternalLink> -->
 </div>

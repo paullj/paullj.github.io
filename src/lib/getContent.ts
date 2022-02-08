@@ -14,6 +14,7 @@ import remarkFootnotes from "remark-footnotes";
 import remarkGithub from "remark-github";
 import remarkA11yEmoji from "@fec/remark-a11y-emoji";
 import rehypeSlug from "rehype-slug";
+import rehypeExternalLinks from "rehype-external-links";
 
 import {
   getReadingTime,
@@ -122,6 +123,7 @@ const getDiscussion = async (slug: string) => {
               properties: { className: "heading" },
             },
           ],
+          rehypeExternalLinks,
         ],
         remarkPlugins: [
           [remarkGithub, { repository: `${GITHUB_USER}/${GITHUB_REPO}` }],

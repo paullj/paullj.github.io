@@ -90,8 +90,8 @@
 <ul class="text-lg">
   {#each posts as {title, slug, publishedAt, reactions, comments, category}}
     <li class="flex flex-row space-x-2 items-center">
-      <div class="mr-4">
-        <date class="block leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">
+      <div class="mr-2 min-w-24">
+        <date class="block leading-none text-gray-400 uppercase tracking-wide text-xs font-extrabold">
           {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
         </date>
       </div>

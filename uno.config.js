@@ -18,6 +18,15 @@ export default defineConfig({
     }),
     presetTypography({
       cssExtend: {
+        "a[target]": {
+          position: "relative",
+          color: defaultPreset.theme.colors.yellow["600"],
+        },
+        "a[target]::after": {
+          display: "inline-block",
+          content: "'\u2197'",
+          "margin-left": "2.5px;",
+        },
         "a.heading": {
           "text-decoration": "none",
         },
@@ -43,10 +52,9 @@ export default defineConfig({
           left: "0",
           "font-family": defaultPreset.theme.fontFamily["mono"],
           "font-size": defaultPreset.theme.fontSize["6xl"][0],
-          color: defaultPreset.theme.colors.gray["600"],
+          opacity: 0.2,
         },
         "blockquote::after": {
-          color: defaultPreset.theme.colors.gray["600"],
           content: "close-quote",
           "margin-right": "-0.5rem",
           "margin-bottom": "-1.5rem",
@@ -55,22 +63,30 @@ export default defineConfig({
           right: "0",
           "font-family": defaultPreset.theme.fontFamily["mono"],
           "font-size": defaultPreset.theme.fontSize["6xl"][0],
+          opacity: 0.2,
         },
         blockquote: {
           position: "relative",
           "font-family": defaultPreset.theme.fontFamily["mono"],
           "font-style": "normal",
+          "font-weight": "bold",
           "font-size": defaultPreset.theme.fontSize["sm"][0],
           "line-height": defaultPreset.theme.fontSize["sm"][1],
-          color: defaultPreset.theme.colors.gray["400"],
+          opacity: 0.7,
           "margin-top": "2rem",
           "padding-left": "2rem",
           "padding-right": "2rem",
           "margin-bottom": "2rem",
         },
+        "figure > img": {
+          margin: "auto",
+          "max-width": "100%",
+        },
         figcaption: {
           "font-family": defaultPreset.theme.fontFamily["mono"],
-          opacity: 0.6,
+          "font-size": defaultPreset.theme.fontSize["sm"][0],
+          "line-height": defaultPreset.theme.fontSize["sm"][1],
+          opacity: 0.7,
           "text-align": "center",
           "line-height": "2",
           "margin-top": "1rem",
@@ -92,7 +108,7 @@ export default defineConfig({
         ".footnotes > ol::before": {
           content: "'Footnotes'",
           "font-family": defaultPreset.theme.fontFamily["mono"],
-          "text-decoration": "underline double 1px",
+          "text-decoration": "underline dotted 2px",
         },
         ".footnotes": {
           "font-family": defaultPreset.theme.fontFamily["mono"],

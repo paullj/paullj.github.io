@@ -40,6 +40,8 @@
   import User from '$lib/components/User.svelte';
   import Comments from '$lib/components/Comments.svelte';
   import ShareIcons from '$lib/components/ShareIcons.svelte';
+  import '$lib/prism-dark.css';
+  // import '$lib/prism-light.css';
 
   export let number;
   export let publishedAt;
@@ -78,7 +80,7 @@
 <div class="flex justify-between items-center mt-4 mb-2">
   <User {...author}></User>
   {#if lastEditedAt !== publishedAt}
-    <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle inline-block">
+    <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">
       (Last edited {lastEditedAt.toLocaleDateString('en-GB', { hour: "numeric", minute: "numeric", year: '2-digit', month: 'short', day: 'numeric' })})
     </span>
   {/if}

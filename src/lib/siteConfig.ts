@@ -9,7 +9,7 @@ const SITE_TITLE = "Paul Lavender-Jones";
 const SITE_DESCRIPTION =
   "My personal website where I can show off interesting projects and write down my thoughts.";
 const DEFAULT_IMAGE =
-  "https://user-images.githubusercontent.com/6764957/147861359-3ad9438f-41d1-47c8-aa05-95c7d18497f0.png";
+  "https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png";
 
 export {
   SITE_URL,

@@ -40,8 +40,7 @@
   import User from '$lib/components/User.svelte';
   import Comments from '$lib/components/Comments.svelte';
   import ShareIcons from '$lib/components/ShareIcons.svelte';
-  import '$lib/prism-dark.css';
-  // import '$lib/prism-light.css';
+  import '$lib/prism.css';
 
   export let number;
   export let publishedAt;

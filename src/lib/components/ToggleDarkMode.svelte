@@ -2,16 +2,14 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import { theme, dark, ALL_THEMES } from '$lib/stores/theme';
+  import { browser } from '$app/env';
 
   let prefersDarkQuery;
 
-  let index = 0; 
-  $: {
-    $theme = ALL_THEMES[index];
-    $dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
-  }
+  let index; 
+  $: $dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
 
-  $: if (typeof window != 'undefined') {
+  $: if (browser) {
     if ($dark)
       document.documentElement.classList.add('dark');
     else
@@ -19,8 +17,8 @@
   }
 
   onMount(() => {
+    index = ALL_THEMES.indexOf($theme ?? 'system');
     prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    $dark = $theme ? $theme === 'dark' : prefersDarkQuery.matches;
     
     try {
       // Chrome & Firefox
@@ -44,6 +42,11 @@
   });
 
   const fadeSettings = { delay: 100, duration: 100};
+
+  const cycleTheme = () => {
+    index = (index + 1) % ALL_THEMES.length
+    $theme = ALL_THEMES[index];
+  }
 </script>
 
 <form on:submit|preventDefault>
@@ -54,7 +57,7 @@
     {/each}
   </div>
 
-  <button class="relative inline-block group w-8 h-8" on:click={() => index = (index + 1) % ALL_THEMES.length}>
+  <button class="relative inline-block group w-8 h-8" on:click={() => cycleTheme()}>
     {#if $theme === 'light'}
       <span in:fade={fadeSettings} class="inset-0 group-hover:text-orange-400 m-auto w-3/5 h-3/5 absolute i-teenyicons-sun-outline"/>
     {:else if $theme === 'dark'}

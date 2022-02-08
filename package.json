@@ -1,6 +1,8 @@
 {
   "name": "paullj.github.io",
   "version": "0.0.1",
+  "repository": "https://github.com/paullj/paullj.github.io.git",
+  "license": "MIT",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
@@ -9,6 +11,7 @@
     "deploy": "gh-pages -b deploy -d build -t true"
   },
   "devDependencies": {
+    "@fec/remark-a11y-emoji": "^3.1.0",
     "@iconify-json/teenyicons": "^1.0.1",
     "@octokit/graphql": "^4.8.0",
     "@sveltejs/adapter-static": "next",
@@ -20,6 +23,10 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-figure": "^1.0.1",
     "rehype-sanitize": "^5.0.1",
+    "rehype-slug": "^5.0.1",
+    "remark-footnotes": "^2.0",
+    "remark-gfm": "^2.0",
+    "remark-github": "^11.2.2",
     "remark-oembed": "^1.2.2",
     "rimraf": "^3.0.2",
     "rss": "^1.2.2",

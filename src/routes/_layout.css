@@ -1,0 +1,9 @@
+html {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}

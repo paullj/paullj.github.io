@@ -1,4 +1,4 @@
-import { GITHUB_USER, GITHUB_REPO } from "./siteConfig";
+import { GITHUB_USER, GITHUB_REPO } from "$lib/siteConfig";
 import { dev } from "$app/env";
 
 import {
@@ -7,9 +7,13 @@ import {
 } from "@octokit/graphql";
 import { compile } from "mdsvex";
 import slugify from "slugify";
-import oembed from "remark-oembed";
-import autolink from "rehype-autolink-headings";
-import figure from "rehype-figure";
+import remarkOembed from "remark-oembed";
+import rehypeAutolink from "rehype-autolink-headings";
+import rehypeFigure from "rehype-figure";
+import remarkFootnotes from "remark-footnotes";
+import remarkGithub from "remark-github";
+import remarkA11yEmoji from "@fec/remark-a11y-emoji";
+import rehypeSlug from "rehype-slug";
 
 import {
   getReadingTime,
@@ -77,7 +81,7 @@ const getDiscussions = async () => {
           ...node,
           ...metadata,
           body,
-          slug: slugify(node.title).toLowerCase(),
+          slug: slugify(node.title, { lower: true }),
           category: node.category.name,
           comments: node.comments.totalCount,
           reactions: node.reactions.totalCount,
@@ -108,14 +112,35 @@ const getDiscussion = async (slug: string) => {
   if (post) {
     try {
       const compiled = await compile(post.body, {
-        rehypePlugins: [[figure, { className: "figure-caption" }], autolink],
-        remarkPlugins: [[oembed, { syncWidget: true }]],
+        rehypePlugins: [
+          rehypeFigure,
+          rehypeSlug,
+          [
+            rehypeAutolink,
+            {
+              behaviour: "wrap",
+              properties: { className: "heading" },
+            },
+          ],
+        ],
+        remarkPlugins: [
+          [remarkGithub, { repository: `${GITHUB_USER}/${GITHUB_REPO}` }],
+          remarkFootnotes,
+          remarkA11yEmoji,
+          [remarkOembed, { syncWidget: true }],
+        ],
       });
 
       return {
         description: truncateDescription(removeTags(compiled.code)),
         ...post,
-        content: compiled.code,
+        content: compiled.code
+          // https://github.com/pngwn/MDsveX/issues/392
+          .replace(
+            />{@html `<code class="language-/g,
+            '><code class="language-'
+          )
+          .replace(/<\/code>`}<\/pre>/g, "</code></pre>"),
         readingTime: getReadingTime(post.body),
       };
     } catch (error) {
@@ -127,7 +152,6 @@ const getDiscussion = async (slug: string) => {
       }
     }
   }
-
   throw new Error(`Can't find post, '${slug}'`);
 };
 

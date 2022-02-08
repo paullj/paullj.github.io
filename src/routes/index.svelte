@@ -87,20 +87,24 @@
   </form>
 </div>
 
-<ul class="text-lg leading-none">
+<ul class="text-lg">
   {#each posts as {title, slug, publishedAt, reactions, comments, category}}
-    <li class="flex flex-row w-full items-center justify-start mb-2 pb-1">
-      <span class="leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">
-        {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
-      </span>
-      {#if category.toLowerCase().includes("draft")}
-        <span class="ml-4 text-xs font-mono font-bold border-2 box-border px-0.5 rounded-md text-yellow-500">Draft</span>
-      {/if}
-      <span class="flex-1 ml-4 align-middle">
-        <a class="hover:underline decoration-2px" href="/posts/{slug}" sveltekit:prefetch>
-          {title}        
+    <li class="flex flex-row space-x-2 items-center">
+      <div class="mr-4">
+        <date class="block leading-none text-gray-400 uppercase tracking-wide text-sm font-extrabold">
+          {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
+        </date>
+      </div>
+      <div class="flex-1 align-middle truncate">
+        <a class="group decoration-2px" href="/posts/{slug}" sveltekit:prefetch>
+          {#if category.toLowerCase().includes("draft")}
+            <span class="font-mono font-bold text-yellow-500 mr-1">*</span>
+          {/if}
+          <span class="group-hover:underline">
+            {title}
+          </span>
         </a>
-      </span>
+      </div>
       <div class="flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         {#if reactions > 0}
           <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 

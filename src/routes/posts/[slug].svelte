@@ -65,10 +65,10 @@
   {publishedAt.toLocaleDateString('en-GB', { weekday: 'short', year: '2-digit', month: 'short', day: 'numeric' })}
 </a>
 <h1 class="text-4xl font-extrabold">
-  {title}
   {#if category.toLowerCase().includes("draft")}
-    <span class="ml-2 inline-block align-middle text-xs font-mono font-bold border-2 px-1 rounded-md text-yellow-500">Draft</span>
+    <span class="font-mono font-bold text-yellow-500">*</span>
   {/if}
+  {title}
 </h1>
 {#if !description.endsWith("...")}
 <p class="mt-2 font-extralight text-lg">
@@ -92,15 +92,12 @@
   
 <ShareIcons {title} {description}/>
 
-<hr class="mb-6 mt-8 border-t-2 border-gray-200">
-
-<article class="text-base prose dark:prose-invert">
+<article class="py-4 my-4 text-base prose dark:prose-invert border-y-2 border-gray-900 border-opacity-10 dark:border-gray-100 dark:border-opacity-20">
   {@html content}
 </article>
 
-<hr class="my-4 border-t-2 border-gray-200">
-
-<div class="mt-4">
+<div class="mt-4 pb-12">
+  <span id="comments" />
   <span id="reactions" />
   <Comments user={GITHUB_USER} repo={GITHUB_REPO} repoId={GITHUB_REPO_ID} {number}></Comments>
 </div>

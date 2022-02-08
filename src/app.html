@@ -10,18 +10,15 @@
   <body>
     <script>
       (function () {
-        const prefersDarkQuery = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        );
-        let prefersDarkMode;
         try {
           theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
         } catch (error) {}
-        if (
-          theme === "dark" ||
-          (theme === "system" && prefersDarkQuery?.matches)
-        )
-          document.documentElement.classList.add("dark");
       })();
     </script>
     <div id="svelte">%svelte.body%</div>

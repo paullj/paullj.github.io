@@ -105,11 +105,6 @@ export default defineConfig({
           "text-decoration": "none",
           "font-family": defaultPreset.theme.fontFamily["mono"],
         },
-        ".footnotes > ol::before": {
-          content: "'Footnotes'",
-          "font-family": defaultPreset.theme.fontFamily["mono"],
-          "text-decoration": "underline dotted 2px",
-        },
         ".footnotes": {
           "font-family": defaultPreset.theme.fontFamily["mono"],
           "padding-top": "2rem",
@@ -133,7 +128,7 @@ export default defineConfig({
         ".footnotes > ol > li": {
           "list-style-position": "inside",
         },
-        ".footnotes > ol > li > a": {
+        ".footnotes > ol > li > a.footnote-backref": {
           "margin-left": "1rem",
         },
       },

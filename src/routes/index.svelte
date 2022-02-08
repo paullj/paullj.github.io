@@ -71,9 +71,9 @@
 <div class="flex flex-row items-center mb-2">
   <div class="flex-1">
     <h2 class="inline-block font-serif text-xl">Posts</h2>
-    <ExternalLink class="inline-block ml-2" uri="" ariaLabel="RSS feed">
+    <!-- <ExternalLink class="inline-block ml-2" uri="" ariaLabel="RSS feed">
       <span class="i-teenyicons-rss-solid mb-1 w-3 h-3 hover:text-orange" />
-    </ExternalLink>
+    </ExternalLink> -->
   </div>
 
   <form class="font-mono text-sm" on:submit|preventDefault>

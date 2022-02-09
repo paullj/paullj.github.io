@@ -102,6 +102,7 @@ export default defineConfig({
           "margin-left": "-1em",
         },
         "sup > a": {
+          "margin-left": "5px",
           "text-decoration": "none",
           "font-family": defaultPreset.theme.fontFamily["mono"],
         },
@@ -128,8 +129,32 @@ export default defineConfig({
         ".footnotes > ol > li": {
           "list-style-position": "inside",
         },
-        ".footnotes > ol > li > a.footnote-backref": {
+        ".footnotes > ol > li > p:first-child": {
+          display: "inline-block",
+        },
+        ".footnotes > ol > li * a.footnote-backref": {
           "margin-left": "1rem",
+          color: defaultPreset.theme.colors.gray["400"],
+        },
+        ".footnotes > ol > li * a.footnote-backref::before": {
+          content: "'[See in context'",
+          "margin-right": "5px",
+          display: "inline-block",
+        },
+        ".footnotes > ol > li * a.footnote-backref::after": {
+          content: "']'",
+        },
+        ".remark-oembed-you-tube > iframe": {
+          margin: "auto",
+          width: "90%",
+          height: "auto",
+          "aspect-ratio": "var(--aspect-ratio)",
+        },
+        ".footnotes * .remark-oembed-you-tube > iframe": {
+          margin: "0px",
+          width: "60%",
+          height: "auto",
+          "aspect-ratio": "var(--aspect-ratio)",
         },
       },
     }),

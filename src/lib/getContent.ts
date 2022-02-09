@@ -127,22 +127,45 @@ const getDiscussion = async (slug: string) => {
         ],
         remarkPlugins: [
           [remarkGithub, { repository: `${GITHUB_USER}/${GITHUB_REPO}` }],
-          remarkFootnotes,
+          [remarkOembed, { asyncImg: true, syncWidget: true }],
+          [remarkFootnotes, { inlineNotes: true }],
           remarkA11yEmoji,
-          [remarkOembed, { syncWidget: true }],
         ],
       });
+
+      // FIXME: Some of the worst hacky code I have ever written.
+      // FIXME: Find a way to not have to inject css and delete svelte markup from the html
+      let content = compiled.code
+        // https://github.com/pngwn/MDsveX/issues/392
+        .replace(/>{@html `<code class="language-/g, '><code class="language-')
+        .replace(/<\/code>`}<\/pre>/g, "</code></pre>");
+
+      // regex matches youtube iframes
+      const findDimmensionsRegex =
+        /(remark-oembed-you-tube.+?<iframe\s).*?width="(\d+?)"\s.*?height="(\d+?)"/g;
+
+      let diff = 0;
+      [...compiled.code.matchAll(findDimmensionsRegex)]
+        // gets widths and heights of each video
+        .map(({ "1": inject, "2": width, "3": height, index }) => ({
+          index: index + inject.length,
+          width: parseInt(width),
+          height: parseInt(height),
+        }))
+        // and adds a css variable for the aspect ratio of each video
+        .forEach(({ index, width, height }) => {
+          const cssInjection = `style="--aspect-ratio: ${width / height}" `;
+          content =
+            content.slice(0, index + diff) +
+            cssInjection +
+            content.slice(index + diff);
+          diff += cssInjection.length;
+        });
 
       return {
         description: truncateDescription(removeTags(compiled.code)),
         ...post,
-        content: compiled.code
-          // https://github.com/pngwn/MDsveX/issues/392
-          .replace(
-            />{@html `<code class="language-/g,
-            '><code class="language-'
-          )
-          .replace(/<\/code>`}<\/pre>/g, "</code></pre>"),
+        content,
         readingTime: getReadingTime(post.body),
       };
     } catch (error) {

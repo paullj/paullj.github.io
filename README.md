@@ -18,3 +18,14 @@
 - [ ] Post search
 - [ ] Post pagination
 - [ ] View counter
+
+# Running your own version of this website
+- Remember to change values in `src/lib/siteConfig.ts`
+- Make sure `package.json` has correct repository information
+- Make **Published Posts** and **Draft Posts** discussion categories and make sure they are set to announcement
+- For comments to work make sure
+  - Repository is public, otherwise visitors will not be able to view the discussion.
+  - The giscus app is installed, otherwise visitors will not be able to comment and react.
+  - The Discussions feature is turned on by enabling it for your repository.
+- When running in dev make sure `GITHUB_TOKEN=your_token` can be found [here](https://github.com/settings/tokens)
+- You have a GoatCounter account for analytics

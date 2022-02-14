@@ -1,9 +1,5 @@
-# This is a basic workflow that is manually triggered
+name: Build and Push
 
-name: build and push to deploy branch
-
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
   workflow_dispatch:
   
@@ -20,15 +16,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: "npm"
-      - run: npm install
-      - name: build and push to deploy branch
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build and Push
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          GITHUB_TOKEN=${GITHUB_TOKEN} npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+          GITHUB_TOKEN=${GITHUB_TOKEN} yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

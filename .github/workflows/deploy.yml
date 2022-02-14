@@ -9,13 +9,14 @@ on:
   
   discussion:
     types: [created, edited, category_changed]
+    label: "Published"
     
   schedule:
   - cron: "0 0 * * 1"
   
 jobs:
   deploy:
-    if: ${{contains(github.event.discussion.category.name, 'Published')}}
+    if: ${{ github.event.workflow_dispatch || github.event.schedule || contains(github.event.discussion.category.name, 'Published') }}
     runs-on: ubuntu-latest
 
     steps:

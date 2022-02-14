@@ -5,9 +5,14 @@ name: build and push to deploy branch
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  workflow_dispatch:
+  
   discussion:
     types: [created, edited, category_changed]
-
+    
+  schedule:
+  - cron: "0 0 * * 1"
+  
 jobs:
   deploy:
     if: ${{contains(github.event.discussion.category.name, 'Published')}}

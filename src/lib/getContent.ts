@@ -78,7 +78,6 @@ const getDiscussions = async () => {
     const discussions = (results as any).repository.discussions.edges.map(
       async ({ node }) => {
         const { metadata, body } = parseFrontmatter(node.body);
-
         const slug = slugify(node.title, { lower: true });
         const viewCount = await getViewCount(slug);
 
@@ -98,6 +97,7 @@ const getDiscussions = async () => {
     posts = (await Promise.all(discussions)).filter(
       ({ category }) => dev || !category.includes("Draft")
     );
+
     return posts;
   } catch (error) {
     if (error instanceof GraphqlResponseError) {

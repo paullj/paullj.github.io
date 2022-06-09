@@ -1,4 +1,4 @@
-<script lang="typescript" context="module">
+<script lang="ts" context="module">
   import type { Load } from '@sveltejs/kit';
 
 	export const prerender = true;
@@ -35,7 +35,7 @@
 	}
 </script>
 
-<script lang="typescript">
+<script lang="ts">
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
   import Meta from 'svelte-meta';

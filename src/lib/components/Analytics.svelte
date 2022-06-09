@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import { GOATCOUNT_SUBDOMAIN } from '$lib/siteConfig';
   import { onMount } from 'svelte';
   import { afterNavigate } from '$app/navigation';

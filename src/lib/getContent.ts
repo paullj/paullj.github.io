@@ -74,8 +74,8 @@ const getDiscussions = async () => {
         repo: GITHUB_REPO,
       }
     );
-    const discussions = (results as any).repository.discussions.edges
-      .map(async ({ node }) => {
+    const discussions = (results as any).repository.discussions.edges.map(
+      async ({ node }) => {
         const { metadata, body } = parseFrontmatter(node.body);
 
         const slug = slugify(node.title, { lower: true });
@@ -95,10 +95,12 @@ const getDiscussions = async () => {
           comments: node.comments.totalCount,
           reactions: node.reactions.totalCount,
         };
-      })
-      .filter(({ category }) => dev || !category.includes("Draft"));
+      }
+    );
 
-    posts = await Promise.all(discussions);
+    posts = (await Promise.all(discussions)).filter(
+      ({ category }) => dev || !category.includes("Draft")
+    );
     return posts;
   } catch (error) {
     if (error instanceof GraphqlResponseError) {

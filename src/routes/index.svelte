@@ -35,6 +35,8 @@
   import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
   import ExternalLink from '$lib/components/ExternalLink.svelte';
   import SocialIcons from '$lib/components/SocialIcons.svelte';
+  import hydrateAction from '$lib/actions/hydrate';
+import { getViewCount } from '$lib/utils';
 
   let orderBy = "newest";
   export let posts: any[] = [];
@@ -124,8 +126,10 @@
           <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
         </a>
         {/if} 
-        <span class="flex flex-row items-center"> 
-          {viewCount}
+        <span class="flex flex-row items-center" > 
+          <span use:hydrateAction={async () => await getViewCount(slug)}>
+            {viewCount}
+          </span>
           <span class="i-teenyicons-eye-solid h-3 ml-1"></span>
         </span>
       </div>

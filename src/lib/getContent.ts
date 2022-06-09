@@ -1,4 +1,4 @@
-import { GITHUB_USER, GITHUB_REPO, GOATCOUNT_SUBDOMAIN } from "$lib/siteConfig";
+import { GITHUB_USER, GITHUB_REPO } from "$lib/siteConfig";
 import { dev } from "$app/env";
 
 import {
@@ -21,6 +21,7 @@ import {
   parseFrontmatter,
   removeTags,
   truncateDescription,
+  getViewCount,
 } from "./utils";
 
 let posts = [];
@@ -79,18 +80,14 @@ const getDiscussions = async () => {
         const { metadata, body } = parseFrontmatter(node.body);
 
         const slug = slugify(node.title, { lower: true });
-        const viewCountData = await fetch(
-          `https://${GOATCOUNT_SUBDOMAIN}.goatcounter.com/counter/${encodeURIComponent(
-            "/posts/" + slug
-          )}.json`
-        ).then((response) => response.json());
+        const viewCount = await getViewCount(slug);
 
         return {
           ...node,
           ...metadata,
           body,
           slug,
-          viewCount: viewCountData.count_unique,
+          viewCount,
           category: node.category.name,
           comments: node.comments.totalCount,
           reactions: node.reactions.totalCount,

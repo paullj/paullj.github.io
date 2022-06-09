@@ -6,7 +6,9 @@ const hydrateAction = (
     try {
       const data = await callback();
       node.innerHTML = data as string;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   update(node);
 };

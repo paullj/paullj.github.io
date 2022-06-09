@@ -7,7 +7,7 @@ const getViewCount = async (slug: string): Promise<number> => {
     )}.json`
   )
     .then((response) => response.json())
-    .then(({ count_unique }) => Number.parseInt(count_unique as string));
+    .then(({ count_unique, count }) => Number.parseInt(count_unique as string));
 };
 
 export default getViewCount;

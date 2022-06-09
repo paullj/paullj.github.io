@@ -1,4 +1,4 @@
-import { GITHUB_USER, GITHUB_REPO } from "$lib/siteConfig";
+import { GITHUB_USER, GITHUB_REPO, GOATCOUNT_SUBDOMAIN } from "$lib/siteConfig";
 import { dev } from "$app/env";
 
 import {
@@ -75,14 +75,22 @@ const getDiscussions = async () => {
       }
     );
     const discussions = (results as any).repository.discussions.edges
-      .map(({ node }) => {
+      .map(async ({ node }) => {
         const { metadata, body } = parseFrontmatter(node.body);
+
+        const slug = slugify(node.title, { lower: true });
+        const viewCountData = await fetch(
+          `https://${GOATCOUNT_SUBDOMAIN}.goatcounter.com/counter/${encodeURIComponent(
+            "/posts/" + slug
+          )}.json`
+        ).then((response) => response.json());
 
         return {
           ...node,
           ...metadata,
           body,
-          slug: slugify(node.title, { lower: true }),
+          slug,
+          viewCount: viewCountData.count_unique,
           category: node.category.name,
           comments: node.comments.totalCount,
           reactions: node.reactions.totalCount,
@@ -90,8 +98,8 @@ const getDiscussions = async () => {
       })
       .filter(({ category }) => dev || !category.includes("Draft"));
 
-    posts = discussions;
-    return discussions;
+    posts = await Promise.all(discussions);
+    return posts;
   } catch (error) {
     if (error instanceof GraphqlResponseError) {
       console.log("Request failed:", error.request);

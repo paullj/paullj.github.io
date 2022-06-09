@@ -8,14 +8,16 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "predeploy": "rimraf build && svelte-kit build && touch build/.nojekyll",
-    "deploy": "gh-pages -b deploy -d build -t true"
+    "deploy": "gh-pages -b deploy -d build -t true",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
     "@fec/remark-a11y-emoji": "^3.1.0",
     "@iconify-json/teenyicons": "^1.0.1",
     "@octokit/graphql": "^4.8.0",
-    "@sveltejs/adapter-static": "next",
-    "@sveltejs/kit": "next",
+    "@sveltejs/adapter-static": "^1.0.0-next.34",
+    "@sveltejs/kit": "^1.0.0-next.350",
     "@unocss/preset-icons": "^0.22.6",
     "@unocss/reset": "^0.22.6",
     "gh-pages": "^3.2.3",

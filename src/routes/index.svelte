@@ -1,8 +1,10 @@
-<script context="module">
+<script lang="ts" context="module">
+  import type { Load } from '@sveltejs/kit';
+
 	export const prerender = true;
 	export const hydrate = true;
 
-	export const load = async({ fetch }) => {
+	export const load: Load = async({ fetch }) => {
     const res = await fetch(`/posts.json`);
     if (res.status === 200) {
       const data = await res.json();
@@ -16,7 +18,7 @@
             updatedAt: new Date(post.updatedAt),
           }))
         },
-        maxage: 60
+        cache: { maxage: 60 }
       };
     }
 
@@ -28,17 +30,20 @@
 </script>
 
 
-<script>
+<script lang="ts">
   import Meta from 'svelte-meta';
   import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
   import ExternalLink from '$lib/components/ExternalLink.svelte';
   import SocialIcons from '$lib/components/SocialIcons.svelte';
 
   let orderBy = "newest";
-  export let posts = [];
+  export let posts: any[] = [];
 
   $: {
     switch (orderBy) {
+      case "views":
+         posts = posts.sort((a, b) => b.viewCount - a.viewCount)
+        break;       
       case "reactions":
         posts = posts.sort((a, b) => b.reactions - a.reactions)
         break;
@@ -81,6 +86,7 @@
     <select bind:value={orderBy} name="posts-filter" id="posts-filter" class="py-2 cursor-pointer underline underline-offset-1.5 bg-transparent decoration-dotted decoration-2 leading-none">
       <option value="newest" class="bg-white pr-2" selected>Newest</option>
       <option value="oldest" class="bg-white pr-2">Oldest</option>
+      <option value="views" class="bg-white pr-2">Views</option>
       <option value="reactions" class="bg-white pr-2">Reactions</option>
       <option value="comments" class="bg-white pr-2">Comments</option>
     </select>
@@ -88,7 +94,7 @@
 </div>
 
 <ul class="text-lg">
-  {#each posts as {title, slug, publishedAt, reactions, comments, category}}
+  {#each posts as {title, slug, publishedAt, viewCount, reactions, comments, category}}
     <li class="flex flex-col sm:flex-row sm:space-x-2 sm:items-center">
       <div class="mr-2 min-w-24">
         <date class="block leading-none text-gray-400 uppercase tracking-wide text-xs font-extrabold">
@@ -107,17 +113,21 @@
       </div>
       <div class="hidden sm:flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         {#if reactions > 0}
-          <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 
-            {reactions}
-            <span class="i-teenyicons-heart-solid h-3 ml-1"></span>
-          </a>
+        <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 
+          {reactions}
+          <span class="i-teenyicons-heart-solid h-3 ml-1"></span>
+        </a>
         {/if}
         {#if comments > 0}
-          <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#comments" sveltekit:prefetch> 
-            {comments}
-            <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
-          </a>
+        <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#comments" sveltekit:prefetch> 
+          {comments}
+          <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
+        </a>
         {/if} 
+        <span class="flex flex-row items-center"> 
+          {viewCount}
+          <span class="i-teenyicons-eye-solid h-3 ml-1"></span>
+        </span>
       </div>
     </li>
   {:else}

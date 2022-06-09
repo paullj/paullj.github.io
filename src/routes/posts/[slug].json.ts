@@ -22,6 +22,7 @@ const get: RequestHandler = async ({ params }) => {
         reactions: post.reactions,
         comments: post.comments,
         readingTime: post.readingTime,
+        viewCount: post.viewCount,
       },
       headers: {
         "Cache-Control": `max-age=0, s-max-age=${60 * 60 * 24 * 7}`,

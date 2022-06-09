@@ -3,10 +3,19 @@ import type { RequestHandler } from "@sveltejs/kit";
 
 const get: RequestHandler = async () => {
   const posts = (await getDiscussions()).map(
-    ({ title, slug, publishedAt, reactions, comments, category }) => ({
+    ({
       title,
       slug,
       publishedAt,
+      viewCount,
+      reactions,
+      comments,
+      category,
+    }) => ({
+      title,
+      slug,
+      publishedAt,
+      viewCount: Number.parseInt(viewCount),
       reactions,
       comments,
       category,

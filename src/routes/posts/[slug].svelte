@@ -1,8 +1,10 @@
-<script context="module">
+<script lang="typescript" context="module">
+  import type { Load } from '@sveltejs/kit';
+
 	export const prerender = true;
 	export const hydrate = true;
 
-	export const load = async({ params, fetch }) => {
+	export const load: Load = async({ params, fetch }) => {
     const slug = params.slug;
 		try {
 			const res = await fetch(`/posts/${slug}.json`);
@@ -15,7 +17,7 @@
             publishedAt: new Date(post.publishedAt),
             lastEditedAt: new Date(post.lastEditedAt),
           },
-          maxage: 60
+          cache: { maxage: 60 }
         };
       }
 
@@ -33,7 +35,7 @@
 	}
 </script>
 
-<script lang="ts">
+<script lang="typescript">
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
   import Meta from 'svelte-meta';
@@ -42,18 +44,19 @@
   import ShareIcons from '$lib/components/ShareIcons.svelte';
   import '$lib/prism.css';
 
-  export let number;
-  export let publishedAt;
-  export let lastEditedAt;
+  export let number: Number;
+  export let publishedAt: Date;
+  export let lastEditedAt: Date;
 
-  export let title;
-  export let slug;
-  export let content;
-  export let description;
-  export let author;
-  export let readingTime;
-  export let url;
-  export let category;
+  export let title: string;
+  export let slug: string;
+  export let content: string;
+  export let description: string;
+  export let author: {url: string, login: string, avatarUrl: string};
+  export let readingTime: number;
+  export let viewCount: number;
+  export let url: string;
+  export let category: string;
 </script>
 
 <Meta
@@ -83,10 +86,16 @@
       (Last edited {lastEditedAt.toLocaleDateString('en-GB', { hour: "numeric", minute: "numeric", year: '2-digit', month: 'short', day: 'numeric' })})
     </span>
   {/if}
+  <div class="align-middle text-right mr-4">
+    <span class="i-teenyicons-eye-outline"></span>
+    <span class="ml-1 font-mono text-xs">
+      {viewCount} views
+    </span>
+  </div>
   <div class="align-middle text-right">
     <span class="i-teenyicons-stopwatch-outline"></span>
-    <span class="ml-2 font-mono text-xs">
-      {readingTime <= 1 ? "Less than a minute" : `${readingTime} minute`} read
+    <span class="ml-1 font-mono text-xs">
+      {viewCount <= 1 ? "Less than a minute" : `${readingTime} minute`} read
     </span>
   </div>
 </div>

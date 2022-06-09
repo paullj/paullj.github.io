@@ -7,7 +7,6 @@
   
   import navigation from '$lib/stores/navigation';
 
-  
   import Analytics from '$lib/components/Analytics.svelte';
   import LoadingBar from '$lib/components/LoadingBar.svelte';
   import Header from '$lib/components/Header.svelte';

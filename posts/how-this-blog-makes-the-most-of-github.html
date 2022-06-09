@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content="">
+<meta http-equiv="cache-control" content="max-age=60"><title>How This Blog Makes the Most of GitHub - Paul Lavender-Jones</title><meta charset="utf-8" data-svelte="svelte-5r3x8t"><meta http-equiv="x-ua-compatible" content="ie=edge" data-svelte="svelte-5r3x8t"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-svelte="svelte-5r3x8t"><meta name="robots" content="index,follow" data-svelte="svelte-5r3x8t">
+    <meta name="title" content="How This Blog Makes the Most of GitHub - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="Details on how this website was built, leveraging GitHub Pages, Discussions and Actions." data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="How This Blog Makes the Most of GitHub - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="Details on how this website was built, leveraging GitHub Pages, Discussions and Actions." data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io/posts/how-this-blog-makes-the-most-of-github" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io/posts/how-this-blog-makes-the-most-of-github" data-svelte="svelte-5r3x8t">
+	<link rel="stylesheet" href="/_app/immutable/assets/start-491f5a18.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/__layout.svelte-f385a540.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/_slug_.svelte-643897fc.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/index.svelte-754f7bee.css">
+	<link rel="modulepreload" href="/_app/immutable/start-48df3410.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-11880ce7.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-34a24dc1.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-d1fb5791.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-e2e96a67.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/siteConfig-cd65c973.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/stores-9ba9679e.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/posts/_slug_.svelte-b4673f22.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/ExternalLink-afd3872a.js">
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+    <div id="svelte">
+
+
+
+
+
+
+<div id="content" class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto"><header class="flex flex-row w-full py-8 items-center"><nav class="flex-1 text-lg sm:text-base"><span class="i-teenyicons-arrow-left-solid my-1 mr-1"></span>
+      <a href="/" sveltekit:prefetch class="text-lg hover:underline sm:text-base">Back
+      </a></nav>
+  <div class="no-js-hidden"><form><div class="hidden"><label for="system" class="ml-2 cursor-default sr-only">system</label>
+    <input type="radio" name="nightModeCheckbox" id="system" value="0"><label for="light" class="ml-2 cursor-default sr-only">light</label>
+    <input type="radio" name="nightModeCheckbox" id="light" value="1"><label for="dark" class="ml-2 cursor-default sr-only">dark</label>
+    <input type="radio" name="nightModeCheckbox" id="dark" value="2"></div>
+
+  <button class="relative inline-block group w-8 h-8" aria-label="Theme Toggle"><span class="bottom-0 right-0 group-hover:text-light-blue-600 absolute w-1/2 h-2/3 i-teenyicons-moon-outline"></span>
+      <span class="top-0 left-0 group-hover:text-orange-400 absolute w-1/2 h-2/3 i-teenyicons-sun-outline"></span></button></form></div></header>
+  <main class="pt-4 sm:pt-6 flex-grow">
+
+
+
+  
+<a href="https://github.com/paullj/paullj.github.io/discussions/20" target="_blank" class="hover:underline leading-none dark:text-gray-400 text-gray-500 uppercase tracking-wide text-sm font-extrabold">Tue, 8 Feb 22</a>
+<h1 class="text-4xl font-extrabold">
+  How This Blog Makes the Most of GitHub</h1>
+<p class="mt-2 font-extralight text-lg">Details on how this website was built, leveraging GitHub Pages, Discussions and Actions.</p>
+<div class="flex justify-between items-center mt-4 mb-2"><div class="flex flex-row items-center"><a href="https://github.com/paullj" target="_blank"><img class="rounded-full overflow-hidden w-8" src="https://avatars.githubusercontent.com/u/8403295?s=100&amp;u=1341bb834ef7376719f208388732fcb78aee8899&amp;v=4" alt=""></a>
+  <a href="https://github.com/paullj" target="_blank" class="ml-2 font-medium hover:underline">paullj</a></div>
+  <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">(Last edited 8 Feb 22, 19:02)
+    </span>
+  <div class="align-middle text-right mr-4"><span class="i-teenyicons-eye-outline"></span>
+    <span class="ml-1 font-mono text-xs">277 views
+    </span></div>
+  <div class="align-middle text-right"><span class="i-teenyicons-stopwatch-outline"></span>
+    <span class="ml-1 font-mono text-xs">5 minute read
+    </span></div></div>
+  
+<div class="text-right"><span class="font-mono text-xs">Share via</span>
+  <a href="mailto:?subject=From%20paullj.github.io:%20How%20This%20Blog%20Makes%20the%20Most%20of%20GitHub&amp;body=Here%20is%20a%20post%20from%20Paul%20Lavender-Jones&#39;s%20blog%20that%20might%20interest%20you:%20%0AHow%20This%20Blog%20Makes%20the%20Most%20of%20GitHub%0ADetails%20on%20how%20this%20website%20was%20built,%20leveraging%20GitHub%20Pages,%20Discussions%20and%20Actions.%0A%5Bobject%20Object%5D" class="mx-2" target="_blank" rel="noopener" aria-label="Share by Email"><span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red"></span></a>
+  <a href="https://twitter.com/intent/tweet/?text=How%20This%20Blog%20Makes%20the%20Most%20of%20GitHub%0ADetails%20on%20how%20this%20website%20was%20built,%20leveraging%20GitHub%20Pages,%20Discussions%20and%20Actions.&amp;url=http://sveltekit-prerender/posts/how-this-blog-makes-the-most-of-github" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Twitter"><span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400"></span></a>
+  <a href="https://facebook.com/sharer/sharer.php?u=http://sveltekit-prerender/posts/how-this-blog-makes-the-most-of-github" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Facebook"><span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600"></span></a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://sveltekit-prerender/posts/how-this-blog-makes-the-most-of-github" class="mx-2" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500"></span></a></div>
+
+<article class="py-4 my-4 text-base prose dark:prose-invert border-y-2 border-gray-900 border-opacity-10 dark:border-gray-100 dark:border-opacity-20"><!-- HTML_TAG_START -->
+<p>This website has been made and remade a few times, each taking a slightly different approach. So far I’ve tried:</p>
+<ul>
+<li><a
+  href="https://jekyllrb.com/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Jekyll</a></li>
+<li>Local Markdown with <a
+  href="https://sapper.svelte.dev/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Sapper</a></li>
+<li>Local Markdown with <a
+  href="https://kit.svelte.dev/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>SvelteKit</a></li>
+<li><a
+  href="https://sanity.io/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Sanity.io</a> with SvelteKit</li>
+</ul>
+<p>But once again, I’ve rewritten this website from scratch…</p>
+<h2 id="why-did-this-website-need-a-rewrite"><a
+  class="heading"
+  href="#why-did-this-website-need-a-rewrite"
+>Why did this website need a rewrite?</a></h2>
+<p>It probably didn’t, but I like the current state its in far better than previous versions (and it was fun to do).</p>
+<p>Although all of the other solutions worked, none of them seemed <em>just right</em>. The previous iteration using Sanity.io as a CMS<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> was close. However, writing content was cumbersome and the CMS was overkill for writing short blog posts. I found myself not writting anything because it was tedious to do so. </p>
+<h2 id="what-makes-a-good-system-for-writing-a-blog"><a
+  class="heading"
+  href="#what-makes-a-good-system-for-writing-a-blog"
+>What makes a good system for writing a blog?</a></h2>
+<ul>
+<li><strong>Easy to update</strong> - Content should be easy to write</li>
+<li><strong>Draft content</strong> - And preview before publishing</li>
+<li><strong>Feature rich</strong> - Should support: rich text, images, lists, links, etc.</li>
+<li><strong>Fast updates</strong> - Changes should go live as soon as they are made</li>
+<li><strong>Supports comments and reactions</strong> - Not essential, but nice to have</li>
+</ul>
+<h2 id="challenges-problems-and-solutions-along-the-way"><a
+  class="heading"
+  href="#challenges-problems-and-solutions-along-the-way"
+>Challenges, problems and solutions along the way</a></h2>
+<p>Inspired by <a
+  href="https://www.swyx.io/github-cms"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>swyx.io’s blog</a> I explored using GitHub as a CMS. Swyx’s blog uses GitHub Issues to write posts leveraging GitHub’s feature-rich markdown. This simple solution is definitely <strong>easy to update</strong> and <strong>feature rich</strong>.</p>
+<p>After first seeing <a
+  href="https://utteranc.es/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>utteranc.es</a><sup
+  id="fnref-2"
+><a href="#fn-2" class="footnote-ref">2</a></sup>, I wanted to use it to add comments  through GitHub Issues and this seemed to kill 2 birds with one stone. However, I wasn’t fully onboard with using Issues for posts and comments because it fills a useful issue tracker with dummy issues and feels too much like a workaround. With the relatively new <a
+  href="https://github.blog/2020-05-06-new-from-satellite-2020-github-codespaces-github-discussions-securing-code-in-private-repositories-and-more/#discussions"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>addition of GitHub Discussions</a>, it felt better suited for a place to write posts and store comments.</p>
+<blockquote>
+<p>Until now GitHub only offered issues and pull requests as places to have these conversations. But issues and pull requests both have a linear format—well suited for merging code, but not for creating a community knowledge base. Conversations need their own place—that’s what GitHub Discussions is for. … Their threaded format makes it easy to start, respond to, and organize unstructured conversations.</p>
+</blockquote>
+<p>After a quick search I found <a
+  href="https://giscus.app/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>giscus </a>, it is <a
+  href="https://laymonage.com/posts/giscus"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>inspired</a> by utteranc.es but uses discussions instead to host conversations. Just like swyx’s issue CMS, discussions have markdown content which can be used in a similar way.</p>
+<p>Conveniently, you can setup <strong>announcement</strong> discussion categories in the <em>discussions</em> tab of a GitHub repository allowing for a place where</p>
+<blockquote>
+<p>maintainers and admins can post new discussions … but anyone can comment and reply. </p>
+</blockquote>
+<p>This sounds like a perfect place to host our blog content. In addition to the other two criteria, we now have a system that also <strong>supports comments and reactions</strong>. The discussion categories also allow for differentiating between <strong>drafts</strong> and <strong>pubished</strong> posts where it is simple to make drafts only visible locally in development.</p>
+<p>I wanted to use GitHub Pages to host this website, so this meant that it had to be fully static. SvelteKit’s static adapter makes this very easy to do, without any configuration<sup
+  id="fnref-3"
+><a href="#fn-3" class="footnote-ref">3</a></sup>!</p>
+<p>To enable <strong>fast updates</strong>, I used GitHub Actions to automatically trigger builds when a discussion is created, edited or when its category is changed. The action only runs if the discussion is in the <strong>published</strong> category as shown in the snippet below.</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> build and push to deploy branch
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">discussion</span><span class="token punctuation">:</span>
+    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>created<span class="token punctuation">,</span> edited<span class="token punctuation">,</span> category_changed<span class="token punctuation">]</span>
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>contains(github.event.discussion.category.name<span class="token punctuation">,</span> 'Published')<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">...</span></code></pre>
+<p>To pull content from discussions I wrote a script that parses the markdown and metadata and turns it into content for my blog using the <a
+  href="https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Discussions API</a>. This did come with some challenges. Since it is only available through GitHub’s GraphQL API, it requires authentication for all requests. This is fine in development as I can use a personal access token to authenticate my requests but I thought it might be a problem for deploying. But it didn’t take long to find that GitHub <a
+  href="https://docs.github.com/en/actions/security-guides/automatic-token-authentication"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>automatically provides</a> a <code>GITHUB_TOKEN</code> when using Actions. This allows all the requests to be easily authenticated during building and deploying.</p>
+<p>Parsing the discussion body using <a
+  href="https://mdsvex.com/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>mdsvex</a> means I can have very rich content, with code highlighting, frontmatter and other nice formatting out of the box. The frontmatter is especially powerful, allowing for the ability to override metadata and add other whatever other arbitrary information to posts. Additionally with plugins, I added even more ‘nice to have’ features like footnotes, estimated reading time, or oEmbed.  </p>
+<h2 id="the-finished-product"><a class="heading" href="#the-finished-product">The ‘finished’ product</a></h2>
+<p>This website as it is acheives the goals set out at the begining and is a huge improvement on the previous iteration. It really makes use of GitHub’s great features to deliver a minimal but fully featured blog (The best thing is, it is all free!) There are still a few features I would like to add shown below, along with the list of features already implemented. </p>
+<p>You can find <a
+  href="https://www.github.com/paullj/paullj.github.io"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>all the code on GitHub</a>, feel free to poke around or use anything that might be useful for you.</p>
+<p>Leave your thoughts and reactions (or just try giscus) below!</p>
+<h3 id="features-and-to-do"><a class="heading" href="#features-and-to-do">Features and To Do</a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" checked disabled> Fully static, hostable on Github Pages</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Responsive design with <a
+  href="https://github.com/antfu/unocss"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>UnoCSS</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a
+  href="https://github.com/paullj/paullj.github.io/discussions/20"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>GitHub Discusions as a CMS</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a
+  href="https://github.com/paullj/paullj.github.io/discussions/20#discussioncomment-2132732"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Comments</a> and reactions on each post</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Automatic deployment with GitHub Actions</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Works without Javascript</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Performant</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Basic SEO</li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a
+  href="https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/ToggleDarkMode.svelte"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Automatic dark mode</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> Privacy focused <a
+  href="https://www.goatcounter.com/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>analytics</a></li>
+<li class="task-list-item"><input type="checkbox" disabled> RSS feed</li>
+<li class="task-list-item"><input type="checkbox" disabled> Better error page, with suggestions</li>
+<li class="task-list-item"><input type="checkbox" disabled> Post search</li>
+<li class="task-list-item"><input type="checkbox" disabled> Post pagination</li>
+<li class="task-list-item"><input type="checkbox" disabled> View counter</li>
+</ul>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">A <strong>content management system</strong>, where you can author content and upload media<a
+  href="#fnref-1"
+  class="footnote-backref"
+>↩</a></li>
+<li id="fn-2">A clever comments systems built with GitHub Issues<a
+  href="#fnref-2"
+  class="footnote-backref"
+>↩</a></li>
+<li id="fn-3">A bit of <a
+  href="https://github.com/sveltejs/kit/tree/master/packages/adapter-static#github-pages"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>configuration necessary</a> if you are hosting at <code>user.github.io/repo</code> instead of <code>user.github.io</code><a href="#fnref-3" class="footnote-backref">↩</a></li>
+</ol>
+</div>
+<!-- HTML_TAG_END --></article>
+
+<div class="mt-4 pb-12"><span id="comments"></span>
+  <span id="reactions"></span>
+  <noscript><div class="font-mono text-center text-red text-sm">Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/paullj/paullj.github.io/discussions/20">here</a>
+    here
+  </div></noscript>
+
+<span id="comments"></span></div></main>
+  <footer class="px-2 pt-24 pb-4 text-xs text-gray-400 font-mono text-center leading-loose"><p>This site was made by me and its completely 
+      <a href="https://www.github.com/paullj/paullj.github.io" class="decoration-dotted underline decoration-2">open source
+      </a>
+      <span class="i-teenyicons-heart-small-solid"></span></p></footer></div>
+
+
+<noscript><style global>:global(.no-js-hidden) {
+      @apply hidden;
+    }
+  </style></noscript>
+
+
+		<script type="module" data-sveltekit-hydrate="1jv0i23">
+		import { start } from "/_app/immutable/start-48df3410.js";
+		start({
+			target: document.querySelector('[data-sveltekit-hydrate="1jv0i23"]').parentNode,
+			paths: {"base":"","assets":""},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [0, 4],
+				params: {slug:"how-this-blog-makes-the-most-of-github"},
+				routeId: "posts/[slug]"
+			}
+		});
+	</script><script type="application/json" sveltekit:data-type="data" sveltekit:data-url="/posts/how-this-blog-makes-the-most-of-github.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=604800","content-type":"application/json; charset=utf-8"},"body":"{\"number\":20,\"slug\":\"how-this-blog-makes-the-most-of-github\",\"url\":\"https://github.com/paullj/paullj.github.io/discussions/20\",\"title\":\"How This Blog Makes the Most of GitHub\",\"description\":\"Details on how this website was built, leveraging GitHub Pages, Discussions and Actions.\",\"publishedAt\":\"2022-02-08T02:26:02Z\",\"lastEditedAt\":\"2022-02-08T19:02:50Z\",\"createdAt\":\"2022-02-08T02:26:02Z\",\"author\":{\"avatarUrl\":\"https://avatars.githubusercontent.com/u/8403295?s=100&u=1341bb834ef7376719f208388732fcb78aee8899&v=4\",\"login\":\"paullj\",\"url\":\"https://github.com/paullj\"},\"category\":\"Published Posts\",\"content\":\"\\n\u003Cp>This website has been made and remade a few times, each taking a slightly different approach. So far I’ve tried:\u003C/p>\\n\u003Cul>\\n\u003Cli>\u003Ca\\n  href=\\\"https://jekyllrb.com/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Jekyll\u003C/a>\u003C/li>\\n\u003Cli>Local Markdown with \u003Ca\\n  href=\\\"https://sapper.svelte.dev/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Sapper\u003C/a>\u003C/li>\\n\u003Cli>Local Markdown with \u003Ca\\n  href=\\\"https://kit.svelte.dev/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>SvelteKit\u003C/a>\u003C/li>\\n\u003Cli>\u003Ca\\n  href=\\\"https://sanity.io/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Sanity.io\u003C/a> with SvelteKit\u003C/li>\\n\u003C/ul>\\n\u003Cp>But once again, I’ve rewritten this website from scratch…\u003C/p>\\n\u003Ch2 id=\\\"why-did-this-website-need-a-rewrite\\\">\u003Ca\\n  class=\\\"heading\\\"\\n  href=\\\"#why-did-this-website-need-a-rewrite\\\"\\n>Why did this website need a rewrite?\u003C/a>\u003C/h2>\\n\u003Cp>It probably didn’t, but I like the current state its in far better than previous versions (and it was fun to do).\u003C/p>\\n\u003Cp>Although all of the other solutions worked, none of them seemed \u003Cem>just right\u003C/em>. The previous iteration using Sanity.io as a CMS\u003Csup id=\\\"fnref-1\\\">\u003Ca href=\\\"#fn-1\\\" class=\\\"footnote-ref\\\">1\u003C/a>\u003C/sup> was close. However, writing content was cumbersome and the CMS was overkill for writing short blog posts. I found myself not writting anything because it was tedious to do so. \u003C/p>\\n\u003Ch2 id=\\\"what-makes-a-good-system-for-writing-a-blog\\\">\u003Ca\\n  class=\\\"heading\\\"\\n  href=\\\"#what-makes-a-good-system-for-writing-a-blog\\\"\\n>What makes a good system for writing a blog?\u003C/a>\u003C/h2>\\n\u003Cul>\\n\u003Cli>\u003Cstrong>Easy to update\u003C/strong> - Content should be easy to write\u003C/li>\\n\u003Cli>\u003Cstrong>Draft content\u003C/strong> - And preview before publishing\u003C/li>\\n\u003Cli>\u003Cstrong>Feature rich\u003C/strong> - Should support: rich text, images, lists, links, etc.\u003C/li>\\n\u003Cli>\u003Cstrong>Fast updates\u003C/strong> - Changes should go live as soon as they are made\u003C/li>\\n\u003Cli>\u003Cstrong>Supports comments and reactions\u003C/strong> - Not essential, but nice to have\u003C/li>\\n\u003C/ul>\\n\u003Ch2 id=\\\"challenges-problems-and-solutions-along-the-way\\\">\u003Ca\\n  class=\\\"heading\\\"\\n  href=\\\"#challenges-problems-and-solutions-along-the-way\\\"\\n>Challenges, problems and solutions along the way\u003C/a>\u003C/h2>\\n\u003Cp>Inspired by \u003Ca\\n  href=\\\"https://www.swyx.io/github-cms\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>swyx.io’s blog\u003C/a> I explored using GitHub as a CMS. Swyx’s blog uses GitHub Issues to write posts leveraging GitHub’s feature-rich markdown. This simple solution is definitely \u003Cstrong>easy to update\u003C/strong> and \u003Cstrong>feature rich\u003C/strong>.\u003C/p>\\n\u003Cp>After first seeing \u003Ca\\n  href=\\\"https://utteranc.es/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>utteranc.es\u003C/a>\u003Csup\\n  id=\\\"fnref-2\\\"\\n>\u003Ca href=\\\"#fn-2\\\" class=\\\"footnote-ref\\\">2\u003C/a>\u003C/sup>, I wanted to use it to add comments  through GitHub Issues and this seemed to kill 2 birds with one stone. However, I wasn’t fully onboard with using Issues for posts and comments because it fills a useful issue tracker with dummy issues and feels too much like a workaround. With the relatively new \u003Ca\\n  href=\\\"https://github.blog/2020-05-06-new-from-satellite-2020-github-codespaces-github-discussions-securing-code-in-private-repositories-and-more/#discussions\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>addition of GitHub Discussions\u003C/a>, it felt better suited for a place to write posts and store comments.\u003C/p>\\n\u003Cblockquote>\\n\u003Cp>Until now GitHub only offered issues and pull requests as places to have these conversations. But issues and pull requests both have a linear format—well suited for merging code, but not for creating a community knowledge base. Conversations need their own place—that’s what GitHub Discussions is for. … Their threaded format makes it easy to start, respond to, and organize unstructured conversations.\u003C/p>\\n\u003C/blockquote>\\n\u003Cp>After a quick search I found \u003Ca\\n  href=\\\"https://giscus.app/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>giscus \u003C/a>, it is \u003Ca\\n  href=\\\"https://laymonage.com/posts/giscus\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>inspired\u003C/a> by utteranc.es but uses discussions instead to host conversations. Just like swyx’s issue CMS, discussions have markdown content which can be used in a similar way.\u003C/p>\\n\u003Cp>Conveniently, you can setup \u003Cstrong>announcement\u003C/strong> discussion categories in the \u003Cem>discussions\u003C/em> tab of a GitHub repository allowing for a place where\u003C/p>\\n\u003Cblockquote>\\n\u003Cp>maintainers and admins can post new discussions … but anyone can comment and reply. \u003C/p>\\n\u003C/blockquote>\\n\u003Cp>This sounds like a perfect place to host our blog content. In addition to the other two criteria, we now have a system that also \u003Cstrong>supports comments and reactions\u003C/strong>. The discussion categories also allow for differentiating between \u003Cstrong>drafts\u003C/strong> and \u003Cstrong>pubished\u003C/strong> posts where it is simple to make drafts only visible locally in development.\u003C/p>\\n\u003Cp>I wanted to use GitHub Pages to host this website, so this meant that it had to be fully static. SvelteKit’s static adapter makes this very easy to do, without any configuration\u003Csup\\n  id=\\\"fnref-3\\\"\\n>\u003Ca href=\\\"#fn-3\\\" class=\\\"footnote-ref\\\">3\u003C/a>\u003C/sup>!\u003C/p>\\n\u003Cp>To enable \u003Cstrong>fast updates\u003C/strong>, I used GitHub Actions to automatically trigger builds when a discussion is created, edited or when its category is changed. The action only runs if the discussion is in the \u003Cstrong>published\u003C/strong> category as shown in the snippet below.\u003C/p>\\n\u003Cpre class=\\\"language-yaml\\\">\u003Ccode class=\\\"language-yaml\\\">\u003Cspan class=\\\"token key atrule\\\">name\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span> build and push to deploy branch\\n\u003Cspan class=\\\"token key atrule\\\">on\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span>\\n  \u003Cspan class=\\\"token key atrule\\\">discussion\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span>\\n    \u003Cspan class=\\\"token key atrule\\\">types\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span> \u003Cspan class=\\\"token punctuation\\\">[\u003C/span>created\u003Cspan class=\\\"token punctuation\\\">,\u003C/span> edited\u003Cspan class=\\\"token punctuation\\\">,\u003C/span> category_changed\u003Cspan class=\\\"token punctuation\\\">]\u003C/span>\\n\u003Cspan class=\\\"token key atrule\\\">jobs\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span>\\n  \u003Cspan class=\\\"token key atrule\\\">deploy\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span>\\n    \u003Cspan class=\\\"token key atrule\\\">if\u003C/span>\u003Cspan class=\\\"token punctuation\\\">:\u003C/span> $\u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>\u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>contains(github.event.discussion.category.name\u003Cspan class=\\\"token punctuation\\\">,\u003C/span> 'Published')\u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\\n    \u003Cspan class=\\\"token punctuation\\\">...\u003C/span>\u003C/code>\u003C/pre>\\n\u003Cp>To pull content from discussions I wrote a script that parses the markdown and metadata and turns it into content for my blog using the \u003Ca\\n  href=\\\"https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Discussions API\u003C/a>. This did come with some challenges. Since it is only available through GitHub’s GraphQL API, it requires authentication for all requests. This is fine in development as I can use a personal access token to authenticate my requests but I thought it might be a problem for deploying. But it didn’t take long to find that GitHub \u003Ca\\n  href=\\\"https://docs.github.com/en/actions/security-guides/automatic-token-authentication\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>automatically provides\u003C/a> a \u003Ccode>GITHUB_TOKEN\u003C/code> when using Actions. This allows all the requests to be easily authenticated during building and deploying.\u003C/p>\\n\u003Cp>Parsing the discussion body using \u003Ca\\n  href=\\\"https://mdsvex.com/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>mdsvex\u003C/a> means I can have very rich content, with code highlighting, frontmatter and other nice formatting out of the box. The frontmatter is especially powerful, allowing for the ability to override metadata and add other whatever other arbitrary information to posts. Additionally with plugins, I added even more ‘nice to have’ features like footnotes, estimated reading time, or oEmbed.  \u003C/p>\\n\u003Ch2 id=\\\"the-finished-product\\\">\u003Ca class=\\\"heading\\\" href=\\\"#the-finished-product\\\">The ‘finished’ product\u003C/a>\u003C/h2>\\n\u003Cp>This website as it is acheives the goals set out at the begining and is a huge improvement on the previous iteration. It really makes use of GitHub’s great features to deliver a minimal but fully featured blog (The best thing is, it is all free!) There are still a few features I would like to add shown below, along with the list of features already implemented. \u003C/p>\\n\u003Cp>You can find \u003Ca\\n  href=\\\"https://www.github.com/paullj/paullj.github.io\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>all the code on GitHub\u003C/a>, feel free to poke around or use anything that might be useful for you.\u003C/p>\\n\u003Cp>Leave your thoughts and reactions (or just try giscus) below!\u003C/p>\\n\u003Ch3 id=\\\"features-and-to-do\\\">\u003Ca class=\\\"heading\\\" href=\\\"#features-and-to-do\\\">Features and To Do\u003C/a>\u003C/h3>\\n\u003Cul class=\\\"contains-task-list\\\">\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Fully static, hostable on Github Pages\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Responsive design with \u003Ca\\n  href=\\\"https://github.com/antfu/unocss\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>UnoCSS\u003C/a>\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> \u003Ca\\n  href=\\\"https://github.com/paullj/paullj.github.io/discussions/20\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>GitHub Discusions as a CMS\u003C/a>\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> \u003Ca\\n  href=\\\"https://github.com/paullj/paullj.github.io/discussions/20#discussioncomment-2132732\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Comments\u003C/a> and reactions on each post\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Automatic deployment with GitHub Actions\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Works without Javascript\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Performant\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Basic SEO\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> \u003Ca\\n  href=\\\"https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/ToggleDarkMode.svelte\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Automatic dark mode\u003C/a>\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" checked disabled> Privacy focused \u003Ca\\n  href=\\\"https://www.goatcounter.com/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>analytics\u003C/a>\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" disabled> RSS feed\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" disabled> Better error page, with suggestions\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" disabled> Post search\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" disabled> Post pagination\u003C/li>\\n\u003Cli class=\\\"task-list-item\\\">\u003Cinput type=\\\"checkbox\\\" disabled> View counter\u003C/li>\\n\u003C/ul>\\n\u003Cdiv class=\\\"footnotes\\\">\\n\u003Chr>\\n\u003Col>\\n\u003Cli id=\\\"fn-1\\\">A \u003Cstrong>content management system\u003C/strong>, where you can author content and upload media\u003Ca\\n  href=\\\"#fnref-1\\\"\\n  class=\\\"footnote-backref\\\"\\n>↩\u003C/a>\u003C/li>\\n\u003Cli id=\\\"fn-2\\\">A clever comments systems built with GitHub Issues\u003Ca\\n  href=\\\"#fnref-2\\\"\\n  class=\\\"footnote-backref\\\"\\n>↩\u003C/a>\u003C/li>\\n\u003Cli id=\\\"fn-3\\\">A bit of \u003Ca\\n  href=\\\"https://github.com/sveltejs/kit/tree/master/packages/adapter-static#github-pages\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>configuration necessary\u003C/a> if you are hosting at \u003Ccode>user.github.io/repo\u003C/code> instead of \u003Ccode>user.github.io\u003C/code>\u003Ca href=\\\"#fnref-3\\\" class=\\\"footnote-backref\\\">↩\u003C/a>\u003C/li>\\n\u003C/ol>\\n\u003C/div>\\n\",\"reactions\":2,\"comments\":1,\"readingTime\":5,\"viewCount\":\"277\"}"}</script></div>
+  </body>
+</html>

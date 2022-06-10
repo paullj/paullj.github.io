@@ -39,9 +39,11 @@
   import { GITHUB_REPO, GITHUB_USER, SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE, GITHUB_REPO_ID } from '$lib/siteConfig';
   
   import Meta from 'svelte-meta';
+  import hydrateAction from '$lib/actions/hydrate';
   import User from '$lib/components/User.svelte';
   import Comments from '$lib/components/Comments.svelte';
   import ShareIcons from '$lib/components/ShareIcons.svelte';
+  import { getViewCount } from '$lib/utils';
   import '$lib/prism.css';
 
   export let number: Number;
@@ -89,7 +91,10 @@
   <div class="align-middle text-right mr-4">
     <span class="i-teenyicons-eye-outline"></span>
     <span class="ml-1 font-mono text-xs">
-      {viewCount} views
+      <span use:hydrateAction={async () => await getViewCount(slug)}>
+        {viewCount}
+      </span>
+      views
     </span>
   </div>
   <div class="align-middle text-right">

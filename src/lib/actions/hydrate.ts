@@ -1,11 +1,16 @@
 const hydrateAction = (
   node: HTMLElement,
-  callback: () => string | number | Promise<string> | Promise<number>
+  callback: () =>
+    | boolean
+    | string
+    | number
+    | Promise<string | boolean>
+    | Promise<number | boolean>
 ): SvelteActionReturnType => {
   const update = async (node: HTMLElement) => {
     try {
       const data = await callback();
-      node.innerHTML = data as string;
+      if (data) node.innerHTML = data as string;
     } catch (error) {
       console.log(error);
     }

@@ -127,7 +127,7 @@
         </a>
         {/if}
         <span class="flex flex-row items-center" > 
-          <span use:hydrateAction={async () => await getViewCount(slug)}>
+          <span use:hydrateAction={async () => await getViewCount(slug) || false }>
             {viewCount}
           </span>
           <span class="i-teenyicons-eye-solid h-3 ml-1"></span>

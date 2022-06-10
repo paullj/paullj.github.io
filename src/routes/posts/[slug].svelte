@@ -91,7 +91,7 @@
   <div class="align-middle text-right mr-4">
     <span class="i-teenyicons-eye-outline"></span>
     <span class="ml-1 font-mono text-xs">
-      <span use:hydrateAction={async () => await getViewCount(slug)}>
+      <span use:hydrateAction={async () => await getViewCount(slug) || false }>
         {viewCount}
       </span>
       views

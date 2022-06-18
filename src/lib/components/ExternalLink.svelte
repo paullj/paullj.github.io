@@ -1,7 +1,7 @@
-<script>
-  export let ariaLabel = '';
-  export let uri;
-  let className = "";
+<script lang="ts">
+  export let ariaLabel: string = '';
+  export let uri: string;
+  let className: string = "";
   export {className as class}
 
   $: href = encodeURI(uri);

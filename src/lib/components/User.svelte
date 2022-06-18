@@ -1,7 +1,7 @@
-<script>
-  export let url;
-  export let login;
-  export let avatarUrl;
+<script lang="ts">
+  export let url: string;
+  export let login: string;
+  export let avatarUrl: string;
 </script>
 
 <div class="flex flex-row items-center">

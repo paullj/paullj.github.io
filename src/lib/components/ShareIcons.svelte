@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   import ExternalLink from "./ExternalLink.svelte";
   import { page } from '$app/stores';
 
-  export let title;
-  export let description;
+  export let title: string;
+  export let description: string;
 </script>
 
 <div class="text-right">

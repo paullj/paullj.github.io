@@ -1,7 +1,7 @@
 <script>
   import '@unocss/reset/tailwind.css';
   import 'uno.css';
-  import './_layout.css';
+  import './layout.css';
  
   import { fade } from 'svelte/transition';
   
@@ -32,9 +32,9 @@
 <!-- FIXME: this is not working for some reason.
   probs a better idea to make it global too and less hacky -->
 <noscript>
-  <style global>
-    .no-js-hidden {
-      @apply hidden;
+  <style>
+    :global(.no-js-hidden) {
+      display: none !important;
     }
   </style>
 </noscript>

@@ -5,23 +5,22 @@
   import { browser, dev } from "$app/env";
   import { SITE_URL } from "$lib/siteConfig";
 
-  export let user;
-  export let repo;
-  export let repoId;
-  export let number;
+  export let user: string;
+  export let repo: string;
+  export let repoId: string;
+  export let number: string;
 
-  const sendMessage = (message) => {
+  const sendMessage = (message: {}) => {
     const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-    if (!iframe)
-      return;
-    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    if (iframe && iframe.contentWindow) { 
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    }
   }
 
   $: themeCss = `${dev ? $page.url.origin : SITE_URL}/comments-${$dark ? 'dark' : 'light'}.css`;
   $: if(browser) {
     sendMessage({ setConfig: { theme: themeCss }});
   }
-
 
   onMount(() => {
     const giscus = document.createElement('script');
@@ -37,8 +36,11 @@
     giscus.setAttribute('data-theme', themeCss);
     giscus.setAttribute('data-lang', 'en');
     giscus.setAttribute('crossorigin', 'anonymous');
+    
     const body = document.getElementById('comments');
-    body.appendChild(giscus);
+    if(body) {
+      body.appendChild(giscus);
+    }
   });
 </script>
 
@@ -46,7 +48,6 @@
 <noscript>
   <div class="font-mono text-center text-red text-sm">
     Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/{user}/{repo}/discussions/{number}">here</a>
-    here
   </div>
 </noscript>
 

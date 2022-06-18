@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import { theme, dark, ALL_THEMES } from '$lib/stores/theme';
   import { browser } from '$app/env';
 
-  let prefersDarkQuery;
+  let prefersDarkQuery: MediaQueryList;
 
-  let index; 
+  let index: number; 
   $: $dark = $theme === 'dark' || ($theme === 'system' && prefersDarkQuery?.matches);
 
   $: if (browser) {
@@ -57,7 +57,7 @@
     {/each}
   </div>
 
-  <button class="relative inline-block group w-8 h-8" aria-label="Theme Toggle" on:click={() => cycleTheme()}>
+  <button class="no-js-hidden relative inline-block group w-8 h-8" aria-label="Theme Toggle" on:click={() => cycleTheme()}>
     {#if $theme === 'light'}
       <span in:fade={fadeSettings} class="inset-0 group-hover:text-orange-400 m-auto w-3/5 h-3/5 absolute i-teenyicons-sun-outline"/>
     {:else if $theme === 'dark'}

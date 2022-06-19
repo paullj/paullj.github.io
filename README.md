@@ -3,6 +3,7 @@
 ![Screenshot of Website](https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png)
 
 ### Features and To Do
+
 - [x] Fully static, hostable on Github Pages
 - [x] Responsive design with [UnoCSS](https://github.com/antfu/unocss)
 - [x] [GitHub Discusions as a CMS](https://github.com/paullj/paullj.github.io/discussions/20)
@@ -13,13 +14,14 @@
 - [x] Basic SEO
 - [x] [Automatic dark mode](https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/ToggleDarkMode.svelte)
 - [x] Privacy focused [analytics](https://www.goatcounter.com/)
-- [ ] RSS feed
-- [ ] Better error page, with suggestions
-- [ ] Post search
+- [x] RSS feed
+- [x] Better error page
+- [x] Post search
 - [ ] Post pagination
 - [x] View counter
 
 # Running your own version of this website
+
 - Remember to change values in `src/lib/siteConfig.ts`
 - Make sure `package.json` has correct repository information
 - Make **Published Posts** and **Draft Posts** discussion categories and make sure they are set to announcement

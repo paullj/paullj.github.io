@@ -1,5 +1,12 @@
+<script lang="ts" context="module">
+	export const prerender = true;
+	export const hydrate = true;
+</script>
+
 <script>
   import { GITHUB_USER, GITHUB_REPO } from "$lib/siteConfig";
+
+
 </script>
 
 <h1 class="mt-12 mb-4 font-bold flex font-serif text-7xl leading-none">

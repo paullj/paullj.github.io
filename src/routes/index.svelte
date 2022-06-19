@@ -35,7 +35,6 @@
   import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
   import Search from '$lib/components/Search.svelte';
   import SortBy from '$lib/components/SortBy.svelte';
-  import ExternalLink from '$lib/components/ExternalLink.svelte'
   import SocialIcons from '$lib/components/SocialIcons.svelte';
   import hydrateAction from '$lib/actions/hydrate';
   import { getViewCount } from '$lib/utils';

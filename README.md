@@ -8,7 +8,7 @@
 - [x] [GitHub Discusions as a CMS](https://github.com/paullj/paullj.github.io/discussions/20)
 - [x] [Comments](https://github.com/paullj/paullj.github.io/discussions/20#discussioncomment-2132732) and reactions on each post
 - [x] Automatic deployment with GitHub Actions
-- [ ] Works without Javascript if needed (needs work)
+- [x] Works without Javascript if needed
 - [x] Performant
 - [x] Basic SEO
 - [x] [Automatic dark mode](https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/ToggleDarkMode.svelte)
@@ -17,7 +17,7 @@
 - [ ] Better error page, with suggestions
 - [ ] Post search
 - [ ] Post pagination
-- [ ] View counter
+- [x] View counter
 
 # Running your own version of this website
 - Remember to change values in `src/lib/siteConfig.ts`

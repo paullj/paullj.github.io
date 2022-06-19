@@ -6,17 +6,21 @@
   import { fade } from 'svelte/transition';
   
   import navigation from '$lib/stores/navigation';
+  import { afterNavigate, beforeNavigate } from '$app/navigation';
 
   import Analytics from '$lib/components/Analytics.svelte';
   import LoadingBar from '$lib/components/LoadingBar.svelte';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
+
+  beforeNavigate(() => $navigation = 'loading');
+  afterNavigate(() => $navigation = 'loaded');
 </script>
 
 <Analytics />
 
 {#if $navigation === 'loading'}
-  <div out:fade={{ delay: 500 }}>
+  <div out:fade={{ delay: 100}}>
     <LoadingBar />
   </div>
 {/if}

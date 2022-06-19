@@ -13,6 +13,19 @@
 
   onMount(() => {
     fuse = new Fuse(posts, {
+      // isCaseSensitive: false,
+      // includeScore: false,
+      // shouldSort: true,
+      // includeMatches: false,
+      // findAllMatches: false,
+      // minMatchCharLength: 1,
+      // location: 0,
+      // threshold: 0.6,
+      // distance: 100,
+      // useExtendedSearch: false,
+      // ignoreLocation: false,
+      // ignoreFieldNorm: false,
+      // fieldNormWeight: 1,
       keys: [
         "title",
       ]
@@ -21,7 +34,7 @@
 
 </script>
 
-<form class="no-js-hidden font-mono text-sm" on:submit|preventDefault>
+<form class="hidden sm:block no-js-hidden font-mono text-sm" on:submit|preventDefault>
   <label for="search">
     <span class="i-teenyicons-search-outline w-4 h-4" />
   </label>

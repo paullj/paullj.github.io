@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
-  import { afterNavigate, beforeNavigate } from '$app/navigation';
   import navigation from '$lib/stores/navigation';
  
   const progress = tweened(0, {
@@ -21,14 +20,10 @@
       unsubscribe()
     }
   });
-
-
-  beforeNavigate(() => $navigation = 'loading');
-  afterNavigate(() => $navigation = 'loaded');
 </script>
 
 <div class="fixed inset-0 h-1">
-    <div class="h-full bg-gray-200 dark:bg-gray-700 progress" style={`--width: ${$progress * 100}%`} />
+    <div class="h-full bg-gray-100 dark:bg-gray-700 progress" style={`--width: ${$progress * 100}%`} />
 </div>
 
 <style>

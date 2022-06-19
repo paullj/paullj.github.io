@@ -31,11 +31,11 @@
     <span class="i-teenyicons-filter-outline mb-0.5 w-4 h-4" />
   </label>
 
-  <select bind:value={orderBy} name="posts-filter" id="posts-filter" class="py-2 cursor-pointer underline underline-offset-1.5 bg-transparent decoration-dotted decoration-2 leading-none">
-    <option value="newest" class="bg-white pr-2" selected>Newest</option>
-    <option value="oldest" class="bg-white pr-2">Oldest</option>
-    <option value="views" class="bg-white pr-2">Views</option>
-    <option value="reactions" class="bg-white pr-2">Reactions</option>
-    <option value="comments" class="bg-white pr-2">Comments</option>
+  <select bind:value={orderBy} name="posts-filter" id="posts-filter" class="py-2 cursor-pointer bg-gray-50 dark:bg-gray-900 leading-none">
+    <option value="newest" class="bg-gray-50 dark:bg-gray-900 p-2" selected>Newest</option>
+    <option value="oldest" class="bg-gray-50 dark:bg-gray-900 p-2">Oldest</option>
+    <option value="views" class="bg-gray-50 dark:bg-gray-900 p-2">Views</option>
+    <option value="reactions" class="bg-gray-50 dark:bg-gray-900 p-2">Reactions</option>
+    <option value="comments" class="bg-gray-50 dark:bg-gray-900 p-2">Comments</option>
   </select>
 </form>

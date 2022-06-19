@@ -41,7 +41,7 @@
   import { getViewCount } from '$lib/utils';
 
   export let posts: any[] = [];
-  let filteredPosts: any[] = [];
+  let filteredPosts: any[] = posts;
 </script>
 
 <Meta

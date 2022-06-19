@@ -33,34 +33,15 @@
 <script lang="ts">
   import Meta from 'svelte-meta';
   import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
-  import ExternalLink from '$lib/components/ExternalLink.svelte';
+  import Search from '$lib/components/Search.svelte';
+  import SortBy from '$lib/components/SortBy.svelte';
+  import ExternalLink from '$lib/components/ExternalLink.svelte'
   import SocialIcons from '$lib/components/SocialIcons.svelte';
   import hydrateAction from '$lib/actions/hydrate';
   import { getViewCount } from '$lib/utils';
 
-  let orderBy = "newest";
   export let posts: any[] = [];
-
-  $: {
-    switch (orderBy) {
-      case "views":
-         posts = posts.sort((a, b) => b.viewCount - a.viewCount)
-        break;       
-      case "reactions":
-        posts = posts.sort((a, b) => b.reactions - a.reactions)
-        break;
-      case "comments":
-        posts = posts.sort((a, b) => b.comments - a.comments)
-        break;
-      case "oldest":
-        posts = posts.sort((a, b) => a.publishedAt - b.publishedAt)
-        break;
-      case "newest":
-      default:
-        posts = posts.sort((a, b) => b.publishedAt - a.publishedAt)
-        break;
-    }
-  }
+  let filteredPosts: any[] = [];
 </script>
 
 <Meta
@@ -83,20 +64,12 @@
     </ExternalLink> -->
   </div>
 
-  <form class="font-mono text-sm" on:submit|preventDefault>
-    <label for="posts-filter"> Sort by</label>
-    <select bind:value={orderBy} name="posts-filter" id="posts-filter" class="py-2 cursor-pointer underline underline-offset-1.5 bg-transparent decoration-dotted decoration-2 leading-none">
-      <option value="newest" class="bg-white pr-2" selected>Newest</option>
-      <option value="oldest" class="bg-white pr-2">Oldest</option>
-      <option value="views" class="bg-white pr-2">Views</option>
-      <option value="reactions" class="bg-white pr-2">Reactions</option>
-      <option value="comments" class="bg-white pr-2">Comments</option>
-    </select>
-  </form>
+  <Search {posts} bind:filteredPosts={filteredPosts}></Search>
+  <SortBy bind:filteredPosts={filteredPosts}></SortBy>
 </div>
 
 <ul class="text-lg">
-  {#each posts as {title, slug, publishedAt, viewCount, reactions, comments, category}}
+  {#each filteredPosts as {title, slug, publishedAt, viewCount, reactions, comments, category}}
     <li class="flex flex-col sm:flex-row sm:space-x-2 sm:items-center">
       <div class="mr-2 min-w-24">
         <date class="block leading-none text-gray-400 uppercase tracking-wide text-xs font-extrabold">
@@ -135,6 +108,6 @@
       </div>
     </li>
   {:else}
-    <li>No posts.</li>
+    <li>No posts to show!</li>
   {/each}
 </ul>

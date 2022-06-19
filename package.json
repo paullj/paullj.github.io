@@ -10,7 +10,7 @@
     "predeploy": "rimraf build && svelte-kit build && touch build/.nojekyll",
     "deploy": "gh-pages -b deploy -d build -t true",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-check --tsconfig  --dev fus./tsconfig.json --watch"
   },
   "devDependencies": {
     "@fec/remark-a11y-emoji": "^3.1.0",
@@ -18,8 +18,10 @@
     "@octokit/graphql": "^4.8.0",
     "@sveltejs/adapter-static": "^1.0.0-next.34",
     "@sveltejs/kit": "^1.0.0-next.350",
+    "@types/rss": "^0.0.29",
     "@unocss/preset-icons": "^0.22.6",
     "@unocss/reset": "^0.22.6",
+    "fuse.js": "^6.6.2",
     "gh-pages": "^3.2.3",
     "mdsvex": "^0.9.8",
     "rehype-autolink-headings": "^6.1.1",

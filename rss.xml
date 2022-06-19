@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Paul Lavender-Jones RSS Feed]]></title>
+        <description><![CDATA[Paul Lavender-Jones RSS Feed]]></description>
+        <link>https://paullj.github.io</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sun, 19 Jun 2022 16:20:42 GMT</lastBuildDate>
+        <atom:link href="https://paullj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[How This Blog Makes the Most of GitHub]]></title>
+            <description><![CDATA[Details on how this website was built, leveraging GitHub Pages, Discussions and Actions.]]></description>
+            <link>https://paullj.github.io/posts/how-this-blog-makes-the-most-of-github</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/how-this-blog-makes-the-most-of-github</guid>
+            <pubDate>Tue, 08 Feb 2022 02:26:02 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Up-To-Date  Analytics on a Static Website]]></title>
+            <description><![CDATA[How I added simple, privacy focused analytics with up-to-date view counts to a static blog]]></description>
+            <link>https://paullj.github.io/posts/up-to-date-analytics-on-a-static-website</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/up-to-date-analytics-on-a-static-website</guid>
+            <pubDate>Fri, 10 Jun 2022 12:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Composing Music with Code]]></title>
+            <description><![CDATA[Exploring the idea of generating music from code with timb(re) a musical creative coding environment I made]]></description>
+            <link>https://paullj.github.io/posts/composing-music-with-code</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/composing-music-with-code</guid>
+            <pubDate>Sat, 26 Mar 2022 12:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Designing Electrical Appliances for Off-Grid Kenya]]></title>
+            <description><![CDATA[University group project to design an efficient solar kettle for use in off-grid Kenya; Silver award winner of the Efficiency for Access design challenge to help achieve UN Sustainable Development Goal 7.]]></description>
+            <link>https://paullj.github.io/posts/designing-electrical-appliances-for-off-grid-kenya</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/designing-electrical-appliances-for-off-grid-kenya</guid>
+            <pubDate>Tue, 01 Jun 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[From Rapid Flu Testing to LiDAR for Autonomous Cars]]></title>
+            <description><![CDATA[A reflection on my year long placement at TTP, an engineering consultancy and the wide range of interesting projects I worked on.]]></description>
+            <link>https://paullj.github.io/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars</guid>
+            <pubDate>Fri, 30 Oct 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Re/upcycling a Drone]]></title>
+            <description><![CDATA[An affordable quadcopter designed with a recycled/upcycled frame and cheap electronic components.]]></description>
+            <link>https://paullj.github.io/posts/reupcycling-a-drone</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/reupcycling-a-drone</guid>
+            <pubDate>Mon, 01 Aug 2016 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

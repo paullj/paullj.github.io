@@ -298,6 +298,11 @@
   resolved "https://registry.npmjs.org/@unocss/core/-/core-0.22.7.tgz"
   integrity sha512-cb51bsrtsYdiGiiY574rDtPw5gBLsOpJXZjgvmIrdKzS0Z8rmVf4VGF2FONloKBn6yJ4Hj2TNIfW/PnNX5ojxw==
 
+"@unocss/core@0.39.3":
+  version "0.39.3"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.39.3.tgz#fec1e71b2f89e14629c47be72f6c894dd88933ac"
+  integrity sha512-8MnXKHNtp6xgsFIaFtWctnbsT60c8JSlxXA7XbGxEztOmSEhpZmLeLGe5AgmEGPH6MssqJtI0DCeTbzbbtOjfw==
+
 "@unocss/inspector@0.22.7":
   version "0.22.7"
   resolved "https://registry.npmjs.org/@unocss/inspector/-/inspector-0.22.7.tgz"
@@ -328,6 +333,13 @@
   integrity sha512-jl2slQ8zUjhocGI528o2yRjkvqoboSNICd+DjJZOi4+IhtjTL662zBwrOAiT7j85VJF1GpJVqkmrlEmfYfg56A==
   dependencies:
     "@unocss/core" "0.22.7"
+
+"@unocss/preset-typography@^0.39.3":
+  version "0.39.3"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-typography/-/preset-typography-0.39.3.tgz#fd151885aa9d83a9ea9577aa26737f9f96dcf661"
+  integrity sha512-jTJOA87bEkU0RGMPSFZK3Zobr2fgkqKCYDczTjPbCiZ8UzlMJnWrpsNTN9f4UI0b6Ck8sXtMtW8sRrJsEll9jg==
+  dependencies:
+    "@unocss/core" "0.39.3"
 
 "@unocss/preset-uno@0.22.7":
   version "0.22.7"

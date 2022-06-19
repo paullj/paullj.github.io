@@ -1,6 +1,6 @@
-import { presetUno, defineConfig, presetTypography } from "unocss";
-import { presetTypography } from "unocss-preset-typography";
+import { presetUno, defineConfig } from "unocss";
 import { extractorSvelte } from "@unocss/core";
+import { presetTypography } from "@unocss/preset-typography";
 import presetIcons from "@unocss/preset-icons";
 
 const defaultPreset = presetUno();

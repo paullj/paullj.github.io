@@ -20,6 +20,7 @@
     "@sveltejs/kit": "^1.0.0-next.350",
     "@types/rss": "^0.0.29",
     "@unocss/preset-icons": "^0.22.6",
+    "@unocss/preset-typography": "^0.39.3",
     "@unocss/reset": "^0.22.6",
     "fuse.js": "^6.6.2",
     "gh-pages": "^3.2.3",

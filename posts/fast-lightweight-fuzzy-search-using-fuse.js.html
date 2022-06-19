@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content="">
+<meta http-equiv="cache-control" content="max-age=60"><title>Fast, Lightweight Fuzzy Search using Fuse.js - Paul Lavender-Jones</title><meta charset="utf-8" data-svelte="svelte-5r3x8t"><meta http-equiv="x-ua-compatible" content="ie=edge" data-svelte="svelte-5r3x8t"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-svelte="svelte-5r3x8t"><meta name="robots" content="index,follow" data-svelte="svelte-5r3x8t">
+    <meta name="title" content="Fast, Lightweight Fuzzy Search using Fuse.js - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="How the fast and lightweight fuzzy searching for this website works" data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="Fast, Lightweight Fuzzy Search using Fuse.js - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="How the fast and lightweight fuzzy searching for this website works" data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io/posts/fast-lightweight-fuzzy-search-using-fuse.js" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io/posts/fast-lightweight-fuzzy-search-using-fuse.js" data-svelte="svelte-5r3x8t">
+	<link rel="stylesheet" href="/_app/immutable/assets/start-3644ecb0.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/__layout.svelte-cd813667.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/_slug_.svelte-79a51716.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/getViewCount-c00d2062.css">
+	<link rel="modulepreload" href="/_app/immutable/start-a152b96f.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-8c0e4016.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-c239ecf6.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-d1fb5791.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-c5465100.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/siteConfig-cd65c973.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/stores-386c3cb2.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/posts/_slug_.svelte-192a9992.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/getViewCount-ee31ff01.js">
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+    <div id="svelte">
+
+
+
+
+
+
+<div id="content" class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto"><header class="flex flex-row w-full py-8 items-center"><nav class="flex-1 text-lg sm:text-base"><span class="i-teenyicons-arrow-left-solid my-1 mr-1"></span>
+      <a href="/" sveltekit:prefetch class="text-lg hover:underline sm:text-base">Back
+      </a></nav>
+  <div class="no-js-hidden"><form><div class="hidden"><label for="system" class="ml-2 cursor-default sr-only">system</label>
+    <input type="radio" name="nightModeCheckbox" id="system" value="0"><label for="light" class="ml-2 cursor-default sr-only">light</label>
+    <input type="radio" name="nightModeCheckbox" id="light" value="1"><label for="dark" class="ml-2 cursor-default sr-only">dark</label>
+    <input type="radio" name="nightModeCheckbox" id="dark" value="2"></div>
+
+  <button class="no-js-hidden relative inline-block group w-8 h-8" aria-label="Theme Toggle"><span class="bottom-0 right-0 group-hover:text-light-blue-600 absolute w-1/2 h-2/3 i-teenyicons-moon-outline"></span>
+      <span class="top-0 left-0 group-hover:text-orange-400 absolute w-1/2 h-2/3 i-teenyicons-sun-outline"></span></button></form></div></header>
+  <main class="pt-4 sm:pt-6 flex-grow">
+
+
+
+  
+<a href="https://github.com/paullj/paullj.github.io/discussions/28" target="_blank" class="hover:underline leading-none dark:text-gray-400 text-gray-500 uppercase tracking-wide text-sm font-extrabold">Sun, 19 Jun 22</a>
+<h1 class="text-4xl font-extrabold">
+  Fast, Lightweight Fuzzy Search using Fuse.js</h1>
+<p class="mt-2 font-extralight text-lg">How the fast and lightweight fuzzy searching for this website works</p>
+<div class="flex justify-between items-center mt-4 mb-2"><div class="flex flex-row items-center"><a href="https://github.com/paullj" target="_blank"><img class="rounded-full overflow-hidden w-8" src="https://avatars.githubusercontent.com/u/8403295?s=100&amp;u=1341bb834ef7376719f208388732fcb78aee8899&amp;v=4" alt=""></a>
+  <a href="https://github.com/paullj" target="_blank" class="ml-2 font-medium hover:underline">paullj</a></div>
+  <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">(Last edited 19 Jun 22, 17:24)
+    </span>
+  <div class="align-middle text-right mr-4"><span class="i-teenyicons-eye-outline"></span>
+    <span class="ml-1 font-mono text-xs"><span>0</span>
+      views
+    </span></div>
+  <div class="align-middle text-right"><span class="i-teenyicons-stopwatch-outline"></span>
+    <span class="ml-1 font-mono text-xs">Less than a minute read
+    </span></div></div>
+  
+<div class="text-right"><span class="font-mono text-xs">Share via</span>
+  <a href="mailto:?subject=From%20paullj.github.io:%20Fast,%20Lightweight%20Fuzzy%20Search%20using%20Fuse.js&amp;body=Here%20is%20a%20post%20from%20Paul%20Lavender-Jones&#39;s%20blog%20that%20might%20interest%20you:%20%0AFast,%20Lightweight%20Fuzzy%20Search%20using%20Fuse.js%0AHow%20the%20fast%20and%20lightweight%20fuzzy%20searching%20for%20this%20website%20works%0A%5Bobject%20Object%5D" class="mx-2" target="_blank" rel="noopener" aria-label="Share by Email"><span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red"></span></a>
+  <a href="https://twitter.com/intent/tweet/?text=Fast,%20Lightweight%20Fuzzy%20Search%20using%20Fuse.js%0AHow%20the%20fast%20and%20lightweight%20fuzzy%20searching%20for%20this%20website%20works&amp;url=http://sveltekit-prerender/posts/fast-lightweight-fuzzy-search-using-fuse.js" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Twitter"><span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400"></span></a>
+  <a href="https://facebook.com/sharer/sharer.php?u=http://sveltekit-prerender/posts/fast-lightweight-fuzzy-search-using-fuse.js" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Facebook"><span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600"></span></a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://sveltekit-prerender/posts/fast-lightweight-fuzzy-search-using-fuse.js" class="mx-2" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500"></span></a></div>
+
+<article class="py-4 my-4 text-base prose dark:prose-invert border-y-2 border-gray-900 border-opacity-10 dark:border-gray-100 dark:border-opacity-20"><!-- HTML_TAG_START -->
+<p>For a small static blog, server side searching via Algolia or ElasticSearch can be overkill. This website uses a small lightweight library <a
+  href="https://fusejs.io/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>Fuse.js</a> for client-side fuzzy searching.</p>
+<p>First of all, what is fuzzy searching? To quote the library directly:</p>
+<blockquote>
+<p>Generally speaking, fuzzy searching is the technique of finding strings that are approximately equal to a given pattern (rather than exactly).</p>
+</blockquote>
+<p>Since we already have our posts data in JSON, using this library to add a search functionality only requires a few lines of code as shown below.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> Fuse <span class="token keyword">from</span> <span class="token string">'fuse.js'</span><span class="token punctuation">;</span>
+<span class="token operator">...</span>
+<span class="token function">onMount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    fuse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Fuse</span><span class="token punctuation">(</span>posts<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+      keys<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"title"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre>
+<p>Another bonus with using Fuse.js is that, because it has no external and DOM dependancies, it can also be used on the backend if required. In our case, this means that it is possible to build a search index when our static site is built and deployed. This has not been implemented yet, but with more posts this will be a useful feature to add.</p>
+<p>Using Svelte also means that adding quality of life features like shortcuts to focus searching is very easy. Listening for the <code>/</code> key to be pressed can be intercepted is done with the snippet below.</p>
+<pre class="language-svelte"><code class="language-svelte"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">svelte:</span>body</span>
+  <span class="token attr-name"><span class="token namespace">on:</span>keydown=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span> 
+      <span class="token keyword">if</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>key <span class="token operator">===</span> <span class="token string">'/'</span> <span class="token operator">&amp;&amp;</span> document<span class="token punctuation">.</span>activeElement <span class="token operator">!==</span> element<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        element<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        element<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span></span>
+<span class="token punctuation">/></span></span></code></pre>
+<p>The whole search component used for this website is available <a
+  href="https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/Search.svelte"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>here</a>. It is lightweight, quick and very simple to add to any existing small SvelteKit blog, with possibilities for larger datasets too.</p>
+<!-- HTML_TAG_END --></article>
+
+<div class="mt-4 pb-12"><span id="comments"></span>
+  <span id="reactions"></span>
+  <noscript><div class="font-mono text-center text-red text-sm">Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/paullj/paullj.github.io/discussions/28">here</a></div></noscript>
+
+<span id="comments"></span></div></main>
+  <footer class="px-2 pt-24 pb-4 text-xs text-gray-400 font-mono text-center leading-loose"><p>This site was made by me and it&#39;s completely 
+      <a href="https://www.github.com/paullj/paullj.github.io" class="decoration-dotted underline decoration-2">open source
+      </a>
+      <span class="i-teenyicons-heart-small-solid"></span></p></footer></div>
+
+
+<noscript><style>:global(.no-js-hidden) {
+      display: none !important;
+    }
+  </style></noscript>
+
+
+		<script type="module" data-sveltekit-hydrate="euihfr">
+		import { start } from "/_app/immutable/start-a152b96f.js";
+		start({
+			target: document.querySelector('[data-sveltekit-hydrate="euihfr"]').parentNode,
+			paths: {"base":"","assets":""},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [0, 5],
+				params: {slug:"fast-lightweight-fuzzy-search-using-fuse.js"},
+				routeId: "posts/[slug]"
+			}
+		});
+	</script><script type="application/json" sveltekit:data-type="data" sveltekit:data-url="/posts/fast-lightweight-fuzzy-search-using-fuse.js.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=604800","content-type":"application/json; charset=utf-8"},"body":"{\"number\":28,\"slug\":\"fast-lightweight-fuzzy-search-using-fuse.js\",\"url\":\"https://github.com/paullj/paullj.github.io/discussions/28\",\"title\":\"Fast, Lightweight Fuzzy Search using Fuse.js\",\"description\":\"How the fast and lightweight fuzzy searching for this website works\",\"publishedAt\":\"2022-06-19T12:00Z\",\"lastEditedAt\":\"2022-06-19T17:24:08Z\",\"createdAt\":\"2022-06-19T17:21:41Z\",\"author\":{\"avatarUrl\":\"https://avatars.githubusercontent.com/u/8403295?s=100&u=1341bb834ef7376719f208388732fcb78aee8899&v=4\",\"login\":\"paullj\",\"url\":\"https://github.com/paullj\"},\"category\":\"Published Posts\",\"content\":\"\\n\u003Cp>For a small static blog, server side searching via Algolia or ElasticSearch can be overkill. This website uses a small lightweight library \u003Ca\\n  href=\\\"https://fusejs.io/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>Fuse.js\u003C/a> for client-side fuzzy searching.\u003C/p>\\n\u003Cp>First of all, what is fuzzy searching? To quote the library directly:\u003C/p>\\n\u003Cblockquote>\\n\u003Cp>Generally speaking, fuzzy searching is the technique of finding strings that are approximately equal to a given pattern (rather than exactly).\u003C/p>\\n\u003C/blockquote>\\n\u003Cp>Since we already have our posts data in JSON, using this library to add a search functionality only requires a few lines of code as shown below.\u003C/p>\\n\u003Cpre class=\\\"language-ts\\\">\u003Ccode class=\\\"language-ts\\\">\u003Cspan class=\\\"token keyword\\\">import\u003C/span> Fuse \u003Cspan class=\\\"token keyword\\\">from\u003C/span> \u003Cspan class=\\\"token string\\\">'fuse.js'\u003C/span>\u003Cspan class=\\\"token punctuation\\\">;\u003C/span>\\n\u003Cspan class=\\\"token operator\\\">...\u003C/span>\\n\u003Cspan class=\\\"token function\\\">onMount\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span> \u003Cspan class=\\\"token operator\\\">=>\u003C/span> \u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>\\n    fuse \u003Cspan class=\\\"token operator\\\">=\u003C/span> \u003Cspan class=\\\"token keyword\\\">new\u003C/span> \u003Cspan class=\\\"token class-name\\\">Fuse\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>posts\u003Cspan class=\\\"token punctuation\\\">,\u003C/span> \u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>\\n      keys\u003Cspan class=\\\"token operator\\\">:\u003C/span> \u003Cspan class=\\\"token punctuation\\\">[\u003C/span>\\n        \u003Cspan class=\\\"token string\\\">\\\"title\\\"\u003C/span>\u003Cspan class=\\\"token punctuation\\\">,\u003C/span>\\n      \u003Cspan class=\\\"token punctuation\\\">]\u003C/span>\\n    \u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span>\u003Cspan class=\\\"token punctuation\\\">;\u003C/span>\\n  \u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span>\u003C/code>\u003C/pre>\\n\u003Cp>Another bonus with using Fuse.js is that, because it has no external and DOM dependancies, it can also be used on the backend if required. In our case, this means that it is possible to build a search index when our static site is built and deployed. This has not been implemented yet, but with more posts this will be a useful feature to add.\u003C/p>\\n\u003Cp>Using Svelte also means that adding quality of life features like shortcuts to focus searching is very easy. Listening for the \u003Ccode>/\u003C/code> key to be pressed can be intercepted is done with the snippet below.\u003C/p>\\n\u003Cpre class=\\\"language-svelte\\\">\u003Ccode class=\\\"language-svelte\\\">\u003Cspan class=\\\"token tag\\\">\u003Cspan class=\\\"token tag\\\">\u003Cspan class=\\\"token punctuation\\\">&lt;\u003C/span>\u003Cspan class=\\\"token namespace\\\">svelte:\u003C/span>body\u003C/span>\\n  \u003Cspan class=\\\"token attr-name\\\">\u003Cspan class=\\\"token namespace\\\">on:\u003C/span>keydown=\u003C/span>\u003Cspan class=\\\"token language-javascript\\\">\u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>\\n    \u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token parameter\\\">event\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span> \u003Cspan class=\\\"token operator\\\">=>\u003C/span> \u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span> \\n      \u003Cspan class=\\\"token keyword\\\">if\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>event\u003Cspan class=\\\"token punctuation\\\">.\u003C/span>key \u003Cspan class=\\\"token operator\\\">===\u003C/span> \u003Cspan class=\\\"token string\\\">'/'\u003C/span> \u003Cspan class=\\\"token operator\\\">&amp;&amp;\u003C/span> document\u003Cspan class=\\\"token punctuation\\\">.\u003C/span>activeElement \u003Cspan class=\\\"token operator\\\">!==\u003C/span> element\u003Cspan class=\\\"token punctuation\\\">)\u003C/span> \u003Cspan class=\\\"token punctuation\\\">&#123;\u003C/span>\\n        event\u003Cspan class=\\\"token punctuation\\\">.\u003C/span>\u003Cspan class=\\\"token function\\\">preventDefault\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span>\\n        element\u003Cspan class=\\\"token punctuation\\\">.\u003C/span>\u003Cspan class=\\\"token function\\\">focus\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span>\u003Cspan class=\\\"token punctuation\\\">;\u003C/span>\\n        element\u003Cspan class=\\\"token punctuation\\\">.\u003C/span>\u003Cspan class=\\\"token function\\\">select\u003C/span>\u003Cspan class=\\\"token punctuation\\\">(\u003C/span>\u003Cspan class=\\\"token punctuation\\\">)\u003C/span>\u003Cspan class=\\\"token punctuation\\\">;\u003C/span>\\n      \u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\\n    \u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\\n  \u003Cspan class=\\\"token punctuation\\\">&#125;\u003C/span>\u003C/span>\\n\u003Cspan class=\\\"token punctuation\\\">/>\u003C/span>\u003C/span>\u003C/code>\u003C/pre>\\n\u003Cp>The whole search component used for this website is available \u003Ca\\n  href=\\\"https://github.com/paullj/paullj.github.io/blob/main/src/lib/components/Search.svelte\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>here\u003C/a>. It is lightweight, quick and very simple to add to any existing small SvelteKit blog, with possibilities for larger datasets too.\u003C/p>\\n\",\"reactions\":0,\"comments\":0,\"readingTime\":2,\"viewCount\":0}"}</script></div>
+  </body>
+</html>

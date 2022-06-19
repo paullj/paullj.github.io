@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content="">
+<meta http-equiv="cache-control" content="max-age=60"><title>From Rapid Flu Testing to LiDAR for Autonomous Cars - Paul Lavender-Jones</title><meta charset="utf-8" data-svelte="svelte-5r3x8t"><meta http-equiv="x-ua-compatible" content="ie=edge" data-svelte="svelte-5r3x8t"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-svelte="svelte-5r3x8t"><meta name="robots" content="index,follow" data-svelte="svelte-5r3x8t">
+    <meta name="title" content="From Rapid Flu Testing to LiDAR for Autonomous Cars - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="A reflection on my year long placement at TTP, an engineering consultancy and the wide range of interesting projects I worked on." data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="From Rapid Flu Testing to LiDAR for Autonomous Cars - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="A reflection on my year long placement at TTP, an engineering consultancy and the wide range of interesting projects I worked on." data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars" data-svelte="svelte-5r3x8t">
+	<link rel="stylesheet" href="/_app/immutable/assets/start-3644ecb0.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/__layout.svelte-ba165a14.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/_slug_.svelte-79a51716.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/error.svelte-91aebcd4.css">
+	<link rel="modulepreload" href="/_app/immutable/start-f9bfaa17.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-5ecf021d.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-10ea0a0b.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-d1fb5791.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-e0090b58.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/siteConfig-cd65c973.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/stores-f6c54ed2.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/posts/_slug_.svelte-247ff316.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/getViewCount-0a8aa47d.js">
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+    <div id="svelte">
+
+
+
+
+
+
+<div id="content" class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto"><header class="flex flex-row w-full py-8 items-center"><nav class="flex-1 text-lg sm:text-base"><span class="i-teenyicons-arrow-left-solid my-1 mr-1"></span>
+      <a href="/" sveltekit:prefetch class="text-lg hover:underline sm:text-base">Back
+      </a></nav>
+  <div class="no-js-hidden"><form><div class="hidden"><label for="system" class="ml-2 cursor-default sr-only">system</label>
+    <input type="radio" name="nightModeCheckbox" id="system" value="0"><label for="light" class="ml-2 cursor-default sr-only">light</label>
+    <input type="radio" name="nightModeCheckbox" id="light" value="1"><label for="dark" class="ml-2 cursor-default sr-only">dark</label>
+    <input type="radio" name="nightModeCheckbox" id="dark" value="2"></div>
+
+  <button class="no-js-hidden relative inline-block group w-8 h-8" aria-label="Theme Toggle"><span class="bottom-0 right-0 group-hover:text-light-blue-600 absolute w-1/2 h-2/3 i-teenyicons-moon-outline"></span>
+      <span class="top-0 left-0 group-hover:text-orange-400 absolute w-1/2 h-2/3 i-teenyicons-sun-outline"></span></button></form></div></header>
+  <main class="pt-4 sm:pt-6 flex-grow">
+
+
+
+  
+<a href="https://github.com/paullj/paullj.github.io/discussions/14" target="_blank" class="hover:underline leading-none dark:text-gray-400 text-gray-500 uppercase tracking-wide text-sm font-extrabold">Fri, 30 Oct 20</a>
+<h1 class="text-4xl font-extrabold">
+  From Rapid Flu Testing to LiDAR for Autonomous Cars</h1>
+<p class="mt-2 font-extralight text-lg">A reflection on my year long placement at TTP, an engineering consultancy and the wide range of interesting projects I worked on.</p>
+<div class="flex justify-between items-center mt-4 mb-2"><div class="flex flex-row items-center"><a href="https://github.com/paullj" target="_blank"><img class="rounded-full overflow-hidden w-8" src="https://avatars.githubusercontent.com/u/8403295?s=100&amp;u=1341bb834ef7376719f208388732fcb78aee8899&amp;v=4" alt=""></a>
+  <a href="https://github.com/paullj" target="_blank" class="ml-2 font-medium hover:underline">paullj</a></div>
+  <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">(Last edited 8 Feb 22, 18:05)
+    </span>
+  <div class="align-middle text-right mr-4"><span class="i-teenyicons-eye-outline"></span>
+    <span class="ml-1 font-mono text-xs"><span>9</span>
+      views
+    </span></div>
+  <div class="align-middle text-right"><span class="i-teenyicons-stopwatch-outline"></span>
+    <span class="ml-1 font-mono text-xs">4 minute read
+    </span></div></div>
+  
+<div class="text-right"><span class="font-mono text-xs">Share via</span>
+  <a href="mailto:?subject=From%20paullj.github.io:%20From%20Rapid%20Flu%20Testing%20to%20LiDAR%20for%20Autonomous%20Cars&amp;body=Here%20is%20a%20post%20from%20Paul%20Lavender-Jones&#39;s%20blog%20that%20might%20interest%20you:%20%0AFrom%20Rapid%20Flu%20Testing%20to%20LiDAR%20for%20Autonomous%20Cars%0AA%20reflection%20on%20my%20year%20long%20placement%20at%20TTP,%20an%20engineering%20consultancy%20and%20the%20wide%20range%20of%20interesting%20projects%20I%20worked%20on.%0A%5Bobject%20Object%5D" class="mx-2" target="_blank" rel="noopener" aria-label="Share by Email"><span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red"></span></a>
+  <a href="https://twitter.com/intent/tweet/?text=From%20Rapid%20Flu%20Testing%20to%20LiDAR%20for%20Autonomous%20Cars%0AA%20reflection%20on%20my%20year%20long%20placement%20at%20TTP,%20an%20engineering%20consultancy%20and%20the%20wide%20range%20of%20interesting%20projects%20I%20worked%20on.&amp;url=http://sveltekit-prerender/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Twitter"><span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400"></span></a>
+  <a href="https://facebook.com/sharer/sharer.php?u=http://sveltekit-prerender/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Facebook"><span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600"></span></a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://sveltekit-prerender/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars" class="mx-2" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500"></span></a></div>
+
+<article class="py-4 my-4 text-base prose dark:prose-invert border-y-2 border-gray-900 border-opacity-10 dark:border-gray-100 dark:border-opacity-20"><!-- HTML_TAG_START -->
+<p>During my year-long industrial placement at TTP<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> , I worked in the Sensors and Devices (SD) group alongside a multidisciplinary team of scientists and engineers.</p>
+<blockquote>
+<p>TTP is an engineering and technology consultancy working across a variety of industries. In recent years TTP have become involved with a lot of work in the life sciences, especially diagnostic care but also work on anything from satellites to medical inhalers.</p>
+</blockquote>
+<p>I was fortnuate enough to work on projects in many different fields as well as maturity of technology; some were early on in development, at the concept stage, others have been in production for many years.</p>
+<p>My work in varied day to day but included software development, mechanical design and validation testing for multiple projects covering a wide spectrum of industries including LiDAR<sup
+  id="fnref-2"
+><a href="#fn-2" class="footnote-ref">2</a></sup> for autonomous driving, <a
+  href="https://www.ttp.com/news/sonicsense"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>low-cost gas sensing</a> and <a
+  href="https://lexdiagnostics.com/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>rapid molecular flu diagnostics for primary care</a>.</p>
+<p>Working on rapid flu testing and making software and hardware for lab use to develop a prototype diagnostic device was an experience that I allowed me to get hands on with lots of different aspects of design and experimental R&D.</p>
+<p>I was involved in another project testing LiDAR sensor range, this involved measuring performance of a commercial automotive LiDAR sensor in different lighting conditions. The findings from this work as well as the desire to better understand sensors in the autonomous driving area lead to an internal student project in upsampling LiDAR data.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152901914-62b66445-5235-4df9-b434-a88a7cb97d02.png"
+  alt="Point clouds are sparse especially at the edge of a LiDAR's range"
+><figcaption>Point clouds are sparse especially at the edge of a LiDAR's range</figcaption></figure>
+<p>Autonomous driving requires lots of data from many different types of sensors. LiDAR is one of those types, all sensors have their advantages and disadvantages compared to each other. LiDAR happens to have a lower resolution than imaging using a camera for example.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152901972-81d268cf-ce3f-4085-a9b3-242c1a9a04a5.png"
+  alt=" Having a good idea what’s between the points is valuable and can help with perception"
+><figcaption> Having a good idea what’s between the points is valuable and can help with perception</figcaption></figure>
+<p>A high level plan was drawn up so that I had a loose target to follow and organise my time accordingly, but it was by no means a strict development program. The actual project was fairly unbounded and driven by myself. The plan included regular meetings where I would update my colleagues and to use their expertise to guide me on where to go next with the project.</p>
+<p>Prior to my placement, I had little experience with Python or algorithm development. This student project was a great way for me to learn quickly in a real world context but without the added pressure of deliverables for external clients.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152901941-3e991ba9-9433-4b1d-94ac-40046e12fe67.png"
+  alt="Why is compressed sensing of interest?"
+><figcaption>Why is compressed sensing of interest?</figcaption></figure>
+<p>I started with a market analysis, academic research and a literature review where I compared the many ways of upsampling data. After reading relevant academic papers, I selected a few promising techniques to take further. I made simple 1D demos to test the edge cases of a handful of techniques and get a feel for their relative performance to each other. Compressed sensing  came out to be a perfect mix of good upsampling performance yet simple & cheap to compute.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152901956-19aca0c3-790f-4e9d-a82d-abd1018b0262.png"
+  alt="Reconstruction using only 5% of the original signal"
+><figcaption>Reconstruction using only 5% of the original signal</figcaption></figure>
+<p>I then took the concept further and developed a 3D demo from scratch for use with much larger point cloud data sets. I was a able to validate my work quantitatively against real-world LiDAR data to find vast improvement in performance compared to other ML techniques.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152901947-55f5f96f-d059-450a-a2a8-f9ab490f4c1a.png"
+  alt="Close up comparison between original, compressed sensing and linear interpolation"
+><figcaption>Close up comparison between original, compressed sensing and linear interpolation</figcaption></figure>
+<p>The MATLAB, maths and modelling techniques knowledge from university and the other Python data processing projects I did on placement helped me put together a demo of the working algorithm. This project ran in a similar format to design modules on my course at university, with lots of scope for research, validation testing and learning throughout the project; all while steering the outcomes and goals of the project myself as I went along.</p>
+<p>This was one of many interesting projects that I was lucky enough to contribute too and I am glad that I was able to have this experience.</p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">The Technology Partnership, <a
+  href="https://ttp.com/"
+  rel="nofollow noopener noreferrer"
+  target="_blank"
+>https://ttp.com/</a><a
+  href="#fnref-1"
+  class="footnote-backref"
+>↩</a></li>
+<li id="fn-2"><strong>Li</strong>ght <strong>D</strong>etection <strong>A</strong>nd <strong>R</strong>anging<a href="#fnref-2" class="footnote-backref">↩</a></li>
+</ol>
+</div>
+<!-- HTML_TAG_END --></article>
+
+<div class="mt-4 pb-12"><span id="comments"></span>
+  <span id="reactions"></span>
+  <noscript><div class="font-mono text-center text-red text-sm">Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/paullj/paullj.github.io/discussions/14">here</a></div></noscript>
+
+<span id="comments"></span></div></main>
+  <footer class="px-2 pt-24 pb-4 text-xs text-gray-400 font-mono text-center leading-loose"><p>This site was made by me and it&#39;s completely 
+      <a href="https://www.github.com/paullj/paullj.github.io" class="decoration-dotted underline decoration-2">open source
+      </a>
+      <span class="i-teenyicons-heart-small-solid"></span></p></footer></div>
+
+
+<noscript><style>:global(.no-js-hidden) {
+      display: none !important;
+    }
+  </style></noscript>
+
+
+		<script type="module" data-sveltekit-hydrate="36p6xr">
+		import { start } from "/_app/immutable/start-f9bfaa17.js";
+		start({
+			target: document.querySelector('[data-sveltekit-hydrate="36p6xr"]').parentNode,
+			paths: {"base":"","assets":""},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [0, 4],
+				params: {slug:"from-rapid-flu-testing-to-lidar-for-autonomous-cars"},
+				routeId: "posts/[slug]"
+			}
+		});
+	</script><script type="application/json" sveltekit:data-type="data" sveltekit:data-url="/posts/from-rapid-flu-testing-to-lidar-for-autonomous-cars.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=604800","content-type":"application/json; charset=utf-8"},"body":"{\"number\":14,\"slug\":\"from-rapid-flu-testing-to-lidar-for-autonomous-cars\",\"url\":\"https://github.com/paullj/paullj.github.io/discussions/14\",\"title\":\"From Rapid Flu Testing to LiDAR for Autonomous Cars\",\"description\":\"A reflection on my year long placement at TTP, an engineering consultancy and the wide range of interesting projects I worked on.\",\"publishedAt\":\"2020-10-30T00:00Z\",\"lastEditedAt\":\"2022-02-08T18:05:06Z\",\"createdAt\":\"2022-02-07T23:33:56Z\",\"author\":{\"avatarUrl\":\"https://avatars.githubusercontent.com/u/8403295?s=100&u=1341bb834ef7376719f208388732fcb78aee8899&v=4\",\"login\":\"paullj\",\"url\":\"https://github.com/paullj\"},\"category\":\"Published Posts\",\"content\":\"\\n\u003Cp>During my year-long industrial placement at TTP\u003Csup id=\\\"fnref-1\\\">\u003Ca href=\\\"#fn-1\\\" class=\\\"footnote-ref\\\">1\u003C/a>\u003C/sup> , I worked in the Sensors and Devices (SD) group alongside a multidisciplinary team of scientists and engineers.\u003C/p>\\n\u003Cblockquote>\\n\u003Cp>TTP is an engineering and technology consultancy working across a variety of industries. In recent years TTP have become involved with a lot of work in the life sciences, especially diagnostic care but also work on anything from satellites to medical inhalers.\u003C/p>\\n\u003C/blockquote>\\n\u003Cp>I was fortnuate enough to work on projects in many different fields as well as maturity of technology; some were early on in development, at the concept stage, others have been in production for many years.\u003C/p>\\n\u003Cp>My work in varied day to day but included software development, mechanical design and validation testing for multiple projects covering a wide spectrum of industries including LiDAR\u003Csup\\n  id=\\\"fnref-2\\\"\\n>\u003Ca href=\\\"#fn-2\\\" class=\\\"footnote-ref\\\">2\u003C/a>\u003C/sup> for autonomous driving, \u003Ca\\n  href=\\\"https://www.ttp.com/news/sonicsense\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>low-cost gas sensing\u003C/a> and \u003Ca\\n  href=\\\"https://lexdiagnostics.com/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>rapid molecular flu diagnostics for primary care\u003C/a>.\u003C/p>\\n\u003Cp>Working on rapid flu testing and making software and hardware for lab use to develop a prototype diagnostic device was an experience that I allowed me to get hands on with lots of different aspects of design and experimental R&D.\u003C/p>\\n\u003Cp>I was involved in another project testing LiDAR sensor range, this involved measuring performance of a commercial automotive LiDAR sensor in different lighting conditions. The findings from this work as well as the desire to better understand sensors in the autonomous driving area lead to an internal student project in upsampling LiDAR data.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152901914-62b66445-5235-4df9-b434-a88a7cb97d02.png\\\"\\n  alt=\\\"Point clouds are sparse especially at the edge of a LiDAR's range\\\"\\n>\u003Cfigcaption>Point clouds are sparse especially at the edge of a LiDAR's range\u003C/figcaption>\u003C/figure>\\n\u003Cp>Autonomous driving requires lots of data from many different types of sensors. LiDAR is one of those types, all sensors have their advantages and disadvantages compared to each other. LiDAR happens to have a lower resolution than imaging using a camera for example.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152901972-81d268cf-ce3f-4085-a9b3-242c1a9a04a5.png\\\"\\n  alt=\\\" Having a good idea what’s between the points is valuable and can help with perception\\\"\\n>\u003Cfigcaption> Having a good idea what’s between the points is valuable and can help with perception\u003C/figcaption>\u003C/figure>\\n\u003Cp>A high level plan was drawn up so that I had a loose target to follow and organise my time accordingly, but it was by no means a strict development program. The actual project was fairly unbounded and driven by myself. The plan included regular meetings where I would update my colleagues and to use their expertise to guide me on where to go next with the project.\u003C/p>\\n\u003Cp>Prior to my placement, I had little experience with Python or algorithm development. This student project was a great way for me to learn quickly in a real world context but without the added pressure of deliverables for external clients.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152901941-3e991ba9-9433-4b1d-94ac-40046e12fe67.png\\\"\\n  alt=\\\"Why is compressed sensing of interest?\\\"\\n>\u003Cfigcaption>Why is compressed sensing of interest?\u003C/figcaption>\u003C/figure>\\n\u003Cp>I started with a market analysis, academic research and a literature review where I compared the many ways of upsampling data. After reading relevant academic papers, I selected a few promising techniques to take further. I made simple 1D demos to test the edge cases of a handful of techniques and get a feel for their relative performance to each other. Compressed sensing  came out to be a perfect mix of good upsampling performance yet simple & cheap to compute.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152901956-19aca0c3-790f-4e9d-a82d-abd1018b0262.png\\\"\\n  alt=\\\"Reconstruction using only 5% of the original signal\\\"\\n>\u003Cfigcaption>Reconstruction using only 5% of the original signal\u003C/figcaption>\u003C/figure>\\n\u003Cp>I then took the concept further and developed a 3D demo from scratch for use with much larger point cloud data sets. I was a able to validate my work quantitatively against real-world LiDAR data to find vast improvement in performance compared to other ML techniques.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152901947-55f5f96f-d059-450a-a2a8-f9ab490f4c1a.png\\\"\\n  alt=\\\"Close up comparison between original, compressed sensing and linear interpolation\\\"\\n>\u003Cfigcaption>Close up comparison between original, compressed sensing and linear interpolation\u003C/figcaption>\u003C/figure>\\n\u003Cp>The MATLAB, maths and modelling techniques knowledge from university and the other Python data processing projects I did on placement helped me put together a demo of the working algorithm. This project ran in a similar format to design modules on my course at university, with lots of scope for research, validation testing and learning throughout the project; all while steering the outcomes and goals of the project myself as I went along.\u003C/p>\\n\u003Cp>This was one of many interesting projects that I was lucky enough to contribute too and I am glad that I was able to have this experience.\u003C/p>\\n\u003Cdiv class=\\\"footnotes\\\">\\n\u003Chr>\\n\u003Col>\\n\u003Cli id=\\\"fn-1\\\">The Technology Partnership, \u003Ca\\n  href=\\\"https://ttp.com/\\\"\\n  rel=\\\"nofollow noopener noreferrer\\\"\\n  target=\\\"_blank\\\"\\n>https://ttp.com/\u003C/a>\u003Ca\\n  href=\\\"#fnref-1\\\"\\n  class=\\\"footnote-backref\\\"\\n>↩\u003C/a>\u003C/li>\\n\u003Cli id=\\\"fn-2\\\">\u003Cstrong>Li\u003C/strong>ght \u003Cstrong>D\u003C/strong>etection \u003Cstrong>A\u003C/strong>nd \u003Cstrong>R\u003C/strong>anging\u003Ca href=\\\"#fnref-2\\\" class=\\\"footnote-backref\\\">↩\u003C/a>\u003C/li>\\n\u003C/ol>\\n\u003C/div>\\n\",\"reactions\":0,\"comments\":0,\"readingTime\":4,\"viewCount\":9}"}</script></div>
+  </body>
+</html>

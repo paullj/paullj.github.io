@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-security-policy" content="">
+<meta http-equiv="cache-control" content="max-age=60"><title>Re/upcycling a Drone - Paul Lavender-Jones</title><meta charset="utf-8" data-svelte="svelte-5r3x8t"><meta http-equiv="x-ua-compatible" content="ie=edge" data-svelte="svelte-5r3x8t"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" data-svelte="svelte-5r3x8t"><meta name="robots" content="index,follow" data-svelte="svelte-5r3x8t">
+    <meta name="title" content="Re/upcycling a Drone - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="An affordable quadcopter designed with a recycled/upcycled frame and cheap electronic components." data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="Re/upcycling a Drone - Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="An affordable quadcopter designed with a recycled/upcycled frame and cheap electronic components." data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io/posts/reupcycling-a-drone" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io/posts/reupcycling-a-drone" data-svelte="svelte-5r3x8t">
+	<link rel="stylesheet" href="/_app/immutable/assets/start-3644ecb0.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/__layout.svelte-ba165a14.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/_slug_.svelte-79a51716.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/error.svelte-91aebcd4.css">
+	<link rel="modulepreload" href="/_app/immutable/start-f9bfaa17.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-5ecf021d.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/index-10ea0a0b.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-d1fb5791.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-e0090b58.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/siteConfig-cd65c973.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/stores-f6c54ed2.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/posts/_slug_.svelte-247ff316.js">
+	<link rel="modulepreload" href="/_app/immutable/chunks/getViewCount-0a8aa47d.js">
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          theme = JSON.parse(localStorage.getItem("theme"));
+          if (
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          )
+            document.documentElement.classList.add("dark");
+        } catch (error) {}
+      })();
+    </script>
+    <div id="svelte">
+
+
+
+
+
+
+<div id="content" class="flex flex-col max-w-screen-sm min-h-screen px-4 py-2 mx-auto"><header class="flex flex-row w-full py-8 items-center"><nav class="flex-1 text-lg sm:text-base"><span class="i-teenyicons-arrow-left-solid my-1 mr-1"></span>
+      <a href="/" sveltekit:prefetch class="text-lg hover:underline sm:text-base">Back
+      </a></nav>
+  <div class="no-js-hidden"><form><div class="hidden"><label for="system" class="ml-2 cursor-default sr-only">system</label>
+    <input type="radio" name="nightModeCheckbox" id="system" value="0"><label for="light" class="ml-2 cursor-default sr-only">light</label>
+    <input type="radio" name="nightModeCheckbox" id="light" value="1"><label for="dark" class="ml-2 cursor-default sr-only">dark</label>
+    <input type="radio" name="nightModeCheckbox" id="dark" value="2"></div>
+
+  <button class="no-js-hidden relative inline-block group w-8 h-8" aria-label="Theme Toggle"><span class="bottom-0 right-0 group-hover:text-light-blue-600 absolute w-1/2 h-2/3 i-teenyicons-moon-outline"></span>
+      <span class="top-0 left-0 group-hover:text-orange-400 absolute w-1/2 h-2/3 i-teenyicons-sun-outline"></span></button></form></div></header>
+  <main class="pt-4 sm:pt-6 flex-grow">
+
+
+
+  
+<a href="https://github.com/paullj/paullj.github.io/discussions/5" target="_blank" class="hover:underline leading-none dark:text-gray-400 text-gray-500 uppercase tracking-wide text-sm font-extrabold">Mon, 1 Aug 16</a>
+<h1 class="text-4xl font-extrabold">
+  Re/upcycling a Drone</h1>
+<p class="mt-2 font-extralight text-lg">An affordable quadcopter designed with a recycled/upcycled frame and cheap electronic components.</p>
+<div class="flex justify-between items-center mt-4 mb-2"><div class="flex flex-row items-center"><a href="https://github.com/paullj" target="_blank"><img class="rounded-full overflow-hidden w-8" src="https://avatars.githubusercontent.com/u/8403295?s=100&amp;u=1341bb834ef7376719f208388732fcb78aee8899&amp;v=4" alt=""></a>
+  <a href="https://github.com/paullj" target="_blank" class="ml-2 font-medium hover:underline">paullj</a></div>
+  <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">(Last edited 8 Feb 22, 16:07)
+    </span>
+  <div class="align-middle text-right mr-4"><span class="i-teenyicons-eye-outline"></span>
+    <span class="ml-1 font-mono text-xs"><span>12</span>
+      views
+    </span></div>
+  <div class="align-middle text-right"><span class="i-teenyicons-stopwatch-outline"></span>
+    <span class="ml-1 font-mono text-xs">1 minute read
+    </span></div></div>
+  
+<div class="text-right"><span class="font-mono text-xs">Share via</span>
+  <a href="mailto:?subject=From%20paullj.github.io:%20Re/upcycling%20a%20Drone&amp;body=Here%20is%20a%20post%20from%20Paul%20Lavender-Jones&#39;s%20blog%20that%20might%20interest%20you:%20%0ARe/upcycling%20a%20Drone%0AAn%20affordable%20quadcopter%20designed%20with%20a%20recycled/upcycled%20frame%20and%20cheap%20electronic%20components.%0A%5Bobject%20Object%5D" class="mx-2" target="_blank" rel="noopener" aria-label="Share by Email"><span class="i-teenyicons-envelope-outline w-4 h-4 hover:text-red"></span></a>
+  <a href="https://twitter.com/intent/tweet/?text=Re/upcycling%20a%20Drone%0AAn%20affordable%20quadcopter%20designed%20with%20a%20recycled/upcycled%20frame%20and%20cheap%20electronic%20components.&amp;url=http://sveltekit-prerender/posts/reupcycling-a-drone" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Twitter"><span class="i-teenyicons-twitter-outline w-4 h-4 hover:text-blue-400"></span></a>
+  <a href="https://facebook.com/sharer/sharer.php?u=http://sveltekit-prerender/posts/reupcycling-a-drone" class="mx-2" target="_blank" rel="noopener" aria-label="Share on Facebook"><span class="i-teenyicons-facebook-outline w-4 h-4 hover:text-blue-600"></span></a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://sveltekit-prerender/posts/reupcycling-a-drone" class="mx-2" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><span class="i-teenyicons-linkedin-outline w-4 h-4 hover:text-blue-500"></span></a></div>
+
+<article class="py-4 my-4 text-base prose dark:prose-invert border-y-2 border-gray-900 border-opacity-10 dark:border-gray-100 dark:border-opacity-20"><!-- HTML_TAG_START -->
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152452561-0820cb0b-cc6f-4f42-bd5b-74607b4b8a57.jpg"
+  alt="The finished drone"
+><figcaption>The finished drone</figcaption></figure>
+<p>I designed a drone with a frame made with recycled and reused materials from old stuff I found lying around the house. This meant I could build it relatively cheaply and more sustainably compared to a commercially available quadcopter. A rough plan and design was drawn up so that the relevant parts could be sourced.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152452521-a8a89a96-bdb3-468c-ae9c-804cd9e985b4.jpg"
+  alt="The assembly and wiring diagram"
+><figcaption>The assembly and wiring diagram</figcaption></figure>
+<p>The sturdy frame comprised of a polycarbonate laptop cover, a mahogany shelf, a steel bookend and a PVC pipe. The laptop cover made up the main base of the quadcopter, where the recycled shelf arms were attached. The controller and power distribution boards are mounted onto the base where the ECSs can connect to from each arm. The steel bookend was made into a holder for the LiPo battery and attached to the underside of the quadcopter.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152452553-d7dd6d82-8d6e-4bcf-946d-3e6292826729.jpg"
+  alt="Cutting steel bookends for the battery holder"
+><figcaption>Cutting steel bookends for the battery holder</figcaption></figure>
+<p>Using recycled materials also meant that the frame was on the heavier side and so I had to use light, powerful but cheap motors along with 10 inch propellers for maximum lift.</p>
+<figure class="rehype-figure"><img
+  src="https://user-images.githubusercontent.com/8403295/152452606-4aff7b21-eee3-45cc-8b63-5bb670aede68.jpg"
+  alt="Testing the finished quadcopter outside"
+><figcaption>Testing the finished quadcopter outside</figcaption></figure>
+<!-- HTML_TAG_END --></article>
+
+<div class="mt-4 pb-12"><span id="comments"></span>
+  <span id="reactions"></span>
+  <noscript><div class="font-mono text-center text-red text-sm">Enable Javascript to see comments, or click <a class="underline decoration-2 decoration-dotted hover:decoration-solid" href="https://github.com/paullj/paullj.github.io/discussions/5">here</a></div></noscript>
+
+<span id="comments"></span></div></main>
+  <footer class="px-2 pt-24 pb-4 text-xs text-gray-400 font-mono text-center leading-loose"><p>This site was made by me and it&#39;s completely 
+      <a href="https://www.github.com/paullj/paullj.github.io" class="decoration-dotted underline decoration-2">open source
+      </a>
+      <span class="i-teenyicons-heart-small-solid"></span></p></footer></div>
+
+
+<noscript><style>:global(.no-js-hidden) {
+      display: none !important;
+    }
+  </style></noscript>
+
+
+		<script type="module" data-sveltekit-hydrate="15aiii1">
+		import { start } from "/_app/immutable/start-f9bfaa17.js";
+		start({
+			target: document.querySelector('[data-sveltekit-hydrate="15aiii1"]').parentNode,
+			paths: {"base":"","assets":""},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [0, 4],
+				params: {slug:"reupcycling-a-drone"},
+				routeId: "posts/[slug]"
+			}
+		});
+	</script><script type="application/json" sveltekit:data-type="data" sveltekit:data-url="/posts/reupcycling-a-drone.json">{"status":200,"statusText":"","headers":{"cache-control":"max-age=0, s-max-age=604800","content-type":"application/json; charset=utf-8"},"body":"{\"number\":5,\"slug\":\"reupcycling-a-drone\",\"url\":\"https://github.com/paullj/paullj.github.io/discussions/5\",\"title\":\"Re/upcycling a Drone\",\"description\":\"An affordable quadcopter designed with a recycled/upcycled frame and cheap electronic components.\",\"publishedAt\":\"2016-08-01T00:00Z\",\"lastEditedAt\":\"2022-02-08T16:07:56Z\",\"createdAt\":\"2022-02-02T19:47:14Z\",\"author\":{\"avatarUrl\":\"https://avatars.githubusercontent.com/u/8403295?s=100&u=1341bb834ef7376719f208388732fcb78aee8899&v=4\",\"login\":\"paullj\",\"url\":\"https://github.com/paullj\"},\"category\":\"Published Posts\",\"content\":\"\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152452561-0820cb0b-cc6f-4f42-bd5b-74607b4b8a57.jpg\\\"\\n  alt=\\\"The finished drone\\\"\\n>\u003Cfigcaption>The finished drone\u003C/figcaption>\u003C/figure>\\n\u003Cp>I designed a drone with a frame made with recycled and reused materials from old stuff I found lying around the house. This meant I could build it relatively cheaply and more sustainably compared to a commercially available quadcopter. A rough plan and design was drawn up so that the relevant parts could be sourced.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152452521-a8a89a96-bdb3-468c-ae9c-804cd9e985b4.jpg\\\"\\n  alt=\\\"The assembly and wiring diagram\\\"\\n>\u003Cfigcaption>The assembly and wiring diagram\u003C/figcaption>\u003C/figure>\\n\u003Cp>The sturdy frame comprised of a polycarbonate laptop cover, a mahogany shelf, a steel bookend and a PVC pipe. The laptop cover made up the main base of the quadcopter, where the recycled shelf arms were attached. The controller and power distribution boards are mounted onto the base where the ECSs can connect to from each arm. The steel bookend was made into a holder for the LiPo battery and attached to the underside of the quadcopter.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152452553-d7dd6d82-8d6e-4bcf-946d-3e6292826729.jpg\\\"\\n  alt=\\\"Cutting steel bookends for the battery holder\\\"\\n>\u003Cfigcaption>Cutting steel bookends for the battery holder\u003C/figcaption>\u003C/figure>\\n\u003Cp>Using recycled materials also meant that the frame was on the heavier side and so I had to use light, powerful but cheap motors along with 10 inch propellers for maximum lift.\u003C/p>\\n\u003Cfigure class=\\\"rehype-figure\\\">\u003Cimg\\n  src=\\\"https://user-images.githubusercontent.com/8403295/152452606-4aff7b21-eee3-45cc-8b63-5bb670aede68.jpg\\\"\\n  alt=\\\"Testing the finished quadcopter outside\\\"\\n>\u003Cfigcaption>Testing the finished quadcopter outside\u003C/figcaption>\u003C/figure>\\n\",\"reactions\":0,\"comments\":0,\"readingTime\":1,\"viewCount\":12}"}</script></div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-import { presetUno, defineConfig } from "unocss";
+import { presetUno, defineConfig, presetTypography } from "unocss";
 import { presetTypography } from "unocss-preset-typography";
 import { extractorSvelte } from "@unocss/core";
 import presetIcons from "@unocss/preset-icons";

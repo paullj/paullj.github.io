@@ -3,7 +3,7 @@ import { SITE_TITLE, SITE_URL } from "$lib/siteConfig";
 import { getDiscussions } from "$lib/getContent";
 import type { RequestHandler } from "@sveltejs/kit";
 
-const get: RequestHandler = async () => {
+export const get: RequestHandler = async () => {
   const feed = new RSS({
     title: SITE_TITLE + " RSS Feed",
     site_url: SITE_URL,
@@ -12,7 +12,7 @@ const get: RequestHandler = async () => {
 
   const discussions = await getDiscussions();
 
-  discussions.forEach((discussion) => {
+  discussions!.forEach((discussion) => {
     feed.item({
       title: discussion.title,
       url: SITE_URL + `/posts/${discussion.slug}`,

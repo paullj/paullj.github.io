@@ -7,7 +7,7 @@
   let element: HTMLInputElement;
 
   export let posts: any[] = [];
-  export let filteredPosts: any[] = [];
+  export let filteredPosts: any[] = posts;
 
   $: filteredPosts = pattern ? fuse.search(pattern).map(({item}) => ({...item})) : posts;
 

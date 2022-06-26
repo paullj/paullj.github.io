@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ToggleDarkMode from './ToggleDarkMode.svelte';
+  import CycleTheme from './CycleTheme.svelte';
   import { page } from '$app/stores';
   $: currentPath = $page.url.pathname.substring(0, $page.url.pathname.lastIndexOf('/')) || $page.url.pathname;
 </script>
@@ -14,6 +14,6 @@
     {/if}
   </nav>
   <div class="no-js-hidden">
-    <ToggleDarkMode />
+    <CycleTheme />
   </div>
 </header>

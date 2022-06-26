@@ -4,6 +4,9 @@ import removeTags from "./removeTags";
 import truncateDescription from "./truncateDescription";
 import buildGithubUrl from "./buildGithubUrl";
 import getViewCount from "./getViewCount";
+import paginate from "./pagination";
+import fuzzy from "./fuzzy";
+import * as sort from "./sort";
 
 export {
   buildGithubUrl,
@@ -12,4 +15,7 @@ export {
   parseFrontmatter,
   removeTags,
   getViewCount,
+  paginate,
+  fuzzy,
+  sort,
 };

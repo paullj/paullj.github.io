@@ -1,45 +1,15 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Fuse from 'fuse.js';
-
-  let fuse: Fuse<any>;
-  let pattern: string;
+  import { filter } from '$lib/stores/filter';
+  
   let element: HTMLInputElement;
-
-  export let posts: any[] = [];
-  export let filteredPosts: any[] = posts;
-
-  $: filteredPosts = pattern ? fuse.search(pattern).map(({item}) => ({...item})) : posts;
-
-  onMount(() => {
-    fuse = new Fuse(posts, {
-      // isCaseSensitive: false,
-      // includeScore: false,
-      // shouldSort: true,
-      // includeMatches: false,
-      // findAllMatches: false,
-      // minMatchCharLength: 1,
-      // location: 0,
-      // threshold: 0.6,
-      // distance: 100,
-      // useExtendedSearch: false,
-      // ignoreLocation: false,
-      // ignoreFieldNorm: false,
-      // fieldNormWeight: 1,
-      keys: [
-        "title",
-      ]
-    });
-  })
-
 </script>
 
-<form class="hidden sm:block no-js-hidden font-mono text-sm" on:submit|preventDefault>
+<form class="hidden sm:block no-js-hidden font-mono text-sm" on:submit|preventDefault={() => { if(document.activeElement instanceof HTMLElement) document.activeElement.blur() }}>
   <label for="search">
     <span class="i-teenyicons-search-outline w-4 h-4" />
   </label>
 
-  <input bind:this={element} type="text" name="search" class="bg-transparent outline-none w-36 mr-4" placeholder="Type / to Search" bind:value={pattern}>
+  <input bind:this={element} type="text" name="search" class="bg-transparent outline-none w-36 mr-4" placeholder="Type / to Search" bind:value={$filter}>
 </form>
 
 <svelte:body

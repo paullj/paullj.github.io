@@ -1,46 +1,76 @@
 <script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit';
+  import type { Load } from './__types/index';
+  import { byNewest } from '$lib/utils/sort';
+  import { filter } from "$lib/stores/filter";
 
-	export const prerender = true;
+  export const prerender = true;
 	export const hydrate = true;
 
-	export const load: Load = async({ fetch }) => {
-    const res = await fetch(`/posts.json`);
-    if (res.status === 200) {
-      const data = await res.json();
+  export const load: Load = ({ props, url }) => {
+    // if (url.searchParams.has("filter")) {
+    //   filter.internalSet(url.searchParams.get("filter")!);
+    // }
 
-      return {
-        props: {
-          posts: data.posts.map(post => ({
-            ...post,
-            createdAt: new Date(post.createdAt),
-            publishedAt: new Date(post.publishedAt),
-            updatedAt: new Date(post.updatedAt),
-          }))
-        },
-        cache: { maxage: 60 }
-      };
+    let totalPages = Math.ceil(props.posts.length / 5)
+    let currentPage = 1;
+    
+    if(browser && url.searchParams.has("page")) {
+      currentPage = Number.parseInt(url.searchParams.get("page")!);
+      
+      if(currentPage < 1 || currentPage > totalPages) {
+        currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+        
+        return {
+          status: 300,
+          redirect: `?page=${currentPage}`
+        }
+      }
     }
 
-    return {
-      status: res.status,
-      error: await res.text()
-    };
-	}
+
+    props = {
+      ...props,
+      currentPage,
+      posts: props.posts.map((post: any) => ({
+        ...post,
+        createdAt: new Date(post.createdAt),
+        publishedAt: new Date(post.publishedAt),
+        updatedAt: new Date(post.lastEditedAt)
+      })).sort(byNewest)
+    }
+    return { 
+      props, 
+    }
+  }
 </script>
 
 
 <script lang="ts">
   import Meta from 'svelte-meta';
+
   import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, DEFAULT_IMAGE } from '$lib/siteConfig';
+  import hydrateAction from '$lib/actions/hydrate';
+  import { getViewCount, paginate, fuzzy } from '$lib/utils';
+  
   import Search from '$lib/components/Search.svelte';
   import SortBy from '$lib/components/SortBy.svelte';
+  import Pagination from '$lib/components/Pagination.svelte';
   import SocialIcons from '$lib/components/SocialIcons.svelte';
-  import hydrateAction from '$lib/actions/hydrate';
-  import { getViewCount } from '$lib/utils';
+import { browser } from '$app/env';
 
-  export let posts: any[] = [];
-  let filteredPosts: any[] = posts;
+  export let currentPage: number;
+  export let posts: any = [];
+  
+  let filteredPosts: any[];
+  
+  let pageSize = 5;
+
+  $: if($filter) {
+    filteredPosts = posts.filter(({title}) => fuzzy($filter, title));
+  } else {
+    filteredPosts =  paginate(posts, pageSize, currentPage);
+  }
+
 </script>
 
 <Meta
@@ -63,8 +93,8 @@
     </a>
   </div>
 
-  <Search {posts} bind:filteredPosts={filteredPosts}></Search>
-  <SortBy bind:filteredPosts={filteredPosts}></SortBy>
+  <Search></Search>
+  <SortBy bind:posts={posts}></SortBy>
 </div>
 
 <ul class="text-lg">
@@ -77,9 +107,6 @@
       </div>
       <div class="flex-1 mb-2 sm:mb-0 align-middle truncate">
         <a class="group decoration-2px" href="/posts/{slug}" sveltekit:prefetch>
-          {#if category.toLowerCase().includes("draft")}
-            <span class="font-mono font-bold text-yellow-500 mr-1">*</span>
-          {/if}
           <span class="group-hover:underline">
             {title}
           </span>
@@ -87,16 +114,16 @@
       </div>
       <div class="hidden sm:flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         {#if reactions > 0}
-        <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 
-          {reactions}
-          <span class="i-teenyicons-heart-solid h-3 ml-1"></span>
-        </a>
+          <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#reactions" sveltekit:prefetch> 
+            {reactions}
+            <span class="i-teenyicons-heart-solid h-3 ml-1"></span>
+          </a>
         {/if}
         {#if comments > 0}
-        <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#comments" sveltekit:prefetch> 
-          {comments}
-          <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
-        </a>
+          <a class="flex flex-row items-center hover:underline" href="/posts/{slug}#comments" sveltekit:prefetch> 
+            {comments}
+            <span class="i-teenyicons-chat-solid h-3 ml-1"></span>
+          </a>
         {/if}
         <span class="flex flex-row items-center" > 
           <span use:hydrateAction={async () => await getViewCount(slug) || false }>
@@ -110,3 +137,18 @@
     <li>No posts to show!</li>
   {/each}
 </ul>
+
+<div class="my-4">
+  {#if $filter}
+    <div class="font-mono text-xs">
+      {filteredPosts.length}
+      {#if filteredPosts.length > 1}
+        Results
+      {:else}
+        Result
+      {/if}
+    </div>
+  {:else}
+    <Pagination totalItems={posts.length} {pageSize} {currentPage}></Pagination>
+  {/if}
+</div>

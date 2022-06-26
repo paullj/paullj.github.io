@@ -17,7 +17,7 @@
 - [x] RSS feed
 - [x] Better error page
 - [x] Post search
-- [ ] Post pagination
+- [x] Post pagination
 - [x] View counter
 
 # Running your own version of this website

@@ -52,8 +52,8 @@
 <form on:submit|preventDefault>
   <div class="hidden">
     {#each ALL_THEMES as name, i}
-    <label for={name.toLowerCase()} class="ml-2 cursor-default sr-only">{name}</label>
-    <input bind:group={index} type="radio" name="nightModeCheckbox" id={name} value={i}>
+      <label for={name.toLowerCase()} class="ml-2 cursor-default sr-only">{name}</label>
+      <input bind:group={index} type="radio" name="nightModeCheckbox" id={name} value={i}>
     {/each}
   </div>
 

@@ -1,25 +1,27 @@
 <script lang="ts">
-  export let filteredPosts: any[] = [];
+  import { sort } from "$lib/utils";
+
+  export let posts: any[] = [];
 
   let orderBy = "newest";
 
   $: {
     switch (orderBy) {
       case "views":
-         filteredPosts = filteredPosts.sort((a, b) => b.viewCount - a.viewCount)
+         posts = posts.sort(sort.byViews)
         break;       
       case "reactions":
-        filteredPosts = filteredPosts.sort((a, b) => b.reactions - a.reactions)
+        posts = posts.sort(sort.byReaction)
         break;
       case "comments":
-        filteredPosts = filteredPosts.sort((a, b) => b.comments - a.comments)
+        posts = posts.sort(sort.byComments)
         break;
       case "oldest":
-        filteredPosts = filteredPosts.sort((a, b) => a.publishedAt - b.publishedAt)
+        posts = posts.sort(sort.byOldest)
         break;
       case "newest":
       default:
-        filteredPosts = filteredPosts.sort((a, b) => b.publishedAt - a.publishedAt)
+        posts = posts.sort(sort.byNewest)
         break;
     }
   }
@@ -27,7 +29,6 @@
 
 <form class="no-js-hidden font-mono text-sm" on:submit|preventDefault>
   <label for="posts-filter">
-    <!-- Sort by -->
     <span class="i-teenyicons-filter-outline mb-0.5 w-4 h-4" />
   </label>
 

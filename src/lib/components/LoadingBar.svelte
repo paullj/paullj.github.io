@@ -23,7 +23,7 @@
 </script>
 
 <div class="fixed inset-0 h-1">
-    <div class="h-full bg-gray-100 dark:bg-gray-700 progress" style={`--width: ${$progress * 100}%`} />
+  <div class="h-full bg-gray-100 dark:bg-gray-700 progress" style={`--width: ${$progress * 100}%`} />
 </div>
 
 <style>

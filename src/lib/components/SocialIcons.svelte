@@ -5,12 +5,12 @@
 
 <div class="text-left">
   <ExternalLink class="mr-4" uri="mailto:{EMAIL_ADDRESS}?subject=Hi!" ariaLabel="Send me an email">
-    <span class="i-teenyicons-at-outline w-8 h-8 sm:w-6 sm:h-6 hover:text-red" />
+    <span class="i-teenyicons-at-outline w-10 h-10 sm:w-8 sm:h-8 hover:text-red" />
   </ExternalLink>
   <ExternalLink class="mx-4" uri="https://www.linkedin.com/in/{LINKEDIN_USER}" ariaLabel="Connect on LinkedIn">
-    <span class="i-teenyicons-linkedin-outline w-8 h-8 sm:w-6 sm:h-6 hover:text-blue-500" />
+    <span class="i-teenyicons-linkedin-outline w-10 h-10 sm:w-8 sm:h-8 hover:text-blue-500" />
   </ExternalLink>
   <ExternalLink class="mx-4" uri="https://www.github.com/{GITHUB_USER}" ariaLabel="See my public repos on GitHub">
-    <span class="i-teenyicons-github-outline w-8 h-8 sm:w-6 sm:h-6 hover:text-purple" />
+    <span class="i-teenyicons-github-outline w-10 h-10 sm:w-8 sm:h-8 hover:text-purple" />
   </ExternalLink>
 </div>

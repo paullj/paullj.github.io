@@ -1,38 +1,18 @@
 <script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit';
+  import type { Load } from './__types/[slug]';
 
 	export const prerender = true;
 	export const hydrate = true;
 
-	export const load: Load = async({ params, fetch }) => {
-    const slug = params.slug;
-		try {
-			const res = await fetch(`/posts/${slug}.json`);
-			if (res.status === 200) {
-        const post = await res.json();
-        return {
-          props: {
-            ...post,
-            createdAt: new Date(post.createdAt),
-            publishedAt: new Date(post.publishedAt),
-            lastEditedAt: new Date(post.lastEditedAt),
-          },
-          cache: { maxage: 60 }
-        };
-      }
-
-      return {
-        status: res.status,
-        error: await res.text()
-      };
-		} catch (err) {
-			console.error('error fetching blog post at [slug].svelte: ' + slug, err);
-			return {
-				status: 500,
-				error: new Error('error fetching blog post at [slug].svelte: ' + slug)
-			};
-		}
-	}
+  export const load: Load = ({ props }) => {
+    props = {
+      ...props,
+      createdAt: new Date(props.createdAt),
+      publishedAt: new Date(props.publishedAt),
+      updatedAt: new Date(props.updatedAt)
+    }
+    return { props };
+  }
 </script>
 
 <script lang="ts">
@@ -48,7 +28,7 @@
 
   export let number: Number;
   export let publishedAt: Date;
-  export let lastEditedAt: Date;
+  export let updatedAt: Date;
 
   export let title: string;
   export let slug: string;
@@ -83,9 +63,9 @@
 {/if}
 <div class="flex justify-between items-center mt-4 mb-2">
   <User {...author}></User>
-  {#if lastEditedAt !== publishedAt}
+  {#if updatedAt !== publishedAt}
     <span class="flex-1 mx-2 text-gray-500 dark:text-gray-400 text-xs align-middle hidden sm:inline-block">
-      (Last edited {lastEditedAt.toLocaleDateString('en-GB', { hour: "numeric", minute: "numeric", year: '2-digit', month: 'short', day: 'numeric' })})
+      (Last edited {updatedAt.toLocaleDateString('en-GB', { hour: "numeric", minute: "numeric", year: '2-digit', month: 'short', day: 'numeric' })})
     </span>
   {/if}
   <div class="align-middle text-right mr-4">

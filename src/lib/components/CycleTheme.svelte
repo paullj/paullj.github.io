@@ -57,8 +57,8 @@
     {/each}
   </div>
 
-  <button class="no-js-hidden relative inline-block group w-8 h-8" aria-label="Theme Toggle" on:click={() => cycleTheme()}>
-    <div class="font-mono hidden opacity-80 items-center justify-center group-hover:flex absolute right-0 capitalize mr-8 h-full text-xs inset-y-0">
+  <button class="no-js-hidden relative inline-block group w-12 h-12 sm:w-10 sm:h-10" aria-label="Theme Toggle" on:click={() => cycleTheme()}>
+    <div class="font-mono flex sm:hidden opacity-80 items-center justify-center group-hover:flex absolute right-0 capitalize mr-12 sm:mr-10 h-full text-sm sm:text-xs inset-y-0">
       {$theme}
     </div>
     {#if $theme === 'light'}
@@ -67,8 +67,6 @@
     <span in:fade={fadeSettings} class="inset-0 group-hover:text-light-blue-600 m-auto w-3/5 h-3/5 absolute i-teenyicons-moon-outline"/>
     {:else}
     <span in:fade={fadeSettings} class="inset-0 group-hover:text-indigo-500 m-auto w-3/5 h-3/5 absolute i-teenyicons-desklamp-outline"/>
-    <!-- <span in:fade={fadeSettings} class="bottom-0 right-0 group-hover:text-light-blue-600 absolute w-1/2 h-2/3 i-teenyicons-moon-outline"/> -->
-    <!-- <span in:fade={fadeSettings} class="top-0 left-0 group-hover:text-orange-400 absolute w-1/2 h-2/3 i-teenyicons-sun-outline"/> -->
     {/if}
   </button>
 </form>

@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
-  import type { Load } from './__types/index';
+  import { browser, dev } from '$app/env';
   import { byNewest } from '$lib/utils/sort';
   import { filter } from "$lib/stores/filter";
+  import type { Load } from './__types/index';
 
   export const prerender = true;
 	export const hydrate = true;
@@ -9,20 +10,28 @@
   export const load: Load = ({ props, url }) => {
     // if (url.searchParams.has("filter")) {
     //   filter.internalSet(url.searchParams.get("filter")!);
-    // }
 
     let totalPages = Math.ceil(props.posts.length / 5)
     let currentPage = 1;
     
-    if(browser && url.searchParams.has("page")) {
-      currentPage = Number.parseInt(url.searchParams.get("page")!);
-      
-      if(currentPage < 1 || currentPage > totalPages) {
-        currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+    if(!dev && browser) {
+      if(url.searchParams.has("filter")) {
+        filter.internalSet(url.searchParams.get("filter")!);
+      }
+
+      if(url.searchParams.has("page")) {
+        const pageParam = Number.parseInt(url.searchParams.get("page")!);
         
-        return {
-          status: 300,
-          redirect: `?page=${currentPage}`
+        if(!Number.isNaN(pageParam))
+          currentPage = pageParam;
+        
+        if(currentPage < 1 || currentPage > totalPages) {
+          currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+          
+          return {
+            status: 300,
+            redirect: `?page=${currentPage}`
+          }
         }
       }
     }
@@ -56,7 +65,6 @@
   import SortBy from '$lib/components/SortBy.svelte';
   import Pagination from '$lib/components/Pagination.svelte';
   import SocialIcons from '$lib/components/SocialIcons.svelte';
-import { browser } from '$app/env';
 
   export let currentPage: number;
   export let posts: any = [];

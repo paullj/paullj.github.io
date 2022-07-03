@@ -4,7 +4,9 @@
 
 <footer class="px-2 pt-24 pb-4 text-xs text-gray-400 font-mono text-center leading-loose">
   <p>
-    This site was made by me and it's completely 
+    This site was made by me
+    <br class="sm:hidden" />
+     and it's completely 
     <a href="https://www.github.com/{GITHUB_USER}/{GITHUB_REPO}" class="decoration-dotted underline decoration-2">
       open source
     </a>

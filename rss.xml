@@ -4,13 +4,13 @@
         <description><![CDATA[Paul Lavender-Jones RSS Feed]]></description>
         <link>https://paullj.github.io</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 06 Jul 2022 14:41:03 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 06 Jul 2022 14:53:23 GMT</lastBuildDate>
         <atom:link href="https://paullj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Fast, Lightweight Fuzzy Search]]></title>
             <description><![CDATA[How the fast and lightweight fuzzy searching for this website works]]></description>
-            <link>https://paullj.github.io/posts/fast-lightweight-fuzzy-search</link>
-            <guid isPermaLink="true">https://paullj.github.io/posts/fast-lightweight-fuzzy-search</guid>
+            <link>https://paullj.github.io/posts/fast-lightweight-fuzzy-search-using-fuse.js</link>
+            <guid isPermaLink="true">https://paullj.github.io/posts/fast-lightweight-fuzzy-search-using-fuse.js</guid>
             <pubDate>Sun, 19 Jun 2022 12:00:00 GMT</pubDate>
         </item>
         <item>

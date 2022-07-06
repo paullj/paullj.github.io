@@ -8,9 +8,9 @@
     <meta name="title" content="Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta name="description" content="My personal website where I can show off interesting projects and write down my thoughts." data-svelte="svelte-5r3x8t"><meta property="og:image" content="https://raw.githubusercontent.com/paullj/paullj.github.io/main/screenshot.png" data-svelte="svelte-5r3x8t"><meta property="og:title" content="Paul Lavender-Jones" data-svelte="svelte-5r3x8t"><meta property="og:description" content="My personal website where I can show off interesting projects and write down my thoughts." data-svelte="svelte-5r3x8t"><meta property="og:url" content="https://paullj.github.io" data-svelte="svelte-5r3x8t"><link rel="canonical" href="https://paullj.github.io" data-svelte="svelte-5r3x8t">
 	<link rel="stylesheet" href="/_app/immutable/assets/start-3644ecb0.css">
 	<link rel="stylesheet" href="/_app/immutable/assets/pages/__layout.svelte-430484e7.css">
-	<link rel="stylesheet" href="/_app/immutable/assets/pages/index.svelte-6a3b96cc.css">
-	<link rel="stylesheet" href="/_app/immutable/assets/pages/posts/index.svelte-26a28d0a.css">
-	<link rel="modulepreload" href="/_app/immutable/start-34cc97ba.js">
+	<link rel="stylesheet" href="/_app/immutable/assets/pages/index.svelte-d70ea48b.css">
+	<link rel="stylesheet" href="/_app/immutable/assets/error.svelte-91aebcd4.css">
+	<link rel="modulepreload" href="/_app/immutable/start-1bf8aa80.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/index-8c0e4016.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/index-c239ecf6.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-d1fb5791.js">
@@ -18,7 +18,7 @@
 	<link rel="modulepreload" href="/_app/immutable/chunks/navigation-6709cf39.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/siteConfig-cd65c973.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/stores-6b324ade.js">
-	<link rel="modulepreload" href="/_app/immutable/pages/index.svelte-9ea47fab.js">
+	<link rel="modulepreload" href="/_app/immutable/pages/index.svelte-a7be9eb2.js">
 	<link rel="modulepreload" href="/_app/immutable/chunks/ExternalLink-bb7f44a5.js">
   </head>
   <body>
@@ -70,13 +70,13 @@ Lavender-Jones</h1>
   <input type="text" name="search" class="bg-transparent outline-none w-36 mr-4" placeholder="Type / to Search" value=""></form>
 
 
-  <form class="no-js-hidden font-mono text-sm"><label for="posts-filter"><span class="i-teenyicons-filter-outline mb-0.5 w-4 h-4"></span></label>
+  <form class="no-js-hidden font-mono text-sm"><label for="posts-filter"><span class="i-teenyicons-sort-down-outline mb-0.5 w-4 h-4"></span></label>
 
   <select name="posts-filter" id="posts-filter" class="py-2 cursor-pointer bg-gray-50 dark:bg-gray-900 leading-none"><option value="newest" class="bg-gray-50 dark:bg-gray-900 p-2" selected>Newest</option><option value="oldest" class="bg-gray-50 dark:bg-gray-900 p-2">Oldest</option><option value="views" class="bg-gray-50 dark:bg-gray-900 p-2">Views</option><option value="reactions" class="bg-gray-50 dark:bg-gray-900 p-2">Reactions</option><option value="comments" class="bg-gray-50 dark:bg-gray-900 p-2">Comments</option></select></form></div>
 
 <ul class="text-lg"><li class="flex flex-col sm:flex-row sm:space-x-2 sm:items-center"><div class="mr-2 min-w-24"><date class="block leading-none text-gray-400 uppercase tracking-wide text-xs font-extrabold">Sun, 19 Jun 22
         </date></div>
-      <div class="flex-1 mb-2 sm:mb-0 align-middle truncate"><a class="group decoration-2px" href="/posts/fast-lightweight-fuzzy-search" sveltekit:prefetch><span class="group-hover:underline">Fast, Lightweight Fuzzy Search</span>
+      <div class="flex-1 mb-2 sm:mb-0 align-middle truncate"><a class="group decoration-2px" href="/posts/fast-lightweight-fuzzy-search-using-fuse.js" sveltekit:prefetch><span class="group-hover:underline">Fast, Lightweight Fuzzy Search</span>
         </a></div>
       <div class="hidden sm:flex flex-row text-gray-400 font-bold decoration-2 font-mono text-xs ml-6 gap-x-2">
         
@@ -150,10 +150,10 @@ Lavender-Jones</h1>
   </style></noscript>
 
 
-		<script type="module" data-sveltekit-hydrate="ffmer5">
-		import { start } from "/_app/immutable/start-34cc97ba.js";
+		<script type="module" data-sveltekit-hydrate="1m6f4dc">
+		import { start } from "/_app/immutable/start-1bf8aa80.js";
 		start({
-			target: document.querySelector('[data-sveltekit-hydrate="ffmer5"]').parentNode,
+			target: document.querySelector('[data-sveltekit-hydrate="1m6f4dc"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -167,6 +167,6 @@ Lavender-Jones</h1>
 				routeId: ""
 			}
 		});
-	</script><script type="application/json" sveltekit:data-type="props">{"posts":[{"title":"Fast, Lightweight Fuzzy Search","slug":"fast-lightweight-fuzzy-search","reactions":0,"comments":0,"category":"Published Posts","viewCount":1,"createdAt":"2022-06-19T17:21:41Z","publishedAt":"2022-06-19T12:00Z","updatedAt":"2022-07-06T14:40:33Z"},{"title":"Composing Music with Code","slug":"composing-music-with-code","reactions":0,"comments":0,"category":"Published Posts","viewCount":9,"createdAt":"2022-02-08T02:22:55Z","publishedAt":"2022-03-26T12:00Z","updatedAt":"2022-07-06T10:06:25Z"},{"title":"How This Blog Makes the Most of GitHub","slug":"how-this-blog-makes-the-most-of-github","reactions":2,"comments":1,"category":"Published Posts","viewCount":290,"createdAt":"2022-02-08T02:26:02Z","publishedAt":"2022-02-08T02:26:02Z","updatedAt":"2022-06-19T16:53:14Z"},{"title":"Up-To-Date  Analytics on a Static Website","slug":"up-to-date-analytics-on-a-static-website","reactions":1,"comments":0,"category":"Published Posts","viewCount":34,"createdAt":"2022-06-09T18:45:39Z","publishedAt":"2022-06-10T12:00Z","updatedAt":"2022-06-10T12:30:37Z"},{"title":"Designing Electrical Appliances for Off-Grid Kenya","slug":"designing-electrical-appliances-for-off-grid-kenya","reactions":0,"comments":0,"category":"Published Posts","viewCount":11,"createdAt":"2022-02-08T02:20:57Z","publishedAt":"2021-06-01T00:00Z","updatedAt":"2022-02-08T18:14:18Z"},{"title":"From Rapid Flu Testing to LiDAR for Autonomous Cars","slug":"from-rapid-flu-testing-to-lidar-for-autonomous-cars","reactions":0,"comments":0,"category":"Published Posts","viewCount":10,"createdAt":"2022-02-07T23:33:56Z","publishedAt":"2020-10-30T00:00Z","updatedAt":"2022-02-08T18:05:06Z"},{"title":"Re/upcycling a Drone","slug":"reupcycling-a-drone","reactions":0,"comments":0,"category":"Published Posts","viewCount":13,"createdAt":"2022-02-02T19:47:14Z","publishedAt":"2016-08-01T00:00Z","updatedAt":"2022-02-08T16:07:56Z"}]}</script></div>
+	</script><script type="application/json" sveltekit:data-type="props">{"posts":[{"title":"Fast, Lightweight Fuzzy Search","slug":"fast-lightweight-fuzzy-search-using-fuse.js","reactions":0,"comments":0,"category":"Published Posts","viewCount":1,"createdAt":"2022-06-19T17:21:41Z","publishedAt":"2022-06-19T12:00Z","updatedAt":"2022-07-06T14:40:33Z"},{"title":"Composing Music with Code","slug":"composing-music-with-code","reactions":0,"comments":0,"category":"Published Posts","viewCount":9,"createdAt":"2022-02-08T02:22:55Z","publishedAt":"2022-03-26T12:00Z","updatedAt":"2022-07-06T10:06:25Z"},{"title":"How This Blog Makes the Most of GitHub","slug":"how-this-blog-makes-the-most-of-github","reactions":2,"comments":1,"category":"Published Posts","viewCount":290,"createdAt":"2022-02-08T02:26:02Z","publishedAt":"2022-02-08T02:26:02Z","updatedAt":"2022-06-19T16:53:14Z"},{"title":"Up-To-Date  Analytics on a Static Website","slug":"up-to-date-analytics-on-a-static-website","reactions":1,"comments":0,"category":"Published Posts","viewCount":34,"createdAt":"2022-06-09T18:45:39Z","publishedAt":"2022-06-10T12:00Z","updatedAt":"2022-06-10T12:30:37Z"},{"title":"Designing Electrical Appliances for Off-Grid Kenya","slug":"designing-electrical-appliances-for-off-grid-kenya","reactions":0,"comments":0,"category":"Published Posts","viewCount":11,"createdAt":"2022-02-08T02:20:57Z","publishedAt":"2021-06-01T00:00Z","updatedAt":"2022-02-08T18:14:18Z"},{"title":"From Rapid Flu Testing to LiDAR for Autonomous Cars","slug":"from-rapid-flu-testing-to-lidar-for-autonomous-cars","reactions":0,"comments":0,"category":"Published Posts","viewCount":10,"createdAt":"2022-02-07T23:33:56Z","publishedAt":"2020-10-30T00:00Z","updatedAt":"2022-02-08T18:05:06Z"},{"title":"Re/upcycling a Drone","slug":"reupcycling-a-drone","reactions":0,"comments":0,"category":"Published Posts","viewCount":13,"createdAt":"2022-02-02T19:47:14Z","publishedAt":"2016-08-01T00:00Z","updatedAt":"2022-02-08T16:07:56Z"}]}</script></div>
   </body>
 </html>

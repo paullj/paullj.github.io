@@ -29,7 +29,7 @@
 
 <form class="no-js-hidden font-mono text-sm" on:submit|preventDefault>
   <label for="posts-filter">
-    <span class="i-teenyicons-filter-outline mb-0.5 w-4 h-4" />
+    <span class="i-teenyicons-sort-down-outline mb-0.5 w-4 h-4" />
   </label>
 
   <select bind:value={orderBy} name="posts-filter" id="posts-filter" class="py-2 cursor-pointer bg-gray-50 dark:bg-gray-900 leading-none">

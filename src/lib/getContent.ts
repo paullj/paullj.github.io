@@ -83,9 +83,9 @@ const getDiscussions = async () => {
 
         return {
           ...node,
+          slug,
           ...metadata,
           body,
-          slug,
           viewCount,
           category: node.category.name,
           comments: node.comments.totalCount,

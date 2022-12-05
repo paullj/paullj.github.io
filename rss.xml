@@ -4,7 +4,7 @@
         <description><![CDATA[Paul Lavender-Jones RSS Feed]]></description>
         <link>https://paullj.github.io</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 28 Nov 2022 00:29:17 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 05 Dec 2022 00:28:26 GMT</lastBuildDate>
         <atom:link href="https://paullj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Welcome to @giscus/react component!]]></title>

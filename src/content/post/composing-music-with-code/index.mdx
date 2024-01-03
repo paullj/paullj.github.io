@@ -1,0 +1,43 @@
+---
+title: Composing Music with Code
+publishDate: "2022-03-26"
+description: Exploring the idea of generating music from code with timb(re) a musical creative coding environment I made
+tags: ["algorithms", "creative coding", "svelte", "music", "javascript"]
+---
+
+**NOTE:** _Want to skip to making music? You can try timb(re) out at [paullj.github.io/timb](https://paullj.github.io/timb) and the code is available [here](https://github.com/paullj/timb)._
+
+You may have heard of terms like **generative music** from Brain Eno's _Music for Airports_[^1], or [**algoraves**](https://algorave.com/), live events where people dance to music generated from algorithms, or [**live coding**](https://github.com/pjagielski/awesome-live-coding-music), on the fly progamming for music.
+
+[^1]:A release of [excerpts of generative music](https://en.wikipedia.org/wiki/Brian_Eno#Released_excerpts)
+
+    https://open.spotify.com/track/1Qr6LFKNBFNNa2y6nMDO31?si=8812c14cdd4c42c0
+
+I certainly hadn't, until I watched Resident Advisor's video[^2] on algoraves. This led me down a youtube spiral of watching other[^3] videos[^4] about creating music with code.
+
+[^2]:_'Algorave Generation'_ mini documentary by Resident Advisor
+
+    https://www.youtube.com/watch?v=S2EZqikCIfY
+
+[^3]: Short Guardian video _'Run the code: is algorave the future of dance music?'_
+
+    https://www.youtube.com/watch?v=h340aNznHnM
+
+[^4]: TEDxHull talk by Alex McLean, _'Algorave: algorithmic dance culture'_
+
+    https://www.youtube.com/watch?v=nAGjTYa95HM
+
+Another idea that is similar is the world of [creative coding](https://en.wikipedia.org/wiki/Creative_coding). Creative coding is a type of computer programming in which the goal is to create something expressive instead of something functional. Often it is used to create visual art, but it isn't limited to that. I wanted to make a fun project that brought these two things together in the browser.
+
+The idea is very heavily inspired by Martin Kleppe's [tixy.land](https://tixy.land/). Tixy is a minimalist creative coding environment where you can control the size and color of a 16x16 dot matrix with a single JavaScript function. The input is limited to 32 characters but you can acheive very complex patterns, shapes and visual effects with it.
+
+![Example of what you can create with tixy.land](https://user-images.githubusercontent.com/8403295/153089177-9f34a67e-4f30-4af5-9fcc-070bb4f0bd5b.gif)
+
+**timb(re)** is a a creative coding playground for creating music heavily inspired by tixy.land. You can type in 64 characters of JavaScript as a function and that is used to play a little tune. Like tixy, the function you write is provided parameters`time` and `index`, however unlike tixy, instead of `x` and `y` the parameters `m` and `b` are used which represent measures and beats respectively.
+
+https://www.youtube.com/watch?v=hCIS89XUXQU
+
+I made this quick, fun project using SvelteKit over the last few days. Although it uses SvelteKit, it is a SPA^[**S**ingle **P**age **A**pplication]. I was going to just use a standard svelte project but SvelteKit makes it so easy to export and host on places like GitHub Pages and even gives easy ways to export some pages as plain HTML, like /about in this project. It uses ToneJS for the audio synthesis but other than that its just Svelte, which was easy to use as always.
+
+You can try it out at [paullj.github.io/timb](https://paullj.github.io/timb) and the code is available [here](https://github.com/paullj/timb).
+

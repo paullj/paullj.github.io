@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paullj.github.io/sitemap-index.xml

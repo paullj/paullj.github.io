@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../FormattedDate.astro";
+import { Icon } from "astro-icon";
+
+interface Props {
+	content: CollectionEntry<"post">;
+}
+
+const {
+	content: { data, render },
+} = Astro.props;
+
+const { remarkPluginFrontmatter } = await render();
+
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+	month: "long",
+};
+---
+
+{
+	data.coverImage && (
+		<div class="aspect-h-9 aspect-w-16 mb-6">
+			<Image
+				src={data.coverImage.src}
+				alt={data.coverImage.alt}
+				class="object-cover"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</div>
+	)
+}
+{data.draft ? <span class="text-base text-red-500">(Draft)</span> : null}
+<h1 class="title mb-3 sm:mb-1">
+	{data.title}
+</h1>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+	<p class="font-semibold">
+		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} /> /{" "}
+		{remarkPluginFrontmatter.minutesRead}
+	</p>
+	{
+		data.updatedDate && (
+			<span class="rounded-lg bg-quote/10 p-1 text-quote">
+				Last Updated:
+				<FormattedDate class="ms-1" date={data.updatedDate} dateTimeOptions={dateTimeOptions} />
+			</span>
+		)
+	}
+</div>
+{
+	!!data.tags?.length && (
+		<div class="mt-3 flex items-center space-x-2">
+			<Icon
+				name="teenyicons:tag-outline"
+				class="inline-block h-3.5 w-3.5"
+				aria-hidden="true"
+				focusable="false"
+			/>
+
+			<ul class="flex flex-wrap gap-2 text-xs leading-normal">
+				{data.tags.map((tag, i) => (
+					<li>
+						<a
+							class="cactus-link opacity-70"
+							href={`/tags/${tag}/`}
+							aria-label={`View more blogs with the tag ${tag}`}
+							data-pagefind-filter="tag"
+						>
+							#{tag}
+						</a>
+						{i < data.tags.length - 1 && ", "}
+					</li>
+				))}
+			</ul>
+		</div>
+	)
+}

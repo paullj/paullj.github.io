@@ -43,11 +43,7 @@ const { term } = Astro.props;
 		});
 	}
 
-	const giscusScript = document.getElementById("giscus-script") as HTMLScriptElement;
-	giscusScript.setAttribute(
-		"data-theme",
-		getUserPref() === "light" ? "noborder_light" : "noborder_dark",
-	);
+	setGiscusTheme();
 
 	document.addEventListener("theme-change", () => {
 		setGiscusTheme();

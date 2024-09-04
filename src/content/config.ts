@@ -1,4 +1,4 @@
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, reference } from "astro:content";
 
 function removeDupsAndLowerCase(array: string[]) {
 	if (!array.length) return array;
@@ -13,11 +13,11 @@ const post = defineCollection({
 		z.object({
 			title: z.string().max(60),
 			description: z.string().min(50).max(160),
-			publishDate: z
+			publishedAt: z
 				.string()
 				.or(z.date())
 				.transform((val) => new Date(val)),
-			updatedDate: z
+			updatedAt: z
 				.string()
 				.optional()
 				.transform((str) => (str ? new Date(str) : undefined)),
@@ -33,4 +33,25 @@ const post = defineCollection({
 		}),
 });
 
-export const collections = { post };
+const project = defineCollection({
+	type: "data",
+	schema: z.object({
+		title: z.string().max(60),
+		// description: z.string().min(50).max(160),
+		repoUrl: z.string().url().optional(),
+		websiteUrl: z.string().url().optional(),
+		publishedAt: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		updatedAt: z
+			.string()
+			.optional()
+			.transform((str) => (str ? new Date(str) : undefined)),
+		draft: z.boolean().default(false),
+		category: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		relatedPosts: z.array(reference("post")).default([]),
+	}),
+});
+
+export const collections = { post, project };

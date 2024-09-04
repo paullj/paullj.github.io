@@ -6,15 +6,12 @@ import { Resvg } from "@resvg/resvg-js";
 import { siteConfig } from "@/site-config";
 import { getAllPosts, getFormattedDate } from "@/utils";
 
-// import RobotoMono from "@/assets/roboto-mono-regular.ttf";
-// import RobotoMonoBold from "@/assets/roboto-mono-700.ttf";
 import JetBrainsMono from "@/assets/JetBrainsMono-Regular.ttf";
 import JetBrainsMonoBold from "@/assets/JetBrainsMono-Bold.ttf";
 
 const ogOptions: SatoriOptions = {
 	width: 1200,
 	height: 630,
-	// debug: true,
 	fonts: [
 		{
 			name: "JetBrains Mono",
@@ -48,13 +45,10 @@ const markup = (title: string, pubDate: string) =>
 export async function GET({ params: { slug } }: APIContext) {
 	const post = await getEntryBySlug("post", slug!);
 	const title = post?.data.title ?? siteConfig.title;
-	const postDate = getFormattedDate(
-		post?.data.updatedDate ?? post?.data.publishDate ?? Date.now(),
-		{
-			weekday: "long",
-			month: "long",
-		},
-	);
+	const postDate = getFormattedDate(post?.data.updatedAt ?? post?.data.publishedAt ?? Date.now(), {
+		weekday: "long",
+		month: "long",
+	});
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
 	return new Response(png, {

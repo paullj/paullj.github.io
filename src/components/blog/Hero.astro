@@ -32,20 +32,24 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 		</div>
 	)
 }
-{data.draft ? <span class="text-base text-red-500">(Draft)</span> : null}
+{data.draft ? <span class="absolute -mt-6 text-base text-red-500">(Draft)</span> : null}
 <h1 class="title mb-3 sm:mb-1">
 	{data.title}
 </h1>
+<p class="mb-10 mt-2 text-base font-light text-gray-500">
+	{data.description}
+</p>
+
 <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
 	<p class="font-semibold">
-		<FormattedDate date={data.publishDate} dateTimeOptions={dateTimeOptions} /> /{" "}
+		<FormattedDate date={data.publishedAt} dateTimeOptions={dateTimeOptions} /> /{" "}
 		{remarkPluginFrontmatter.minutesRead}
 	</p>
 	{
-		data.updatedDate && (
+		data.updatedAt != undefined && (
 			<span class="rounded-lg bg-quote/10 p-1 text-quote">
 				Last Updated:
-				<FormattedDate class="ms-1" date={data.updatedDate} dateTimeOptions={dateTimeOptions} />
+				<FormattedDate class="ms-1" date={data.updatedAt} dateTimeOptions={dateTimeOptions} />
 			</span>
 		)
 	}

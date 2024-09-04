@@ -9,7 +9,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 };
 
 const { post, as: Tag = "div", withDesc = false } = Astro.props;
-const postDate = post.data.updatedDate ?? post.data.publishDate;
+const postDate = post.data.updatedAt ?? post.data.publishedAt;
 ---
 
 <div class="grid-cols-[1fr,auto] sm:inline-grid">

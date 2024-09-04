@@ -3,10 +3,12 @@
 	"[markdown]": {
 		"editor.wordWrap": "on",
 		"editor.codeActionsOnSave": {
-			"source.fixAll.markdownlint": "explicit"
+			"source.fixAll.markdownlint": "always"
 		}
 	},
-	"prettier.documentSelectors": ["**/*.astro"],
+	"prettier.documentSelectors": [
+		"**/*.astro"
+	],
 	"eslint.validate": [
 		"javascript",
 		"javascriptreact",

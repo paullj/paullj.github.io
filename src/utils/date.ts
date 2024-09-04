@@ -8,10 +8,9 @@ export function getFormattedDate(
 ) {
 	if (typeof options !== "undefined") {
 		return new Date(date).toLocaleDateString(siteConfig.date.locale, {
-			...(siteConfig.date.options as Intl.DateTimeFormatOptions),
+			...siteConfig.date.options,
 			...options,
 		});
 	}
-
 	return dateFormat.format(new Date(date));
 }

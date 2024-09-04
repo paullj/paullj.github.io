@@ -5,7 +5,7 @@ export type SiteConfig = {
 	lang: string;
 	ogLocale: string;
 	date: {
-		locale?: string | string[];
+		locale: string;
 		options: Intl.DateTimeFormatOptions;
 	};
 	postsPerPage: number;

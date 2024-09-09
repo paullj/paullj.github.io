@@ -25,6 +25,8 @@ const expressiveCodeOptions: AstroExpressiveCodeOptions = {
     codePaddingInline: "1rem",
     frames: {
       frameBoxShadowCssValue: "none",
+      editorActiveTabIndicatorTopColor: "transparent",
+      editorTabBarBorderBottomColor: "transparent",
     },
     uiLineHeight: "inherit",
   },

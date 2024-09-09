@@ -43,9 +43,16 @@ const { term } = Astro.props;
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  // set giscus theme after giscus has been loaded
+  function handleGiscusMessage(event: MessageEvent) {
+    if (event.origin !== "https://giscus.app") return;
+    if (!(typeof event.data === "object" && event.data.giscus)) return;
+
     setGiscusTheme();
-  });
+    window.removeEventListener("message", handleGiscusMessage);
+  }
+
+  window.addEventListener("message", handleGiscusMessage);
 
   document.addEventListener("theme-change", () => {
     setGiscusTheme();

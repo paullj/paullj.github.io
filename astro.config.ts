@@ -49,12 +49,7 @@ export default defineConfig({
   // ! Please remember to replace the following site property with your own domain
   site: "https://paullj.github.io",
   markdown: {
-    remarkPlugins: [
-      remarkUnwrapImages,
-      remarkReadingTime,
-      remarkDirective,
-      remarkAdmonitions
-    ],
+    remarkPlugins: [remarkUnwrapImages, remarkReadingTime, remarkDirective, remarkAdmonitions],
     rehypePlugins: [
       [rehypeExternalLinks, { target: "_blank", rel: ["nofollow, noopener, noreferrer"] }],
     ],
@@ -78,7 +73,6 @@ export default defineConfig({
     },
   },
 });
-
 
 function rawFonts(ext: Array<string>) {
   return {

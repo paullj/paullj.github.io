@@ -3,79 +3,79 @@ import { Icon } from "astro-icon";
 ---
 
 <theme-toggle class="ms-2 sm:ms-4">
-	<button
-		type="button"
-		id="toggle-theme"
-		class="relative h-9 w-9 rounded-md p-2 ring-zinc-400 transition-all hover:ring-2"
-		aria-label="Toggle Dark Mode"
-	>
-		<Icon
-			class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 scale-100 opacity-100 transition-all dark:scale-0 dark:opacity-0"
-			name="teenyicons:sun-outline"
-			aria-hidden="true"
-			focusable="false"
-		/>
+  <button
+    type="button"
+    id="toggle-theme"
+    class="relative h-9 w-9 rounded-md p-2 ring-zinc-400 transition-all hover:ring-2"
+    aria-label="Toggle Dark Mode"
+  >
+    <Icon
+      class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 scale-100 opacity-100 transition-all dark:scale-0 dark:opacity-0"
+      name="teenyicons:sun-outline"
+      aria-hidden="true"
+      focusable="false"
+    />
 
-		<Icon
-			class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all dark:scale-100 dark:opacity-100"
-			name="teenyicons:moon-outline"
-			aria-hidden="true"
-			focusable="false"
-		/>
-	</button>
+    <Icon
+      class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all dark:scale-100 dark:opacity-100"
+      name="teenyicons:moon-outline"
+      aria-hidden="true"
+      focusable="false"
+    />
+  </button>
 </theme-toggle>
 
 <script>
-	import { rootHasDarkClass } from "@/utils";
+  import { rootHasDarkClass } from "@/utils";
 
-	class ThemeToggle extends HTMLElement {
-		private button: HTMLButtonElement;
-		private observer: MutationObserver | null;
+  class ThemeToggle extends HTMLElement {
+    private button: HTMLButtonElement;
+    private observer: MutationObserver | null;
 
-		constructor() {
-			super();
-			this.button = this.querySelector("button") as HTMLButtonElement;
-			this.observer = null;
+    constructor() {
+      super();
+      this.button = this.querySelector("button") as HTMLButtonElement;
+      this.observer = null;
 
-			// set inital aria-pressed value
-			this.button.setAttribute("aria-pressed", String(rootHasDarkClass()));
+      // set inital aria-pressed value
+      this.button.setAttribute("aria-pressed", String(rootHasDarkClass()));
 
-			// button clicked, fire event
-			this.button.addEventListener("click", this.handleThemeBtnClick);
-		}
+      // button clicked, fire event
+      this.button.addEventListener("click", this.handleThemeBtnClick);
+    }
 
-		connectedCallback() {
-			const root = document.documentElement;
+    connectedCallback() {
+      const root = document.documentElement;
 
-			// MutationObserver for html class changes, as the theme could be changed elsewhere
-			this.observer = new MutationObserver((mutationsList) => {
-				for (const mutation of mutationsList) {
-					if (mutation.type === "attributes" && mutation.attributeName === "class") {
-						const rootIsDark = (mutation.target as Element).classList.contains("dark");
-						this.button.setAttribute("aria-pressed", String(rootIsDark));
-					}
-				}
-			});
-			this.observer.observe(root, { attributeFilter: ["class"] });
-		}
+      // MutationObserver for html class changes, as the theme could be changed elsewhere
+      this.observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === "attributes" && mutation.attributeName === "class") {
+            const rootIsDark = (mutation.target as Element).classList.contains("dark");
+            this.button.setAttribute("aria-pressed", String(rootIsDark));
+          }
+        }
+      });
+      this.observer.observe(root, { attributeFilter: ["class"] });
+    }
 
-		disconnectedCallback() {
-			this.observer?.disconnect();
-		}
+    disconnectedCallback() {
+      this.observer?.disconnect();
+    }
 
-		handleThemeBtnClick = () => {
-			let isDark = rootHasDarkClass();
+    handleThemeBtnClick = () => {
+      let isDark = rootHasDarkClass();
 
-			// invert theme
-			let themeChangeEvent = new CustomEvent("theme-change", {
-				detail: {
-					theme: isDark ? "light" : "dark",
-				},
-			});
-			// dispatch event -> ThemeProvider.astro
-			document.dispatchEvent(themeChangeEvent);
-		};
-	}
+      // invert theme
+      let themeChangeEvent = new CustomEvent("theme-change", {
+        detail: {
+          theme: isDark ? "light" : "dark",
+        },
+      });
+      // dispatch event -> ThemeProvider.astro
+      document.dispatchEvent(themeChangeEvent);
+    };
+  }
 
-	customElements.define("theme-toggle", ThemeToggle);
+  customElements.define("theme-toggle", ThemeToggle);
 </script>

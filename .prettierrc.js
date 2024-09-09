@@ -4,7 +4,7 @@ module.exports = {
 	semi: true,
 	singleQuote: false,
 	tabWidth: 2,
-	useTabs: true,
+	useTabs: false,
 	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss" /* Must come last */],
 	overrides: [
 		{

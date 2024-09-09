@@ -9,89 +9,89 @@ import { Icon } from "astro-icon";
 import { siteConfig } from "@/site-config";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const allPosts = await getAllPosts();
-	const allPostsByDate = sortMDByDate(allPosts);
-	const uniqueTags = getUniqueTags(allPosts);
-	return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: siteConfig.postsPerPage });
+  const allPosts = await getAllPosts();
+  const allPostsByDate = sortMDByDate(allPosts);
+  const uniqueTags = getUniqueTags(allPosts);
+  return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: siteConfig.postsPerPage });
 }) satisfies GetStaticPaths;
 
 interface Props {
-	page: Page<CollectionEntry<"post">>;
-	uniqueTags: string[];
+  page: Page<CollectionEntry<"post">>;
+  uniqueTags: string[];
 }
 
 const { page, uniqueTags } = Astro.props;
 
 const meta = {
-	title: "Posts",
-	description: "Ready my collection of posts and the things that interest me",
+  title: "Posts",
+  description: "Ready my collection of posts and the things that interest me",
 };
 
 const paginationProps = {
-	...(page.url.prev && {
-		prevUrl: {
-			url: page.url.prev,
-			text: `← Previous Posts`,
-		},
-	}),
-	...(page.url.next && {
-		nextUrl: {
-			url: page.url.next,
-			text: `Next Posts →`,
-		},
-	}),
+  ...(page.url.prev && {
+    prevUrl: {
+      url: page.url.prev,
+      text: `← Previous Posts`,
+    },
+  }),
+  ...(page.url.next && {
+    nextUrl: {
+      url: page.url.next,
+      text: `Next Posts →`,
+    },
+  }),
 };
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6">Posts</h1>
-	<div class="grid gap-y-16">
-		{
-			!!uniqueTags.length && (
-				<section>
-					<div class="flex items-start space-x-4">
-						<a
-							class="flex-shrink-0 sm:hover:text-accent"
-							href="/tags/"
-							aria-label="View all blog categories"
-						>
-							<Icon
-								name="teenyicons:tag-outline"
-								class="inline-block h-3.5 w-3.5"
-								aria-hidden="true"
-								focusable="false"
-							/>
-							Tags
-						</a>
+  <h1 class="title mb-6">Posts</h1>
+  <div class="grid gap-y-16">
+    {
+      !!uniqueTags.length && (
+        <section>
+          <div class="flex items-start space-x-4">
+            <a
+              class="flex-shrink-0 sm:hover:text-accent"
+              href="/tags/"
+              aria-label="View all blog categories"
+            >
+              <Icon
+                name="teenyicons:tag-outline"
+                class="inline-block h-3.5 w-3.5"
+                aria-hidden="true"
+                focusable="false"
+              />
+              Tags
+            </a>
 
-						<ul class="flex flex-wrap gap-2 text-xs leading-normal">
-							{uniqueTags.map((tag) => (
-								<li>
-									<a
-										class="cactus-link  opacity-70"
-										href={`/tags/${tag}/`}
-										aria-label={`View all posts with the tag: ${tag}`}
-									>
-										#{tag}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				</section>
-			)
-		}
-		<section aria-label="Blog post list">
-			<ul class="space-y-8 text-start">
-				{
-					page.data.map((p) => (
-						<li class="flex flex-col flex-wrap gap-2 sm:flex-row [&_q]:basis-full">
-							<PostPreview post={p} as="h2" withDesc />
-						</li>
-					))
-				}
-			</ul>
-			<Pagination {...paginationProps} />
-		</section>
-	</div>
+            <ul class="flex flex-wrap gap-2 text-xs leading-normal">
+              {uniqueTags.map((tag) => (
+                <li>
+                  <a
+                    class="cactus-link  opacity-70"
+                    href={`/tags/${tag}/`}
+                    aria-label={`View all posts with the tag: ${tag}`}
+                  >
+                    #{tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )
+    }
+    <section aria-label="Blog post list">
+      <ul class="space-y-8 text-start">
+        {
+          page.data.map((p) => (
+            <li class="flex flex-col flex-wrap gap-2 sm:flex-row [&_q]:basis-full">
+              <PostPreview post={p} as="h2" withDesc />
+            </li>
+          ))
+        }
+      </ul>
+      <Pagination {...paginationProps} />
+    </section>
+  </div>
 </PageLayout>

@@ -6,9 +6,7 @@
 			"source.fixAll.markdownlint": "always"
 		}
 	},
-	"prettier.documentSelectors": [
-		"**/*.astro"
-	],
+	"prettier.documentSelectors": ["**/*.astro"],
 	"eslint.validate": [
 		"javascript",
 		"javascriptreact",

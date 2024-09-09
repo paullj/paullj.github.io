@@ -1,51 +1,53 @@
 ---
 interface Props {
-	term?: string;
+  term?: string;
 }
 const { term } = Astro.props;
 ---
 
 <script
-	id="giscus-script"
-	src="https://giscus.app/client.js"
-	data-repo="paullj/paullj.github.io"
-	data-repo-id="R_kgDOGwKM4"
-	data-category="Published Posts"
-	data-category-id="DIC_kwD"
-	data-mapping="specific"
-	data-term={term}
-	data-strict="0"
-	data-reactions-enabled="1"
-	data-emit-metadata="0"
-	data-input-position="bottom"
-	data-theme="noborder_light"
-	data-lang="en"
-	crossorigin="anonymous"
-	async></script>
+  id="giscus-script"
+  src="https://giscus.app/client.js"
+  data-repo="paullj/paullj.github.io"
+  data-repo-id="R_kgDOGwKM4"
+  data-category="Published Posts"
+  data-category-id="DIC_kwD"
+  data-mapping="specific"
+  data-term={term}
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="noborder_light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async></script>
 
 <script>
-	function getUserPref() {
-		const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-		return (
-			storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
-		);
-	}
-	function setGiscusTheme() {
-		function sendMessage(message: unknown) {
-			const iframe = document.querySelector("iframe.giscus-frame") as HTMLIFrameElement;
-			if (!iframe) return;
-			iframe.contentWindow?.postMessage({ giscus: message }, "https://giscus.app");
-		}
-		sendMessage({
-			setConfig: {
-				theme: getUserPref() === "light" ? "noborder_light" : "noborder_dark",
-			},
-		});
-	}
+  function getUserPref() {
+    const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    return (
+      storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
+    );
+  }
+  function setGiscusTheme() {
+    function sendMessage(message: unknown) {
+      const iframe = document.querySelector("iframe.giscus-frame") as HTMLIFrameElement;
+      if (!iframe) return;
+      iframe.contentWindow?.postMessage({ giscus: message }, "https://giscus.app");
+    }
+    sendMessage({
+      setConfig: {
+        theme: getUserPref() === "light" ? "noborder_light" : "noborder_dark",
+      },
+    });
+  }
 
-	setGiscusTheme();
+  document.addEventListener("DOMContentLoaded", () => {
+    setGiscusTheme();
+  });
 
-	document.addEventListener("theme-change", () => {
-		setGiscusTheme();
-	});
+  document.addEventListener("theme-change", () => {
+    setGiscusTheme();
+  });
 </script>

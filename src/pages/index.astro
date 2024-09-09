@@ -12,29 +12,29 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, 5);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
-		<h1 class="title mb-6">Paul Lavender-Jones</h1>
-		<p class="mb-4">Hi, I like to make things and sometimes I write about it here.</p>
-		<SocialList />
-	</section>
-	<section aria-label="Blog post list" class="mt-16">
-		<h2 class="title mb-4 text-xl">
-			Recent Posts /
-			<a href="/posts" class="opacity-70 hover:cactus-link hover:opacity-100" data-astro-prefetch
-				>All Posts</a
-			>
-		</h2>
-		<ul class="space-y-4 sm:space-y-2">
-			{
-				allPostsByDate.map((p) => (
-					<li>
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
-	<!-- <section aria-label="Blog post list" class="mt-16">
+  <section>
+    <h1 class="title mb-6">Paul Lavender-Jones</h1>
+    <p class="mb-4">Hi, I like to make things and sometimes I write about it here.</p>
+    <SocialList />
+  </section>
+  <section aria-label="Blog post list" class="mt-16">
+    <h2 class="title mb-4 text-xl">
+      Recent Posts /
+      <a href="/posts" class="opacity-70 hover:cactus-link hover:opacity-100" data-astro-prefetch
+        >All Posts</a
+      >
+    </h2>
+    <ul class="space-y-4 sm:space-y-2">
+      {
+        allPostsByDate.map((p) => (
+          <li>
+            <PostPreview post={p} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <!-- <section aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-4 text-xl">Projects</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{allProjects.map((p) => <li>{p.data.title}</li>)}

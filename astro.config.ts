@@ -20,13 +20,17 @@ const expressiveCodeOptions: AstroExpressiveCodeOptions = {
     borderRadius: "4px",
     codeFontFamily:
       'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;',
-    codeFontSize: "0.875rem",
-    codeLineHeight: "1.7142857rem",
+    uiFontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;',
+    uiFontSize: "0.75rem",
+    codeFontSize: "0.75rem",
+    codeLineHeight: "1.25rem",
     codePaddingInline: "1rem",
     frames: {
       frameBoxShadowCssValue: "none",
       editorActiveTabIndicatorTopColor: "transparent",
       editorTabBarBorderBottomColor: "transparent",
+      tooltipSuccessBackground: "#047857",
     },
     uiLineHeight: "inherit",
   },

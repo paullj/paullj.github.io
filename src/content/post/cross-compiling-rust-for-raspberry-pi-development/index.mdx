@@ -61,17 +61,17 @@ For convenience, I like to setup SSH keys so I don't have to type in the passwor
 
 ## Now onto Rust
 
-Now that we have the Pi setup, we can start setting up our development environment. Start a project with `cargo init --bin` You'll need to have Rust installed on your machine, but again I won't go into that here as there are plenty of much better resources online to help you with that.
+Now that we have the Pi setup, we can start setting up our development environment. Start a project with `cargo init --bin` You'll need to have Rust installed on your machine, but again, I won't go into that here as there are plenty of much better resources online to help you with that.
 
 ### Cross-ing Over
 
-We are also going to need [cross](https://github.com/cross-rs/cross). Its is a great tool that makes cross-compiling Rust code for different architectures very easy. It handles all the heavy lifting, so you don't have to worry about it. For now we just need to install it with this command and do a little configuring, we'll use it later on.
+We are also going to need [cross](https://github.com/cross-rs/cross). It's a great tool that makes cross-compiling Rust code for different architectures very easy. It handles all the heavy lifting, so you don't have to worry about it. For now, we just need to install it with this command and do a little configuring; we'll use it later on.
 
 ```bash
 cargo install cross --git https://github.com/cross-rs/cross
 ```
 
-It acts as a drop in replacement for `cargo build` and `cargo run`, but it handles all the cross-compilation for you. You can specify the target architecture with the `--target` flag, but you can also specify a default in a `Cross.toml` file. For example if you're targeting Raspberry Pi OS Lite 64bit, you can use something like this:
+It acts as a drop in replacement for `cargo build` and `cargo run`, but it handles all the cross-compilation for you. You can specify the target architecture with the `--target` flag, but you can also specify a default in a `Cross.toml` file. For example if you're targeting Raspberry Pi OS Lite 64-bit, you can use something like this:
 
 ```toml
 # filename: Cross.toml

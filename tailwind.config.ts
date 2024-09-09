@@ -13,7 +13,7 @@ export default {
     ringOffsetWidth: false,
     ringOffsetColor: false,
     scrollSnapType: false,
-    borderOpacity: false,
+    borderOpacity: true,
     textOpacity: false,
     fontVariantNumeric: false,
   },
@@ -62,8 +62,15 @@ export default {
               fontWeight: "700",
             },
             code: {
-              border: "1px dotted #666",
-              borderRadius: "2px",
+              "@apply inline-block font-mono leading-tight px-1 rounded border-2": "",
+              "border-color": "color-mix(in srgb, currentColor 20%, transparent)",
+              "font-size": "inherit !important",
+              "&:before": {
+                content: "'' !important",
+              },
+              "&:after": {
+                content: "'' !important",
+              },
             },
             blockquote: {
               borderLeftWidth: "0",

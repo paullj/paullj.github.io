@@ -16,13 +16,22 @@
     "@astrojs/sitemap": "3.0.3",
     "@astrojs/tailwind": "5.0.3",
     "@fontsource/jetbrains-mono": "^5.0.18",
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
     "astro": "4.0.3",
     "astro-embed": "^0.6.1",
+    "astro-expressive-code": "^0.36.1",
     "astro-icon": "^0.8.2",
+    "hastscript": "^9.0.0",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-to-markdown": "^2.1.0",
     "rehype-external-links": "^3.0.0",
+    "remark-directive": "^3.0.0",
     "satori": "0.10.11",
     "satori-html": "^0.3.2",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.1",

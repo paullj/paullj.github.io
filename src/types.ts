@@ -23,3 +23,5 @@ export type SiteMeta = {
   ogImage?: string;
   articleDate?: string;
 };
+
+export type AdmonitionType = "tip" | "note" | "important" | "caution" | "warning";

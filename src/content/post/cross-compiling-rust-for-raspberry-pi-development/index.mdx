@@ -15,7 +15,11 @@ I’m diving into Rust and embedded development, both of which I’ve dipped in 
 
 While the Zero 2 is a capable little machine, it’s not the most powerful device. Compiling Rust code directly on the Pi can be slow and frustrating, especially when you’re just starting out. It’s much more convenient to write and compile code on a more powerful machine, then deploy and run on the Pi.
 
-I want to share my experience as a beginner in Rust and embedded development, and how I set up a practical development environment for making something for the Pi. This is a very loose guide that I hope will help point others in the right direction, but it's _not_ a step-by-step tutorial. I'm assuming you have some basic knowledge of Rust and embedded development, and that you're comfortable with the command line.
+I want to share my experience as a beginner in Rust and embedded development, and how I set up a practical development environment for making something for the Pi.
+
+:::note
+This is a very loose guide that I hope will help point others in the right direction, but it's _not_ a step-by-step tutorial. I'm assuming you have some basic knowledge of Rust and embedded development, and that you're comfortable with the command line.
+:::
 
 ## Getting Ready
 
@@ -37,16 +41,21 @@ To install the OS, I used the [Raspberry Pi Imager](https://www.raspberrypi.com/
 
 ![Raspberry Pi Imager](./raspberry-pi-imager.png)
 
-Since I'm using the Lite version of the OS, I don't need to worry about setting up a desktop environment or anything like that. However, I did need to set up WiFi and SSH so that I can remote into my Pi to interact with it. Luckily, the Raspberry Pi Imager has a convenient settings menu to do this. If you are doing this, make sure that you have the correct image and card selected; the imager makes it easy enough to do this. Once that's done, you can insert the card into the Pi.
+Since I'm using the Lite version of the OS, I don't need to worry about setting up a desktop environment or anything like that. However, I did need to set up WiFi and SSH so that I can remote into my Pi to interact with it. Luckily, the Raspberry Pi Imager has a convenient settings menu to do this. If you are doing this, make sure that you have the correct image and card selected; the imager makes it easy enough to do this. Once that's done, you can insert the card into the Pi and power on you Pi.
 
-You can now test everything is setup correctly by powering on your Pi[^2] and SSH-ing into the Pi using the hostname[^3], username, and password. Something like this for the default settings:
+:::tip
+It might take a few seconds for the Pi to boot up, so be patient. You should see the green LED flashing as it boots up.
+:::
 
-[^2]: It might take a few seconds for the Pi to boot up, so be patient. You should see the green LED flashing as it boots up.
-[^3]: I'm using a Mac, so I can use the `.local` hostname to connect to the Pi. If you're using Windows, you might need to find the IP address of the Pi and connect using that.
+You can now test everything is setup correctly by SSH-ing into the Pi using the hostname, username, and password. Something like this for the default settings:
 
 ```bash
 ssh pi@raspberrypi.local
 ```
+
+:::note
+I'm using a Mac, so I can use the `.local` hostname to connect to the Pi. If you're using Windows, you might need to find the IP address of the Pi and connect using that.
+:::
 
 For convenience, I like to setup SSH keys so I don't have to type in the password every time I connect. You can do this by generating a key on your machine and copying the public key to the Pi. There are plenty of tutorials online that can help you with this.
 
@@ -65,7 +74,7 @@ cargo install cross --git https://github.com/cross-rs/cross
 It acts as a drop in replacement for `cargo build` and `cargo run`, but it handles all the cross-compilation for you. You can specify the target architecture with the `--target` flag, but you can also specify a default in a `Cross.toml` file. For example if you're targeting Raspberry Pi OS Lite 64bit, you can use something like this:
 
 ```toml
-# ./Cross.toml
+# filename: Cross.toml
 [build]
 # Use this target if none is explicitly provided
 default-target = "aarch64-unknown-linux-gnu"
@@ -95,7 +104,7 @@ my_project/
 You can specify the features for each binary in the `Cargo.toml` file. This way you can include or exclude dependencies based on the binary you're building. For example, you might have a dependency that's only needed for the Raspberry Pi binary, or a dependency that's only needed for the local binary. You can specify these dependencies in the `Cargo.toml` file like this:
 
 ```toml
-# ./Cargo.toml
+# filename: Cargo.toml
 [package]
 name = "my_app"
 # other keys omitted for brevity...
@@ -108,7 +117,6 @@ a_dependency_for_just_local = {version="1.0", optional=true}
 [features]
 raspberry_pi = ["a_dependency_for_just_the_pi"] # Raspberry Pi features
 local = ["a_dependency_for_just_local"]         # Local features
-
 
 [[bin]]
 # This is the main binary that runs on the raspberry pi
@@ -138,6 +146,8 @@ With this setup, I can build and run the local binary with `cargo run --bin loca
 I _could_ copy the binary to the Pi and run it manually, but that's a bit of a pain. Instead, I can use `scp` and `ssh` to copy the binary to the Pi and run it automatically.
 
 ```bash
+#!/bin/bash
+
 # Cross compile the binary for the Raspberry Pi
 cross build --bin raspberry_pi --features raspberry_pi
 # Copy the binary to the Pi
@@ -154,8 +164,8 @@ You can run these commands every time you want to run on the Pi, but I like to u
 
 This is a very basic setup that I've found works well for me. I'm still learning, so I'm sure there are more complex and better ways to do things. That being said this meets all my needs so far, and it was surprisingly easy to get everything set up despite just starting out.
 
-Next I want to start playing around with hardware peripherals using [rppal](https://crates.io/crates/rppal). More specifically, an LCD display and the [embedded-graphics](https://crates.io/crates/embedded-graphics) crate[^4].
+Next I want to start playing around with hardware peripherals using [rppal](https://crates.io/crates/rppal). More specifically, an LCD display and the [embedded-graphics](https://crates.io/crates/embedded-graphics) crate[^2].
 
-[^4]: The Zero 2W only supports OpenGL ES 2.0 and a lot of great Rust graphics crates rely on [wgpu](https://github.com/gfx-rs/wgpu) which doesn't support 2.0, so it might be easier to use CPU driven graphics to start with. But maybe I'll try and get OpenGL working at some point, who knows.
+[^2]: The Zero 2W only supports OpenGL ES 2.0 and a lot of great Rust graphics crates rely on [wgpu](https://github.com/gfx-rs/wgpu) which doesn't support 2.0, so it might be easier to use CPU driven graphics to start with. But maybe I'll try and get OpenGL working at some point, who knows.
 
 If you have any suggestions or improvements, I'd love to hear them! Stay tuned for more posts as I continue stumbling through Rust and embedded development.

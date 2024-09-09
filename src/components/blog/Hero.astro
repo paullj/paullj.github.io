@@ -42,7 +42,10 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 
 <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
   <p class="font-semibold">
-    <FormattedDate date={data.publishedAt} dateTimeOptions={dateTimeOptions} /> /{" "}
+    <FormattedDate date={data.publishedAt} dateTimeOptions={dateTimeOptions} />
+  </p>
+  <p></p>
+  <p>
     {remarkPluginFrontmatter.minutesRead}
   </p>
   {
@@ -57,14 +60,10 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 {
   !!data.tags?.length && (
     <div class="mt-3 flex items-center space-x-2">
-      <Icon
-        name="teenyicons:tag-outline"
-        class="inline-block h-3.5 w-3.5"
-        aria-hidden="true"
-        focusable="false"
-      />
-
       <ul class="flex flex-wrap gap-2 text-xs leading-normal">
+        <li>
+          Tagged with
+        </li>
         {data.tags.map((tag, i) => (
           <li>
             <a
@@ -73,7 +72,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
               aria-label={`View more blogs with the tag ${tag}`}
               data-pagefind-filter="tag"
             >
-              #{tag}
+              {tag}
             </a>
             {i < data.tags.length - 1 && ", "}
           </li>

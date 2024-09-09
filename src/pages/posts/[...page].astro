@@ -4,14 +4,13 @@ import type { CollectionEntry } from "astro:content";
 import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import Pagination from "@/components/Paginator";
-import { getAllPosts, getUniqueTags, sortMDByDate } from "@/utils";
-import { Icon } from "astro-icon";
+import { getAllPosts, getUniqueTagsWithCount, sortMDByDate } from "@/utils";
 import { siteConfig } from "@/site-config";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getAllPosts();
   const allPostsByDate = sortMDByDate(allPosts);
-  const uniqueTags = getUniqueTags(allPosts);
+  const uniqueTags = getUniqueTagsWithCount(allPosts).slice(0, 10).map(([tag, _count]) => tag);
   return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: siteConfig.postsPerPage });
 }) satisfies GetStaticPaths;
 
@@ -20,11 +19,11 @@ interface Props {
   uniqueTags: string[];
 }
 
-const { page, uniqueTags } = Astro.props;
+const { page, uniqueTags }: Props = Astro.props;
 
 const meta = {
   title: "Posts",
-  description: "Ready my collection of posts and the things that interest me",
+  description: "A collection of posts about programming, design, and other things.",
 };
 
 const paginationProps = {
@@ -50,32 +49,27 @@ const paginationProps = {
       !!uniqueTags.length && (
         <section>
           <div class="flex items-start space-x-4">
-            <a
-              class="flex-shrink-0 sm:hover:text-accent"
-              href="/tags/"
-              aria-label="View all blog categories"
-            >
-              <Icon
-                name="teenyicons:tag-outline"
-                class="inline-block h-3.5 w-3.5"
-                aria-hidden="true"
-                focusable="false"
-              />
-              Tags
-            </a>
-
             <ul class="flex flex-wrap gap-2 text-xs leading-normal">
-              {uniqueTags.map((tag) => (
+              <li>
+                Filter posts by
+              </li>
+              {uniqueTags.map((tag, i) => (
                 <li>
                   <a
-                    class="cactus-link  opacity-70"
+                    class="cactus-link opacity-70"
                     href={`/tags/${tag}/`}
-                    aria-label={`View all posts with the tag: ${tag}`}
+                    aria-label={`View other posts with the tag ${tag}`}
                   >
-                    #{tag}
+                    {tag}
                   </a>
                 </li>
               ))}
+              <span>
+                or
+              </span>
+              <a href="/tags/" class="hover:cactus-link opacity-70"  aria-label="View all tags">
+                view all tags
+              </a>
             </ul>
           </div>
         </section>

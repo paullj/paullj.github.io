@@ -10,7 +10,9 @@ import { siteConfig } from "@/site-config";
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getAllPosts();
   const allPostsByDate = sortMDByDate(allPosts);
-  const uniqueTags = getUniqueTagsWithCount(allPosts).slice(0, 10).map(([tag, _count]) => tag);
+  const uniqueTags = getUniqueTagsWithCount(allPosts)
+    .slice(0, 10)
+    .map(([tag, _count]) => tag);
   return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: siteConfig.postsPerPage });
 }) satisfies GetStaticPaths;
 
@@ -50,10 +52,8 @@ const paginationProps = {
         <section>
           <div class="flex items-start space-x-4">
             <ul class="flex flex-wrap gap-2 text-xs leading-normal">
-              <li>
-                Filter posts by
-              </li>
-              {uniqueTags.map((tag, i) => (
+              <li>Filter posts by</li>
+              {uniqueTags.map((tag) => (
                 <li>
                   <a
                     class="cactus-link opacity-70"
@@ -64,10 +64,8 @@ const paginationProps = {
                   </a>
                 </li>
               ))}
-              <span>
-                or
-              </span>
-              <a href="/tags/" class="hover:cactus-link opacity-70"  aria-label="View all tags">
+              <span>or</span>
+              <a href="/tags/" class="opacity-70 hover:cactus-link" aria-label="View all tags">
                 view all tags
               </a>
             </ul>

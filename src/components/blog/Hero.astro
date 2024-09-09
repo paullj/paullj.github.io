@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../FormattedDate.astro";
-import { Icon } from "astro-icon";
 
 interface Props {
   content: CollectionEntry<"post">;
@@ -61,10 +60,8 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
   !!data.tags?.length && (
     <div class="mt-3 flex items-center space-x-2">
       <ul class="flex flex-wrap gap-2 text-xs leading-normal">
-        <li>
-          Tagged with
-        </li>
-        {data.tags.map((tag, i) => (
+        <li>Tagged with</li>
+        {data.tags.map((tag) => (
           <li>
             <a
               class="cactus-link opacity-70"
@@ -74,7 +71,6 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
             >
               {tag}
             </a>
-            {i < data.tags.length - 1 && ", "}
           </li>
         ))}
       </ul>

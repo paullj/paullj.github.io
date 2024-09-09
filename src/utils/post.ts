@@ -8,7 +8,7 @@ export async function getAllPosts() {
   });
 }
 
-export function sortMDByDate<T extends "post" | "project">(posts: Array<CollectionEntry<T>>) {
+export function sortMDByDate<T extends "post">(posts: Array<CollectionEntry<T>>) {
   return posts.sort((a, b) => {
     const aDate = new Date(a.data.updatedAt ?? a.data.publishedAt).valueOf();
     const bDate = new Date(b.data.updatedAt ?? b.data.publishedAt).valueOf();

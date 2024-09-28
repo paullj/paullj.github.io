@@ -12,8 +12,7 @@ interface SocialListProps {
   }>;
 }
 
-const { subtitle = "Find me on", socialLinks = socialLinksConfig } =
-  Astro.props satisfies SocialListProps;
+const { subtitle = "Find me on", socialLinks = socialLinksConfig } = Astro.props as SocialListProps;
 ---
 
 <div class="flex flex-wrap items-center gap-x-4">

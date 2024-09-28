@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base";
-
+import SocialList from "@/components/SocialList";
+import Link from "@/components/Link";
 const meta = {
   title: "About",
   description: "Find out more about me and my work.",
@@ -10,6 +11,41 @@ const meta = {
 <PageLayout meta={meta}>
   <div class="space-y-6">
     <h1 class="title">About</h1>
-    <p>This page is fairly empty for now...</p>
+    <p>
+      I'm currently a software engineer in London, working at <Link href="https://automata.tech">
+        Automata
+      </Link>
+       developing a robotic lab automation platform.
+    </p>
+    <p>
+      I studied mechanical engineering at the <Link href="https://www.bath.ac.uk/">
+        University of Bath
+      </Link>, but I have interests in biomedical engineering, electronic engineering, and computer
+      science.
+    </p>
+
+    <p>
+      Outside of work I enjoy learning new things, and am currently exploring <Link
+        href="/tags/rust/"
+      >
+        Rust
+      </Link>.
+    </p>
+
+    <SocialList
+      subtitle="Reach out on"
+      socialLinks={[
+        {
+          name: "teenyicons:linkedin-outline",
+          friendlyName: "LinkedIn",
+          link: "https://www.linkedin.com/in/paul-lavender-jones/",
+        },
+        {
+          name: "teenyicons:envelope-outline",
+          friendlyName: "email",
+          link: "mailto:paul@lavender-jones.com",
+        },
+      ]}
+    />
   </div>
 </PageLayout>

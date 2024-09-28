@@ -35,17 +35,17 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 <h1 class="title mb-3 sm:mb-1">
   {data.title}
 </h1>
-<p class="mb-10 mt-2 text-base font-light text-gray-500">
-  {data.description}
-</p>
+{
+  data.description ? (
+    <p class="mb-10 mt-2 text-base font-light text-gray-500">{data.description}</p>
+  ) : (
+    <div class="sm:h-4" />
+  )
+}
 
 <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
   <p class="font-semibold">
     <FormattedDate date={data.publishedAt} dateTimeOptions={dateTimeOptions} />
-  </p>
-  <p></p>
-  <p>
-    {remarkPluginFrontmatter.minutesRead}
   </p>
   {
     data.updatedAt != undefined && (
@@ -55,6 +55,9 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
       </span>
     )
   }
+  <p>
+    {remarkPluginFrontmatter.minutesRead}
+  </p>
 </div>
 {
   !!data.tags?.length && (

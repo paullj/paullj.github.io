@@ -39,3 +39,30 @@ export const menuLinks: Array<{ title: string; path: string }> = [
     path: "/posts/",
   },
 ];
+
+/**
+  Uses https://github.com/natemoo-re/astro-icon#readme
+  Find icons @ https://icones.js.org/
+*/
+export const socialLinks: Array<{
+  name: string;
+  friendlyName: string;
+  link: string;
+  isWebmention?: string;
+}> = [
+  {
+    name: "teenyicons:github-outline",
+    friendlyName: "Github",
+    link: "https://github.com/paullj",
+  },
+  {
+    name: "teenyicons:linkedin-outline",
+    friendlyName: "LinkedIn",
+    link: "https://www.linkedin.com/in/paul-lavender-jones/",
+  },
+  {
+    name: "teenyicons:envelope-outline",
+    friendlyName: "email",
+    link: "mailto:paul@lavender-jones.com",
+  },
+];

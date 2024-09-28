@@ -94,6 +94,9 @@ export default {
             img: {
               "@apply mx-auto": "",
             },
+            svg: {
+              "@apply mx-auto text-sm": "",
+            },
             sup: {
               "@apply ms-0.5": "",
               a: {
@@ -193,14 +196,25 @@ export default {
     require("@tailwindcss/aspect-ratio"),
     plugin(function ({ addComponents }) {
       addComponents({
+        ".link-underline": {
+          "@apply relative": {},
+          "&:after": {
+            content: "''",
+            "@apply absolute inset-x-0 bottom-0 w-full h-[0.1rem]": {},
+            backgroundColor: "hsl(var(--theme-text))",
+          },
+        },
+        ".link-emphasis": {
+          "@apply bg-[hsl(var(--theme-accent)/0.3)]": {},
+          "&:after": {
+            "@apply h-[0.2rem]": {},
+            backgroundColor: "hsl(var(--theme-accent))",
+          },
+        },
         ".cactus-link": {
-          "@apply bg-[size:100%_6px] bg-bottom bg-repeat-x": {},
-          backgroundImage:
-            "linear-gradient(transparent,transparent 5px,hsl(var(--theme-text)) 5px,hsl(var(--theme-text)))",
+          "@apply link-underline": {},
           "&:hover": {
-            "@apply bg-[size:100%_6px] bg-bottom bg-repeat-x bg-[hsl(var(--theme-accent)/0.3)]": {},
-            backgroundImage:
-              "linear-gradient(transparent,transparent 3px,hsl(var(--theme-accent)) 3px,hsl(var(--theme-accent)))",
+            "@apply link-emphasis": {},
           },
         },
         ".title": {

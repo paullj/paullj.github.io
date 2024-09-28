@@ -5,6 +5,14 @@ interface Props {
 const { term } = Astro.props;
 ---
 
+<noscript>
+  <div class="flex items-center justify-center">
+    <span class="mx-auto rounded-lg bg-quote/10 p-1 text-xs text-quote">
+      JavaScript is required to view comments.
+    </span>
+  </div>
+</noscript>
+
 <script
   id="giscus-script"
   src="https://giscus.app/client.js"

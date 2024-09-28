@@ -1,37 +1,23 @@
 ---
 import { Icon } from "astro-icon";
+import { socialLinks as socialLinksConfig } from "@/site-config";
 
-/**
-	Uses https://github.com/natemoo-re/astro-icon#readme
-	Find icons @ https://icones.js.org/
-*/
-const socialLinks: Array<{
-  name: string;
-  friendlyName: string;
-  link: string;
-  isWebmention?: boolean;
-}> = [
-  {
-    name: "teenyicons:github-outline",
-    friendlyName: "Github",
-    link: "https://github.com/paullj",
-  },
-  {
-    name: "teenyicons:linkedin-outline",
-    friendlyName: "LinkedIn",
-    link: "https://www.linkedin.com/in/paul-lavender-jones/",
-  },
-  {
-    name: "teenyicons:envelope-outline",
-    friendlyName: "email",
-    link: "mailto:paul@lavender-jones.com",
-    isWebmention: true,
-  },
-];
+interface SocialListProps {
+  subtitle?: string;
+  socialLinks?: Array<{
+    name: string;
+    friendlyName: string;
+    link: string;
+    isWebmention?: boolean;
+  }>;
+}
+
+const { subtitle = "Find me on", socialLinks = socialLinksConfig } =
+  Astro.props satisfies SocialListProps;
 ---
 
 <div class="flex flex-wrap items-center gap-x-4">
-  <p>Find me on</p>
+  <p>{subtitle}</p>
   <ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
     {
       socialLinks.map(({ link, name, friendlyName, isWebmention }) => (

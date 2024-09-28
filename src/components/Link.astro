@@ -1,0 +1,23 @@
+---
+import Icon from "astro-icon";
+
+interface LinkProps {
+  href: string;
+}
+
+let { href } = Astro.props as LinkProps;
+
+let isExternal = href.startsWith("http");
+---
+
+<a
+  class="group inline-flex flex-row items-center justify-start space-x-1"
+  href={href}
+  target={isExternal ? "_blank" : "_self"}
+  rel={isExternal ? "noopener noreferrer" : ""}
+>
+  <span class="link-underline hover:link-emphasis">
+    <slot />
+  </span>
+  {isExternal && <Icon name="mi:external-link" class="h-3.5 w-3.5" />}
+</a>

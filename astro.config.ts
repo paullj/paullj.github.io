@@ -9,6 +9,7 @@ import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 // Remark plugins
 import remarkDirective from "remark-directive";
 import remarkUnwrapImages from "remark-unwrap-images";
+import rehypeMermaid from "rehype-mermaid";
 import rehypeExternalLinks from "rehype-external-links";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions";
@@ -57,6 +58,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkUnwrapImages, remarkReadingTime, remarkDirective, remarkAdmonitions],
     rehypePlugins: [
+      rehypeMermaid,
       [rehypeExternalLinks, { target: "_blank", rel: ["nofollow, noopener, noreferrer"] }],
     ],
     remarkRehype: { footnoteLabelProperties: { className: [""] } },

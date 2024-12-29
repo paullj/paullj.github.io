@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../FormattedDate.astro";
-
 interface Props {
   content: CollectionEntry<"post">;
 }
@@ -47,17 +46,21 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
   <p class="font-semibold">
     <FormattedDate date={data.publishedAt} dateTimeOptions={dateTimeOptions} />
   </p>
-  {
-    data.updatedAt != undefined && (
-      <span class="rounded-lg bg-quote/10 p-1 text-quote">
-        Last Updated:
-        <FormattedDate class="ms-1" date={data.updatedAt} dateTimeOptions={dateTimeOptions} />
-      </span>
-    )
-  }
   <p>
     {remarkPluginFrontmatter.minutesRead}
   </p>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
+  {
+    data.updatedAt != undefined && (
+      <>
+        <span class="mt-0.5 rounded-lg bg-quote/10 px-1 py-0.5 text-quote">
+          Last Updated:
+          <FormattedDate class="ms-1" date={data.updatedAt} dateTimeOptions={dateTimeOptions} />
+        </span>
+      </>
+    )
+  }
 </div>
 {
   !!data.tags?.length && (

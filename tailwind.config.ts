@@ -56,7 +56,7 @@ export default {
         DEFAULT: {
           css: {
             a: {
-              "@apply cactus-link no-underline": "",
+              "@apply cactus-link": "",
             },
             strong: {
               fontWeight: "700",
@@ -98,17 +98,11 @@ export default {
               "@apply mx-auto text-sm": "",
             },
             sup: {
-              "@apply ms-0.5": "",
+              "@apply whitespace-nowrap": "",
               a: {
-                "@apply bg-none": "",
+                "@apply link-no-underline px-0.5": "",
                 "&:hover": {
-                  "@apply text-link no-underline bg-none": "",
-                },
-                "&:before": {
-                  content: "'['",
-                },
-                "&:after": {
-                  content: "']'",
+                  "@apply link-no-underline": "",
                 },
               },
             },
@@ -196,20 +190,21 @@ export default {
     require("@tailwindcss/aspect-ratio"),
     plugin(function ({ addComponents }) {
       addComponents({
-        ".link-underline": {
-          "@apply relative": {},
+        ".link-no-underline": {
+          "@apply no-underline": {},
           "&:after": {
             content: "''",
             "@apply absolute inset-x-0 bottom-0 w-full h-[0.1rem]": {},
-            backgroundColor: "hsl(var(--theme-text))",
+            backgroundColor: "transparent",
           },
         },
+        ".link-underline": {
+          "@apply underline decoration-[1.5px] underline-offset-[3px]": {},
+        },
         ".link-emphasis": {
+          "@apply underline decoration-[hsl(var(--theme-accent))] decoration-[2.5px] underline-offset-[3px]":
+            {},
           "@apply bg-[hsl(var(--theme-accent)/0.3)]": {},
-          "&:after": {
-            "@apply h-[0.2rem]": {},
-            backgroundColor: "hsl(var(--theme-accent))",
-          },
         },
         ".cactus-link": {
           "@apply link-underline": {},

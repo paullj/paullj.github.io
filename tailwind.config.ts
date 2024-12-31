@@ -19,6 +19,11 @@ export default {
   },
   theme: {
     extend: {
+      fontSize: {
+        "2xs": "0.625rem",
+        "3xs": "0.5rem",
+        "4xs": "0.375rem",
+      },
       colors: {
         bgColor: "hsl(var(--theme-bg) / <alpha-value>)",
         textColor: "hsl(var(--theme-text) / <alpha-value>)",

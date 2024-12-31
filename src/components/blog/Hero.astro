@@ -50,11 +50,11 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
     {remarkPluginFrontmatter.minutesRead}
   </p>
 </div>
-<div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
+<div class="text-2xs flex flex-wrap items-center gap-x-3 gap-y-2">
   {
     data.updatedAt != undefined && (
       <>
-        <span class="mt-0.5 rounded-lg bg-quote/10 px-1 py-0.5 text-quote">
+        <span class="mt-0.5 rounded-lg bg-quote/10 px-1.5 text-quote">
           Last Updated:
           <FormattedDate class="ms-1" date={data.updatedAt} dateTimeOptions={dateTimeOptions} />
         </span>
